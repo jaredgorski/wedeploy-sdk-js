@@ -33,7 +33,6 @@
   ],
   "dependencies": {
     "form-data": "^2.1.2",
-    "gulp-eslint": "^3.0.1",
     "metal": "^2.0.0",
     "metal-ajax": "^3.0.0",
     "metal-promise": "^3.0.0",
