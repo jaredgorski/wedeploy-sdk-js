@@ -1,32 +1,32 @@
 /**
-* Copyright (c) 2000-present Liferay, Inc. All rights reserved.
-*
-* Redistribution and use in source and binary forms, with or without
-* modification, are permitted provided that the following conditions are met:
-*
-* 1. Redistributions of source code must retain the above copyright notice,
-* this list of conditions and the following disclaimer.
-*
-* 2. Redistributions in binary form must reproduce the above copyright notice,
-* this list of conditions and the following disclaimer in the documentation
-* and/or other materials provided with the distribution.
-*
-* 3. Neither the name of Liferay, Inc. nor the names of its contributors may
-* be used to endorse or promote products derived from this software without
-* specific prior written permission.
-*
-* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-* AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-* ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
-* LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-* CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-* SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-* INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-* CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-* ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-* POSSIBILITY OF SUCH DAMAGE.
-*/
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ * this list of conditions and the following disclaimer in the documentation
+ * and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of Liferay, Inc. nor the names of its contributors may
+ * be used to endorse or promote products derived from this software without
+ * specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
 
 'use strict';
 
@@ -69,9 +69,7 @@ describe('WeDeploy Tests', function() {
     WeDeploy.socket();
   });
 
-  it('should socket.io ignore path from client url and use from options', function(
-    done
-  ) {
+  it('should socket.io ignore path from client url and use from options', function(done) {
     WeDeploy.socket(function(url, opts) {
       assert.strictEqual('http://domain:8080', url);
       assert.deepEqual(
@@ -89,9 +87,7 @@ describe('WeDeploy Tests', function() {
     WeDeploy.socket();
   });
 
-  it('should change the protocol to https in client uri when protocol was not set explicitly', function(
-    done
-  ) {
+  it('should change the protocol to https in client uri when protocol was not set explicitly', function(done) {
     WeDeploy.socket(function(url, opts) {
       assert.strictEqual('https://domain:8080', url);
       assert.deepEqual(
@@ -143,9 +139,7 @@ describe('WeDeploy Tests', function() {
       });
   });
 
-  it('should send DELETE request when body is null and content type is json', function(
-    done
-  ) {
+  it('should send DELETE request when body is null and content type is json', function(done) {
     RequestMock.intercept('DELETE', 'http://localhost/url', '').reply(200);
 
     WeDeploy.url('http://localhost/url')
@@ -229,7 +223,7 @@ describe('WeDeploy Tests', function() {
     RequestMock.intercept(
       'GET',
       'http://localhost/url' +
-        '?filter=%5B%7B%22name%22%3A%7B%22operator%22%3A%22%3D%22%2C%22value%22%3A%22foo%22%7D%7D%5D'
+				'?filter=%5B%7B%22name%22%3A%7B%22operator%22%3A%22%3D%22%2C%22value%22%3A%22foo%22%7D%7D%5D'
     ).reply(200);
     WeDeploy.url('http://localhost/url')
       .get(Filter.field('name', 'foo'))
@@ -238,7 +232,7 @@ describe('WeDeploy Tests', function() {
         assert.strictEqual('GET', response.request().method());
         assert.ok(!response.request().body());
         const paramsStr =
-          '{"filter":["[{\\"name\\":{\\"operator\\":\\"=\\",\\"value\\":\\"foo\\"}}]"]}';
+					'{"filter":["[{\\"name\\":{\\"operator\\":\\"=\\",\\"value\\":\\"foo\\"}}]"]}';
         assert.strictEqual(
           paramsStr,
           response
@@ -307,9 +301,7 @@ describe('WeDeploy Tests', function() {
       });
   });
 
-  it('should send request with body that was previously set through "body" function', function(
-    done
-  ) {
+  it('should send request with body that was previously set through "body" function', function(done) {
     RequestMock.intercept('POST', 'http://localhost/url', '"body"').reply(200);
     WeDeploy.url('http://localhost/url')
       .body('body')
@@ -322,9 +314,7 @@ describe('WeDeploy Tests', function() {
       });
   });
 
-  it('should give precedence to body passed to the request call', function(
-    done
-  ) {
+  it('should give precedence to body passed to the request call', function(done) {
     RequestMock.intercept('POST', 'http://localhost/url', '"postBody"').reply(
       200
     );
@@ -463,9 +453,7 @@ describe('WeDeploy Tests', function() {
       });
   });
 
-  it('should not send request with authorization for empty auth', function(
-    done
-  ) {
+  it('should not send request with authorization for empty auth', function(done) {
     RequestMock.intercept('GET', 'http://localhost/url/a').reply(200);
     WeDeploy.url('http://localhost/url/a')
       .auth(null)
@@ -482,9 +470,7 @@ describe('WeDeploy Tests', function() {
       });
   });
 
-  it('should send request with authorization username and password', function(
-    done
-  ) {
+  it('should send request with authorization username and password', function(done) {
     RequestMock.intercept().reply(200);
     WeDeploy.url('http://localhost/url/a')
       .auth('username', 'password')
@@ -502,9 +488,7 @@ describe('WeDeploy Tests', function() {
       });
   });
 
-  it('should send request with authorization info from Auth instance', function(
-    done
-  ) {
+  it('should send request with authorization info from Auth instance', function(done) {
     RequestMock.intercept().reply(200);
     WeDeploy.url('http://localhost/url/a')
       .auth(Auth.create('My Token'))
@@ -615,9 +599,7 @@ describe('WeDeploy Tests', function() {
       });
   });
 
-  it('should send data passed through "form" method as FormData object via the body', function(
-    done
-  ) {
+  it('should send data passed through "form" method as FormData object via the body', function(done) {
     RequestMock.intercept('POST', 'http://localhost/url').reply(200);
     WeDeploy.url('http://localhost/url')
       .form('age', 12)
@@ -637,9 +619,7 @@ describe('WeDeploy Tests', function() {
       });
   });
 
-  it('should not send data passed through "form" method via the body if the body is already set', function(
-    done
-  ) {
+  it('should not send data passed through "form" method via the body if the body is already set', function(done) {
     RequestMock.intercept('POST', 'http://localhost/url').reply(200);
     WeDeploy.url('http://localhost/url')
       .form('age', 12)
@@ -652,9 +632,7 @@ describe('WeDeploy Tests', function() {
       });
   });
 
-  it('it should follow redirect if followRedirect is true * For node requests only', function(
-    done
-  ) {
+  it('it should follow redirect if followRedirect is true * For node requests only', function(done) {
     if (RequestMock !== NodeRequestMock) {
       done();
     }
@@ -680,9 +658,7 @@ describe('WeDeploy Tests', function() {
       });
   });
 
-  it('it should not follow redirects if followRedirect is false * For node requests only', function(
-    done
-  ) {
+  it('it should not follow redirects if followRedirect is false * For node requests only', function(done) {
     if (RequestMock !== NodeRequestMock) {
       done();
     }

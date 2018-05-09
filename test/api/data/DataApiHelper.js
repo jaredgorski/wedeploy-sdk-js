@@ -1,32 +1,32 @@
 /**
-* Copyright (c) 2000-present Liferay, Inc. All rights reserved.
-*
-* Redistribution and use in source and binary forms, with or without
-* modification, are permitted provided that the following conditions are met:
-*
-* 1. Redistributions of source code must retain the above copyright notice,
-* this list of conditions and the following disclaimer.
-*
-* 2. Redistributions in binary form must reproduce the above copyright notice,
-* this list of conditions and the following disclaimer in the documentation
-* and/or other materials provided with the distribution.
-*
-* 3. Neither the name of Liferay, Inc. nor the names of its contributors may
-* be used to endorse or promote products derived from this software without
-* specific prior written permission.
-*
-* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-* AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-* ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
-* LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-* CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-* SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-* INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-* CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-* ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-* POSSIBILITY OF SUCH DAMAGE.
-*/
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ * this list of conditions and the following disclaimer in the documentation
+ * and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of Liferay, Inc. nor the names of its contributors may
+ * be used to endorse or promote products derived from this software without
+ * specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
 
 'use strict';
 
@@ -286,9 +286,7 @@ describe('DataApiHelper', function() {
     });
 
     context('when updating with one object and a new key', function() {
-      it('should update a value and add the new key to the object', function(
-        done
-      ) {
+      it('should update a value and add the new key to the object', function(done) {
         RequestMock.intercept().reply(
           200,
           '{"id": 1, "ping": "pongUpdated", "newKey": "newValue"}'
@@ -395,9 +393,7 @@ describe('DataApiHelper', function() {
     });
 
     context('when replacing with one object and a new key', function() {
-      it('should replace a value and add the new key to the object', function(
-        done
-      ) {
+      it('should replace a value and add the new key to the object', function(done) {
         RequestMock.intercept().reply(
           200,
           '{"id": 1, "ping": "pongUpdated", "newKey": "newValue"}'
@@ -646,9 +642,9 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=' +
-          '%5B%7B%22and%22%3A%5B%7B%22name%22%3A%7B%22operator%22%3A' +
-          '%22none%22%2C%22value%22%3A%5B%22cuscuz%22%2C' +
-          '%22tapioca%22%5D%7D%7D%5D%7D%5D'
+					'%5B%7B%22and%22%3A%5B%7B%22name%22%3A%7B%22operator%22%3A' +
+					'%22none%22%2C%22value%22%3A%5B%22cuscuz%22%2C' +
+					'%22tapioca%22%5D%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "melancia"}]');
 
       WeDeploy.data('http://localhost')
@@ -739,8 +735,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=%5B%7B%22and%22%3A%5B%7B' +
-          '%22name%22%3A%7B%22operator%22%3A%22match%22%2C%22value%22%3A' +
-          '%22cuscuz%22%7D%7D%5D%7D%5D'
+					'%22name%22%3A%7B%22operator%22%3A%22match%22%2C%22value%22%3A' +
+					'%22cuscuz%22%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuz"}]');
 
       WeDeploy.data('http://localhost')
@@ -783,8 +779,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/books?filter=%5B%7B%22and%22%3A%5B%7B%22' +
-          'title%22%3A%7B%22operator%22%3A%22phrase%22%2C%22value%22%' +
-          '3A%22quick%20brown%20fox%22%7D%7D%5D%7D%5D'
+					'title%22%3A%7B%22operator%22%3A%22phrase%22%2C%22value%22%' +
+					'3A%22quick%20brown%20fox%22%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "title": "the quick brown fox"}]');
 
       WeDeploy.data('http://localhost')
@@ -833,8 +829,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=%5B%7B%22and%22%3A%5B%7B%22' +
-          'name%22%3A%7B%22operator%22%3A%22prefix%22%2C%22value%22%' +
-          '3A%22cus%22%7D%7D%5D%7D%5D'
+					'name%22%3A%7B%22operator%22%3A%22prefix%22%2C%22value%22%' +
+					'3A%22cus%22%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuz"}]');
 
       WeDeploy.data('http://localhost')
@@ -877,8 +873,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=%5B%7B%22and%22%3A%5B%7B' +
-          '%22name%22%3A%7B%22operator%22%3A%22similar%22%2C' +
-          '%22value%22%3A%7B%22query%22%3A%22cusc%22%7D%7D%7D%5D%7D%5D'
+					'%22name%22%3A%7B%22operator%22%3A%22similar%22%2C' +
+					'%22value%22%3A%7B%22query%22%3A%22cusc%22%7D%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuz"}]');
 
       WeDeploy.data('http://localhost')
@@ -923,8 +919,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=%5B%7B%22and%22%3A%5B%7B' +
-          '%22size%22%3A%7B%22operator%22%3A%22%3C%22%2C' +
-          '%22value%22%3A30%7D%7D%5D%7D%5D'
+					'%22size%22%3A%7B%22operator%22%3A%22%3C%22%2C' +
+					'%22value%22%3A30%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuz", "size": 10}]');
 
       WeDeploy.data('http://localhost')
@@ -970,8 +966,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=%5B%7B%22and%22%3A%5B%7B' +
-          '%22size%22%3A%7B%22operator%22%3A%22%3C%3D%22%2C' +
-          '%22value%22%3A30%7D%7D%5D%7D%5D'
+					'%22size%22%3A%7B%22operator%22%3A%22%3C%3D%22%2C' +
+					'%22value%22%3A30%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuz", "size": 10}]');
 
       WeDeploy.data('http://localhost')
@@ -1017,8 +1013,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=%5B%7B%22and%22%3A%5B%7B' +
-          '%22size%22%3A%7B%22operator%22%3A%22%3E%22%2C' +
-          '%22value%22%3A30%7D%7D%5D%7D%5D'
+					'%22size%22%3A%7B%22operator%22%3A%22%3E%22%2C' +
+					'%22value%22%3A30%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuz", "size": 10}]');
 
       WeDeploy.data('http://localhost')
@@ -1064,8 +1060,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=%5B%7B%22and' +
-          '%22%3A%5B%7B%22size%22%3A%7B%22operator%22%3A%22%3E%3' +
-          'D%22%2C%22value%22%3A30%7D%7D%5D%7D%5D'
+					'%22%3A%5B%7B%22size%22%3A%7B%22operator%22%3A%22%3E%3' +
+					'D%22%2C%22value%22%3A30%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuz", "size": 10}]');
 
       WeDeploy.data('http://localhost')
@@ -1111,8 +1107,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=%5B%7B%22and%22%3A%5B%7B' +
-          '%22name%22%3A%7B%22operator%22%3A%22any%22%2C' +
-          '%22value%22%3A%5B%22cuscuz%22%2C%22tapioca%22%5D%7D%7D%5D%7D%5D'
+					'%22name%22%3A%7B%22operator%22%3A%22any%22%2C' +
+					'%22value%22%3A%5B%22cuscuz%22%2C%22tapioca%22%5D%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuz"}]');
 
       WeDeploy.data('http://localhost')
@@ -1155,14 +1151,12 @@ describe('DataApiHelper', function() {
   });
 
   describe('.boundingBox()', function() {
-    it('should send request with query boundingBox in the body', function(
-      done
-    ) {
+    it('should send request with query boundingBox in the body', function(done) {
       RequestMock.intercept(
         'GET',
         'http://localhost/restaurants?filter=%5B%7B%22and%22%3A%5B%7B' +
-          '%22shape%22%3A%7B%22operator%22%3A%22gp%22%2C' +
-          '%22value%22%3A%5B%2220%2C0%22%2C%5B0%2C20%5D%5D%7D%7D%5D%7D%5D'
+					'%22shape%22%3A%7B%22operator%22%3A%22gp%22%2C' +
+					'%22value%22%3A%5B%2220%2C0%22%2C%5B0%2C20%5D%5D%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuzeria"}]');
 
       WeDeploy.data('http://localhost')
@@ -1208,8 +1202,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/restaurants?filter=%5B%7B%22and%22%3A%5B%7B' +
-          '%22point%22%3A%7B%22operator%22%3A%22gd%22%2C%22value%22%3A%7B' +
-          '%22location%22%3A%5B0%2C0%5D%2C%22max%22%3A2%7D%7D%7D%5D%7D%5D'
+					'%22point%22%3A%7B%22operator%22%3A%22gd%22%2C%22value%22%3A%7B' +
+					'%22location%22%3A%5B0%2C0%5D%2C%22max%22%3A2%7D%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuzeria"}]');
 
       WeDeploy.data('http://localhost')
@@ -1258,8 +1252,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/restaurants?filter=%5B%7B%22and%22%3A%5B%7B' +
-          '%22points%22%3A%7B%22operator%22%3A%22range%22%2C' +
-          '%22value%22%3A%7B%22from%22%3A12%2C%22to%22%3A15%7D%7D%7D%5D%7D%5D'
+					'%22points%22%3A%7B%22operator%22%3A%22range%22%2C' +
+					'%22value%22%3A%7B%22from%22%3A12%2C%22to%22%3A15%7D%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuzeria", "points": 13}]');
 
       WeDeploy.data('http://localhost')
@@ -1308,8 +1302,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=%5B%7B%22and%22%3A%5B%7B' +
-          '%22name%22%3A%7B%22operator%22%3A%22%3D%22%2C' +
-          '%22value%22%3A%22foo%22%7D%7D%5D%7D%5D'
+					'%22name%22%3A%7B%22operator%22%3A%22%3D%22%2C' +
+					'%22value%22%3A%22foo%22%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "ping": "pong1"}, {"id": 3, "ping": "pong2"}]');
 
       WeDeploy.data('http://localhost')
@@ -1360,9 +1354,9 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=%5B%7B%22or%22%3A%5B%7B' +
-          '%22and%22%3A%5B%7B%22name%22%3A%7B%22operator%22%3A%22%3D%22%2C' +
-          '%22value%22%3A%22foo%22%7D%7D%5D%7D%2C%7B%22name%22%3A%7B' +
-          '%22operator%22%3A%22!%3D%22%2C%22value%22%3A%22bar%22%7D%7D%5D%7D%5D'
+					'%22and%22%3A%5B%7B%22name%22%3A%7B%22operator%22%3A%22%3D%22%2C' +
+					'%22value%22%3A%22foo%22%7D%7D%5D%7D%2C%7B%22name%22%3A%7B' +
+					'%22operator%22%3A%22!%3D%22%2C%22value%22%3A%22bar%22%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "foo"}]');
       WeDeploy.data('http://localhost')
         .where('name', '=', 'foo')
@@ -1417,7 +1411,7 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?aggregation=%5B%7B%22field%22%3A%7B%22' +
-          'name%22%3A%22name%22%2C%22operator%22%3A%22terms%22%7D%7D%5D'
+					'name%22%3A%22name%22%2C%22operator%22%3A%22terms%22%7D%7D%5D'
       ).reply(200, '[{"id": 2, "ping": "pong1"}, {"id": 3, "ping": "pong2"}]');
 
       WeDeploy.data('http://localhost')
@@ -1485,9 +1479,7 @@ describe('DataApiHelper', function() {
           });
       });
 
-      it('should send search request when no filters are provided', function(
-        done
-      ) {
+      it('should send search request when no filters are provided', function(done) {
         RequestMock.intercept('GET', 'http://localhost/food?type=search').reply(
           200,
           '{"total":1,"highlights":{"2":{}},"documents":[{"id":2,"ping":"pong1"}],"scores":{"2":0.13102644681930542},"queryTime":1}'
@@ -1508,9 +1500,9 @@ describe('DataApiHelper', function() {
         RequestMock.intercept(
           'GET',
           'http://localhost/food?type=search&filter=%5B%7B%22and%22%3A%5B%7B' +
-            '%22name%22%3A%7B%22operator%22%3A%22%3D%22%2C%22value%22%3A' +
-            '%22foo%22%7D%7D%2C%7B%22name%22%3A%7B%22operator%22%3A%22%3D%22%2C' +
-            '%22value%22%3A%22bar%22%7D%7D%5D%7D%5D'
+						'%22name%22%3A%7B%22operator%22%3A%22%3D%22%2C%22value%22%3A' +
+						'%22foo%22%7D%7D%2C%7B%22name%22%3A%7B%22operator%22%3A%22%3D%22%2C' +
+						'%22value%22%3A%22bar%22%7D%7D%5D%7D%5D'
         ).reply(
           200,
           '{"total":1,"documents":[{"id":2,"ping":"pong1"}],"scores":{"2":0.13102644681930542},"queryTime":1}'
@@ -1566,9 +1558,7 @@ describe('DataApiHelper', function() {
     context(
       'when using multiple searches with the same data client',
       function() {
-        it('should not aggregate the previous query into the next fetch', function(
-          done
-        ) {
+        it('should not aggregate the previous query into the next fetch', function(done) {
           const data = WeDeploy.data('http://localhost');
 
           RequestMock.intercept(
@@ -1599,9 +1589,7 @@ describe('DataApiHelper', function() {
     context(
       'when using multiple searches with different data clients',
       function() {
-        it('should not aggregate the previous query into the next fetch', function(
-          done
-        ) {
+        it('should not aggregate the previous query into the next fetch', function(done) {
           RequestMock.intercept(
             'GET',
             'http://localhost/food?type=search&filter=%5B%7B%22and%22%3A%5B%7B%22type%22%3A%7B%22operator%22%3A%22%3D%22%2C%22value%22%3A%22fruit%22%7D%7D%5D%7D%5D'
@@ -1678,9 +1666,7 @@ describe('DataApiHelper', function() {
     });
 
     context('when using multiple gets with the same data client', function() {
-      it('should not aggregate the previous query into the next fetch', function(
-        done
-      ) {
+      it('should not aggregate the previous query into the next fetch', function(done) {
         const data = WeDeploy.data('http://localhost');
 
         RequestMock.intercept(
@@ -1708,9 +1694,7 @@ describe('DataApiHelper', function() {
     });
 
     context('when using multiple gets with different data clients', function() {
-      it('should not aggregate the previous query into the next fetch', function(
-        done
-      ) {
+      it('should not aggregate the previous query into the next fetch', function(done) {
         RequestMock.intercept(
           'GET',
           'http://localhost/food?filter=%5B%7B%22and%22%3A%5B%7B%22type%22%3A%7B%22operator%22%3A%22%3D%22%2C%22value%22%3A%22fruit%22%7D%7D%5D%7D%5D'
@@ -1955,9 +1939,7 @@ describe('DataApiHelper', function() {
           WeDeploy.socket();
         });
 
-        it('should add Authentication header using email and password', function(
-          done
-        ) {
+        it('should add Authentication header using email and password', function(done) {
           WeDeploy.socket(function(url, opts) {
             assert.deepEqual(
               {
@@ -1989,9 +1971,7 @@ describe('DataApiHelper', function() {
     context(
       'when using multiple watches with the same data client',
       function() {
-        it('should not aggregate the previous query into the next fetch', function(
-          done
-        ) {
+        it('should not aggregate the previous query into the next fetch', function(done) {
           const data = WeDeploy.data('http://localhost');
 
           WeDeploy.socket(function() {
@@ -2011,9 +1991,7 @@ describe('DataApiHelper', function() {
     context(
       'when using multiple watches with different data clients',
       function() {
-        it('should not aggregate the previous query into the next fetch', function(
-          done
-        ) {
+        it('should not aggregate the previous query into the next fetch', function(done) {
           WeDeploy.socket(function() {
             WeDeploy.socket(function(url, opts) {
               const requestUrlWithNoQuery = 'url=%2Ffood';

@@ -1,32 +1,32 @@
 /**
-* Copyright (c) 2000-present Liferay, Inc. All rights reserved.
-*
-* Redistribution and use in source and binary forms, with or without
-* modification, are permitted provided that the following conditions are met:
-*
-* 1. Redistributions of source code must retain the above copyright notice,
-* this list of conditions and the following disclaimer.
-*
-* 2. Redistributions in binary form must reproduce the above copyright notice,
-* this list of conditions and the following disclaimer in the documentation
-* and/or other materials provided with the distribution.
-*
-* 3. Neither the name of Liferay, Inc. nor the names of its contributors may
-* be used to endorse or promote products derived from this software without
-* specific prior written permission.
-*
-* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-* AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-* ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
-* LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-* CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-* SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-* INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-* CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-* ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-* POSSIBILITY OF SUCH DAMAGE.
-*/
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ * this list of conditions and the following disclaimer in the documentation
+ * and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of Liferay, Inc. nor the names of its contributors may
+ * be used to endorse or promote products derived from this software without
+ * specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
 
 'use strict';
 
@@ -71,9 +71,7 @@ describe('AuthApiHelper', function() {
     assert.strictEqual(null, auth2.currentUser);
   });
 
-  it('should WeDeploy.auth() use auth scope instead of current user information', function(
-    done
-  ) {
+  it('should WeDeploy.auth() use auth scope instead of current user information', function(done) {
     RequestMock.intercept().reply(200);
     const auth1 = WeDeploy.auth('http://localhost');
     auth1.currentUser = Auth.create('token1');
@@ -86,9 +84,7 @@ describe('AuthApiHelper', function() {
       });
   });
 
-  it('should set header to WeDeploy.auth() when getUser is invoked', function(
-    done
-  ) {
+  it('should set header to WeDeploy.auth() when getUser is invoked', function(done) {
     RequestMock.intercept().reply(200);
     const auth = WeDeploy.auth('http://localhost');
     auth.currentUser = Auth.create('token1');
@@ -233,9 +229,7 @@ describe('AuthApiHelper', function() {
       auth.sendPasswordResetEmail('email@domain.com').catch(() => done());
     });
 
-    it('should call send password reset email with email as parameter', function(
-      done
-    ) {
+    it('should call send password reset email with email as parameter', function(done) {
       const auth = WeDeploy.auth('http://localhost');
       RequestMock.intercept().reply(200);
       auth.sendPasswordResetEmail('email@domain.com').then(response => {
@@ -250,9 +244,7 @@ describe('AuthApiHelper', function() {
       });
     });
 
-    it('should call send password reset email unsuccessfully with error response as reason', function(
-      done
-    ) {
+    it('should call send password reset email unsuccessfully with error response as reason', function(done) {
       const auth = WeDeploy.auth('http://localhost');
       const responseErrorObject = {
         error: true,
@@ -324,9 +316,7 @@ describe('AuthApiHelper', function() {
       auth.createUser({}).catch(() => done());
     });
 
-    it('should call create user unsuccessfully with error response as reason', function(
-      done
-    ) {
+    it('should call create user unsuccessfully with error response as reason', function(done) {
       const auth = WeDeploy.auth('http://localhost');
       const responseErrorObject = {
         error: true,
@@ -375,9 +365,7 @@ describe('AuthApiHelper', function() {
       );
     });
 
-    it('should call sign-in with email and password successfully', function(
-      done
-    ) {
+    it('should call sign-in with email and password successfully', function(done) {
       const auth = WeDeploy.auth('http://localhost');
       auth.loadCurrentUser = () => new Auth();
       const authData = {
@@ -412,9 +400,7 @@ describe('AuthApiHelper', function() {
         });
     });
 
-    it('should call sign-in with email and password unsuccessfully', function(
-      done
-    ) {
+    it('should call sign-in with email and password unsuccessfully', function(done) {
       const auth = WeDeploy.auth('http://localhost');
       RequestMock.intercept().reply(400);
       auth
@@ -422,9 +408,7 @@ describe('AuthApiHelper', function() {
         .catch(() => done());
     });
 
-    it('should call sign-in with email and password unsuccessfully with error response as reason', function(
-      done
-    ) {
+    it('should call sign-in with email and password unsuccessfully with error response as reason', function(done) {
       const auth = WeDeploy.auth('http://localhost');
       const responseErrorObject = {
         error: true,
@@ -464,9 +448,7 @@ describe('AuthApiHelper', function() {
       auth.signOut().catch(() => done());
     });
 
-    it('should call sign-out unsuccessfully with error response as reason', function(
-      done
-    ) {
+    it('should call sign-out unsuccessfully with error response as reason', function(done) {
       const auth = WeDeploy.auth('http://localhost');
       auth.currentUser = {token: 'testtoken'};
       const responseErrorObject = {
@@ -528,9 +510,7 @@ describe('AuthApiHelper', function() {
       auth.getUser('userId').catch(() => done());
     });
 
-    it('should call getUser unsuccessfully with error response as reason', function(
-      done
-    ) {
+    it('should call getUser unsuccessfully with error response as reason', function(done) {
       const auth = WeDeploy.auth('http://localhost');
       auth.currentUser = {token: 'token'};
       const responseErrorObject = {
@@ -647,9 +627,7 @@ describe('AuthApiHelper', function() {
       auth.updateUser('id', {}).catch(() => done());
     });
 
-    it('should call updateUser unsuccessfully with error response as reason', function(
-      done
-    ) {
+    it('should call updateUser unsuccessfully with error response as reason', function(done) {
       const auth = WeDeploy.auth('http://localhost');
       auth.currentUser = {token: 'token'};
       const responseErrorObject = {
@@ -693,9 +671,7 @@ describe('AuthApiHelper', function() {
       auth.deleteUser('id').catch(() => done());
     });
 
-    it('should call deleteUser unsuccessfully with error response as reason', function(
-      done
-    ) {
+    it('should call deleteUser unsuccessfully with error response as reason', function(done) {
       const auth = WeDeploy.auth('http://localhost');
       auth.currentUser = {token: 'token'};
       const responseErrorObject = {
@@ -871,9 +847,7 @@ describe('AuthApiHelper', function() {
       auth.onSignIn(() => assert.fail());
     });
 
-    it('should invoke callback when calling onSignIn after a signInWithEmailAndPassword', function(
-      done
-    ) {
+    it('should invoke callback when calling onSignIn after a signInWithEmailAndPassword', function(done) {
       const auth = WeDeploy.auth('http://localhost');
       auth.loadCurrentUser = token => Auth.create(token);
       const callback = sinon.stub();
@@ -894,9 +868,7 @@ describe('AuthApiHelper', function() {
         });
     });
 
-    it('should invoke callback when calling onSignOut after a signOut', function(
-      done
-    ) {
+    it('should invoke callback when calling onSignOut after a signOut', function(done) {
       const auth = WeDeploy.auth('http://localhost');
       auth.currentUser = {token: 'testtoken'};
       const callback = sinon.stub();
@@ -964,9 +936,7 @@ describe('AuthApiHelper', function() {
       RequestMock.setup('GET', 'http://auth/user');
     });
 
-    it('should verify user by credentials and respond with email and password passed as parameters', function(
-      done
-    ) {
+    it('should verify user by credentials and respond with email and password passed as parameters', function(done) {
       const auth = WeDeploy.auth('http://auth');
       const data = {
         token: 'token',

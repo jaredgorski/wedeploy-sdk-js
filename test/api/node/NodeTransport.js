@@ -1,32 +1,32 @@
 /**
-* Copyright (c) 2000-present Liferay, Inc. All rights reserved.
-*
-* Redistribution and use in source and binary forms, with or without
-* modification, are permitted provided that the following conditions are met:
-*
-* 1. Redistributions of source code must retain the above copyright notice,
-* this list of conditions and the following disclaimer.
-*
-* 2. Redistributions in binary form must reproduce the above copyright notice,
-* this list of conditions and the following disclaimer in the documentation
-* and/or other materials provided with the distribution.
-*
-* 3. Neither the name of Liferay, Inc. nor the names of its contributors may
-* be used to endorse or promote products derived from this software without
-* specific prior written permission.
-*
-* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-* AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-* ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
-* LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-* CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-* SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-* INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-* CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-* ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-* POSSIBILITY OF SUCH DAMAGE.
-*/
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ * this list of conditions and the following disclaimer in the documentation
+ * and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of Liferay, Inc. nor the names of its contributors may
+ * be used to endorse or promote products derived from this software without
+ * specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
 
 'use strict';
 
@@ -88,9 +88,7 @@ describe('NodeTransport', function() {
     });
   });
 
-  it('should send request with multiple headers with same name', function(
-    done
-  ) {
+  it('should send request with multiple headers with same name', function(done) {
     RequestMock.intercept().reply(200, undefined, {
       'content-type': 'application/json',
     });
@@ -123,9 +121,7 @@ describe('NodeTransport', function() {
     });
   });
 
-  it('should change the protocol to https in client uri when protocol was not set explicitly', function(
-    done
-  ) {
+  it('should change the protocol to https in client uri when protocol was not set explicitly', function(done) {
     RequestMock.intercept('GET', 'https://localhost/url').reply(200);
     const transport = new NodeTransport();
     const clientRequest = new ClientRequest();
@@ -214,9 +210,7 @@ describe('NodeTransport', function() {
       });
   });
 
-  it('it should return redirect url but not follow redirect if followRedirect is false', function(
-    done
-  ) {
+  it('it should return redirect url but not follow redirect if followRedirect is false', function(done) {
     RequestMock.intercept('GET', 'http://localhost/redirected')
       .reply(302, undefined, {
         Location: 'http://localhost/final',
@@ -266,9 +260,7 @@ describe('NodeTransport', function() {
       });
   });
 
-  it('should change the protocol to https in client uri when protocol was not set explicitly', function(
-    done
-  ) {
+  it('should change the protocol to https in client uri when protocol was not set explicitly', function(done) {
     RequestMock.intercept('GET', 'https://localhost/url?foo=1').reply(200);
     const transport = new NodeTransport();
     const clientRequest = new ClientRequest();

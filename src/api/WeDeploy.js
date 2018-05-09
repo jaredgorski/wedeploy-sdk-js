@@ -1,32 +1,32 @@
 /**
-* Copyright (c) 2000-present Liferay, Inc. All rights reserved.
-*
-* Redistribution and use in source and binary forms, with or without
-* modification, are permitted provided that the following conditions are met:
-*
-* 1. Redistributions of source code must retain the above copyright notice,
-* this list of conditions and the following disclaimer.
-*
-* 2. Redistributions in binary form must reproduce the above copyright notice,
-* this list of conditions and the following disclaimer in the documentation
-* and/or other materials provided with the distribution.
-*
-* 3. Neither the name of Liferay, Inc. nor the names of its contributors may
-* be used to endorse or promote products derived from this software without
-* specific prior written permission.
-*
-* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-* AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-* ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
-* LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-* CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-* SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-* INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-* CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-* ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-* POSSIBILITY OF SUCH DAMAGE.
-*/
+ * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ * this list of conditions and the following disclaimer in the documentation
+ * and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of Liferay, Inc. nor the names of its contributors may
+ * be used to endorse or promote products derived from this software without
+ * specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
 
 'use strict';
 
@@ -497,7 +497,7 @@ class WeDeploy {
 	 */
   sendAsync(method, body) {
     const transport =
-      this.customTransport_ || TransportFactory.instance().getDefault();
+			this.customTransport_ || TransportFactory.instance().getDefault();
 
     const clientRequest = this.createClientRequest_(method, body);
 
@@ -540,11 +540,11 @@ class WeDeploy {
   }
 
   /**
-   * Indicate whether or not to follow redirects.
-   * @param {!boolean} followRedirect
-   * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
+	 * Indicate whether or not to follow redirects.
+	 * @param {!boolean} followRedirect
+	 * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
 	 *   be chained.
-   */
+	 */
   followRedirect(followRedirect) {
     this.followRedirect_ = followRedirect;
     return this;
@@ -586,14 +586,14 @@ class WeDeploy {
     uri.addParametersFromMultiMap(clientRequest.params());
 
     const jsonp =
-      typeof navigator === 'undefined' || navigator.product !== 'ReactNative';
+			typeof navigator === 'undefined' || navigator.product !== 'ReactNative';
 
     opt_options = opt_options || {
       forceNew: true,
       jsonp: jsonp,
     };
     opt_options.query =
-      'url=' + encodeURIComponent(uri.getPathname() + uri.getSearch());
+			'url=' + encodeURIComponent(uri.getPathname() + uri.getSearch());
     opt_options.path = opt_options.path || uri.getPathname();
     opt_options = this.resolveTransportOptions_(opt_options);
 
@@ -605,11 +605,11 @@ class WeDeploy {
   }
 
   /**
-   * Resolves the polling options object by adding Authorization header if the
-   *   current auth object has token, or it has both email and password.
-   * @param {!Object} options The object where transport options should be added
-   * @return {Object} Returns the modified options object
-   */
+	 * Resolves the polling options object by adding Authorization header if the
+	 *   current auth object has token, or it has both email and password.
+	 * @param {!Object} options The object where transport options should be added
+	 * @return {Object} Returns the modified options object
+	 */
   resolveTransportOptions_(options) {
     if (!this.auth_) {
       return options;
@@ -625,7 +625,7 @@ class WeDeploy {
       };
     } else if (this.auth_.hasEmail() && this.auth_.hasPassword()) {
       const credentials =
-        this.auth_.getEmail() + ':' + this.auth_.getPassword();
+				this.auth_.getEmail() + ':' + this.auth_.getPassword();
       options.transportOptions = {
         polling: {
           extraHeaders: {
