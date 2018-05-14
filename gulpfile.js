@@ -39,6 +39,7 @@ const isparta = require('isparta');
 const mocha = require('gulp-mocha');
 const nodeExternals = require('webpack-node-externals');
 const replace = require('gulp-replace');
+const request = require('request-promise-native');
 const runSequence = require('run-sequence');
 const Server = require('karma').Server;
 const webpack = require('webpack');
@@ -92,7 +93,7 @@ const sauceLabsBrowsers = {
 		base: 'SauceLabs',
 		browserName: 'iphone',
 		platform: 'OS X 10.10',
-		version: '9.2',
+		version: '9.3',
 	},
 	sl_android_4: {
 		base: 'SauceLabs',
@@ -288,12 +289,7 @@ gulp.task('build', function(done) {
 
 /* eslint-disable no-console,require-jsdoc */
 gulp.task('ci', function(done) {
-	if (process.env.SAUCE_USERNAME) {
-		return runSequence('lint', 'test:saucelabs', 'test:node', done);
-	}
-	console.warn('Not running tests (most likely due to security restrictions)');
-	console.warn('See https://docs.travis-ci.com/user/sauce-connect/ for help');
-	done();
+	return runSequence('lint', 'test:saucelabs', 'test:node', done);
 });
 
 gulp.task('build:watch', ['build'], function() {
@@ -367,26 +363,35 @@ gulp.task('test:node:watch', ['test:node'], function() {
 });
 
 gulp.task('test:saucelabs', function(done) {
-	const config = Object.assign({}, babelConfigKarma, {
-		browsers: Object.keys(sauceLabsBrowsers),
+	let url = 'https://app-jwttoken.wedeploy.io';
 
-		browserDisconnectTimeout: 10000,
-		browserDisconnectTolerance: 2,
-		browserNoActivityTimeout: 240000,
+	if (process.env.TRAVIS_PULL_REQUEST) {
+		url += '?pull_request=' + process.env.TRAVIS_PULL_REQUEST;
+	}
 
-		captureTimeout: 240000,
-		customLaunchers: sauceLabsBrowsers,
+	request(url).then(token => {
+		const config = Object.assign({}, babelConfigKarma, {
+			browsers: Object.keys(sauceLabsBrowsers),
 
-		reporters: ['dots', 'saucelabs'],
+			browserDisconnectTimeout: 10000,
+			browserDisconnectTolerance: 2,
+			browserNoActivityTimeout: 240000,
 
-		sauceLabs: {
-			recordScreenshots: false,
-			startConnect: false,
-			tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
-		},
+			captureTimeout: 240000,
+			customLaunchers: sauceLabsBrowsers,
 
-		singleRun: true,
+			reporters: ['dots', 'saucelabs'],
+
+			sauceLabs: {
+				accessKey: token,
+				startConnect: true,
+				tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
+				username: 'wedeploy-sdk-js',
+			},
+
+			singleRun: true,
+		});
+
+		new Server(config, done).start();
 	});
-
-	new Server(config, done).start();
 });
