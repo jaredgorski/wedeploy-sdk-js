@@ -363,7 +363,7 @@ gulp.task('test:node:watch', ['test:node'], function() {
 });
 
 gulp.task('test:saucelabs', function(done) {
-	let url = 'https://app-jwttoken.wedeploy.io';
+	let url = 'https://app-wedeploysdkjsjwt.wedeploy.io';
 
 	if (process.env.TRAVIS_PULL_REQUEST) {
 		url += '?pull_request=' + process.env.TRAVIS_PULL_REQUEST;
