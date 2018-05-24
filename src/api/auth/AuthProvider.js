@@ -38,9 +38,9 @@ import {core} from 'metal';
  */
 class AuthProvider {
   /**
-	 * Constructs an {@link AuthProvider} instance.
-	 * @constructor
-	 */
+   * Constructs an {@link AuthProvider} instance.
+   * @constructor
+   */
   constructor() {
     this.provider = null;
     this.providerScope = null;
@@ -49,42 +49,42 @@ class AuthProvider {
   }
 
   /**
-	 * Checks if provider is defined and not null.
-	 * @return {boolean}
-	 */
+   * Checks if provider is defined and not null.
+   * @return {boolean}
+   */
   hasProvider() {
     return core.isDefAndNotNull(this.provider);
   }
 
   /**
-	 * Checks if scope is defined and not null.
-	 * @return {boolean}
-	 */
+   * Checks if scope is defined and not null.
+   * @return {boolean}
+   */
   hasProviderScope() {
     return core.isDefAndNotNull(this.providerScope);
   }
 
   /**
-	 * Checks if redirect uri is defined and not null.
-	 * @return {boolean}
-	 */
+   * Checks if redirect uri is defined and not null.
+   * @return {boolean}
+   */
   hasRedirectUri() {
     return core.isDefAndNotNull(this.redirectUri);
   }
 
   /**
-	 * Checks if scope is defined and not null.
-	 * @return {boolean}
-	 */
+   * Checks if scope is defined and not null.
+   * @return {boolean}
+   */
   hasScope() {
     return core.isDefAndNotNull(this.scope);
   }
 
   /**
-	 * Makes authorization url. An optional authorization URL might be provided.
-	 * @param {string} opt_authUrl Optional authorization URL.
-	 * @return {string} Normalized authorization URL.
-	 */
+   * Makes authorization url. An optional authorization URL might be provided.
+   * @param {string} opt_authUrl Optional authorization URL.
+   * @return {string} Normalized authorization URL.
+   */
   makeAuthorizationUrl(opt_authUrl) {
     let uri = new Uri(opt_authUrl);
 
@@ -111,42 +111,42 @@ class AuthProvider {
   }
 
   /**
-	 * Gets provider name.
-	 * @return {string} Provider name.
-	 */
+   * Gets provider name.
+   * @return {string} Provider name.
+   */
   getProvider() {
     return this.provider;
   }
 
   /**
-	 * Gets provider scope.
-	 * @return {string} String with scopes.
-	 */
+   * Gets provider scope.
+   * @return {string} String with scopes.
+   */
   getProviderScope() {
     return this.providerScope;
   }
 
   /**
-	 * Gets redirect uri.
-	 * @return {string}.
-	 */
+   * Gets redirect uri.
+   * @return {string}.
+   */
   getRedirectUri() {
     return this.redirectUri;
   }
 
   /**
-	 * Gets scope.
-	 * @return {string} String with scopes.
-	 */
+   * Gets scope.
+   * @return {string} String with scopes.
+   */
   getScope() {
     return this.scope;
   }
 
   /**
-	 * Sets provider scope.
-	 * @param {string=} providerScope Scope string. Separate by space for multiple
-	 *   scopes, e.g. "scope1 scope2".
-	 */
+   * Sets provider scope.
+   * @param {string=} providerScope Scope string. Separate by space for multiple
+   *   scopes, e.g. "scope1 scope2".
+   */
   setProviderScope(providerScope) {
     assertStringIfDefAndNotNull(
       providerScope,
@@ -156,20 +156,20 @@ class AuthProvider {
   }
 
   /**
-	 * Sets redirect uri.
-	 * @param {string} redirectUri The redirect URI to be set to the current
-	 *   instance.
-	 */
+   * Sets redirect uri.
+   * @param {string} redirectUri The redirect URI to be set to the current
+   *   instance.
+   */
   setRedirectUri(redirectUri) {
     assertStringIfDefAndNotNull(redirectUri, 'Redirect uri must be a string');
     this.redirectUri = redirectUri;
   }
 
   /**
-	 * Sets scope.
-	 * @param {string=} scope Scope string. Separate by space for multiple
-	 *   scopes, e.g. "scope1 scope2".
-	 */
+   * Sets scope.
+   * @param {string=} scope Scope string. Separate by space for multiple
+   *   scopes, e.g. "scope1 scope2".
+   */
   setScope(scope) {
     assertStringIfDefAndNotNull(scope, 'Scope must be a string');
     this.scope = scope;

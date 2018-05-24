@@ -53,11 +53,11 @@ import {
  */
 class AuthApiHelper extends ApiHelper {
   /**
-	 * Constructs an {@link AuthApiHelper} instance.
-	 * @param {!WeDeploy} wedeployClient
-	 * @param {!string} authUrl
-	 * @constructor
-	 */
+   * Constructs an {@link AuthApiHelper} instance.
+   * @param {!WeDeploy} wedeployClient
+   * @param {!string} authUrl
+   * @constructor
+   */
   constructor(wedeployClient, authUrl) {
     super(wedeployClient);
     this.currentUser = null;
@@ -79,24 +79,24 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Creates access token cookie.
-	 * @param {string} accessToken
-	 */
+   * Creates access token cookie.
+   * @param {string} accessToken
+   */
   createAccessTokenCookie(accessToken) {
     if (globals.document && globals.window) {
       globals.document.cookie =
-				'access_token=' +
-				accessToken +
-				'; Domain=' +
-				globals.window.location.hostname +
-				';';
+        'access_token=' +
+        accessToken +
+        '; Domain=' +
+        globals.window.location.hostname +
+        ';';
     }
   }
 
   /**
-	 * @param {Object} data
-	 * @return {Auth}
-	 */
+   * @param {Object} data
+   * @return {Auth}
+   */
   createAuthFromData(data) {
     const auth = Auth.createFromData(data, this.authUrl);
     auth.setWedeployClient(this.wedeployClient, this.authUrl);
@@ -104,10 +104,10 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Creates user.
-	 * @param {!Object} data The data to be used to create the user.
-	 * @return {CancellablePromise}
-	 */
+   * Creates user.
+   * @param {!Object} data The data to be used to create the user.
+   * @return {CancellablePromise}
+   */
   createUser(data) {
     assertObject(data, 'User data must be specified as object');
 
@@ -125,22 +125,22 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Deletes access token cookie.
-	 */
+   * Deletes access token cookie.
+   */
   deleteAccessTokenCookie() {
     if (globals.document && globals.window) {
       globals.document.cookie =
-				'access_token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;Domain=' +
-				globals.window.location.hostname +
-				';';
+        'access_token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;Domain=' +
+        globals.window.location.hostname +
+        ';';
     }
   }
 
   /**
-	 * Deletes user by id.
-	 * @param {!string} userId
-	 * @return {CancellablePromise}
-	 */
+   * Deletes user by id.
+   * @param {!string} userId
+   * @return {CancellablePromise}
+   */
   deleteUser(userId) {
     assertDefAndNotNull(userId, 'Cannot delete user without id');
     assertAuthScope(this);
@@ -152,11 +152,11 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Updates user by id.
-	 * @param {!string} userId
-	 * @param {!Object} data
-	 * @return {CancellablePromise}
-	 */
+   * Updates user by id.
+   * @param {!string} userId
+   * @param {!Object} data
+   * @return {CancellablePromise}
+   */
   updateUser(userId, data) {
     assertDefAndNotNull(userId, 'Cannot update user without id');
     assertObject(data, 'User data must be specified as object');
@@ -169,10 +169,10 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Gets all auth users
-	 * @param {!string} userId
-	 * @return {CancellablePromise}
-	 */
+   * Gets all auth users
+   * @param {!string} userId
+   * @return {CancellablePromise}
+   */
   getAllUsers() {
     assertAuthScope(this);
     return this.buildUrl_()
@@ -184,26 +184,26 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Gets the current browser url without the fragment part.
-	 * @return {!string}
-	 * @protected
-	 */
+   * Gets the current browser url without the fragment part.
+   * @return {!string}
+   * @protected
+   */
   getHrefWithoutFragment_() {
     let location = globals.window.location;
     return (
       location.protocol +
-			'//' +
-			location.host +
-			location.pathname +
-			(location.search ? location.search : '')
+      '//' +
+      location.host +
+      location.pathname +
+      (location.search ? location.search : '')
     );
   }
 
   /**
-	 * Gets the access token from the url fragment and removes it.
-	 * @return {?string}
-	 * @protected
-	 */
+   * Gets the access token from the url fragment and removes it.
+   * @return {?string}
+   * @protected
+   */
   getRedirectAccessToken_() {
     if (globals.window && globals.window.location) {
       let fragment = globals.window.location.hash;
@@ -215,10 +215,10 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Gets user by id.
-	 * @param {!string} userId
-	 * @return {CancellablePromise}
-	 */
+   * Gets user by id.
+   * @param {!string} userId
+   * @return {CancellablePromise}
+   */
   getUser(userId) {
     assertDefAndNotNull(userId, 'User userId must be specified');
     assertAuthScope(this);
@@ -231,10 +231,10 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Loads current user. Requires a user token as argument.
-	 * @param {!string} token
-	 * @return {CancellablePromise}
-	 */
+   * Loads current user. Requires a user token as argument.
+   * @param {!string} token
+   * @return {CancellablePromise}
+   */
   loadCurrentUser(token) {
     return this.verifyUser(token).then(currentUser => {
       this.currentUser = currentUser;
@@ -249,9 +249,9 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Calls the on sign in callback if set.
-	 * @protected
-	 */
+   * Calls the on sign in callback if set.
+   * @protected
+   */
   maybeCallOnSignInCallback_() {
     if (this.onSignInCallback) {
       this.onSignInCallback.call(this, this.currentUser);
@@ -259,9 +259,9 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Calls the on sign out callback if set.
-	 * @protected
-	 */
+   * Calls the on sign out callback if set.
+   * @protected
+   */
   maybeCallOnSignOutCallback_() {
     if (this.onSignOutCallback) {
       this.onSignOutCallback.call(this, this.currentUser);
@@ -269,30 +269,30 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Fires passed callback when a user sign-in. Note that it keeps only the
-	 * last callback passed.
-	 * @param {!Function} callback
-	 */
+   * Fires passed callback when a user sign-in. Note that it keeps only the
+   * last callback passed.
+   * @param {!Function} callback
+   */
   onSignIn(callback) {
     assertFunction(callback, 'Sign-in callback must be a function');
     this.onSignInCallback = callback;
   }
 
   /**
-	 * Fires passed callback when a user sign-out. Note that it keeps only the
-	 * last callback passed.
-	 * @param {!Function} callback
-	 */
+   * Fires passed callback when a user sign-out. Note that it keeps only the
+   * last callback passed.
+   * @param {!Function} callback
+   */
   onSignOut(callback) {
     assertFunction(callback, 'Sign-out callback must be a function');
     this.onSignOutCallback = callback;
   }
 
   /**
-	 * Processes sign-in by detecting a presence of a fragment
-	 * <code>#access_token=</code> in the url or, alternatively, by local
-	 * storage current user.
-	 */
+   * Processes sign-in by detecting a presence of a fragment
+   * <code>#access_token=</code> in the url or, alternatively, by local
+   * storage current user.
+   */
   processSignIn_() {
     let redirectAccessToken = this.getRedirectAccessToken_();
     if (redirectAccessToken) {
@@ -309,9 +309,9 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Removes fragment from url by performing a push state to the current path.
-	 * @protected
-	 */
+   * Removes fragment from url by performing a push state to the current path.
+   * @protected
+   */
   removeUrlFragmentCompletely_() {
     globals.window.history.pushState(
       {},
@@ -321,9 +321,9 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Resolves auth scope from last login or api helper.
-	 * @return {Auth}
-	 */
+   * Resolves auth scope from last login or api helper.
+   * @return {Auth}
+   */
   resolveAuthScope() {
     if (this.helperAuthScope) {
       return this.helperAuthScope;
@@ -332,11 +332,11 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Sends password reset email to the specified email if found in database.
-	 * For security reasons call do not fail if email not found.
-	 * @param {!string} email
-	 * @return {CancellablePromise}
-	 */
+   * Sends password reset email to the specified email if found in database.
+   * For security reasons call do not fail if email not found.
+   * @param {!string} email
+   * @return {CancellablePromise}
+   */
   sendPasswordResetEmail(email) {
     assertDefAndNotNull(email, 'Send password reset email must be specified');
     return this.buildUrl_()
@@ -347,11 +347,11 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Signs in using email and password.
-	 * @param {!string} email
-	 * @param {!string} password
-	 * @return {CancellablePromise}
-	 */
+   * Signs in using email and password.
+   * @param {!string} email
+   * @param {!string} password
+   * @return {CancellablePromise}
+   */
   signInWithEmailAndPassword(email, password) {
     assertDefAndNotNull(email, 'Sign-in email must be specified');
     assertDefAndNotNull(password, 'Sign-in password must be specified');
@@ -371,10 +371,10 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Signs in with redirect. Some providers and environment may not support
-	 * this flow.
-	 * @param {AuthProvider} provider
-	 */
+   * Signs in with redirect. Some providers and environment may not support
+   * this flow.
+   * @param {AuthProvider} provider
+   */
   signInWithRedirect(provider) {
     assertBrowserEnvironment();
     assertDefAndNotNull(provider, 'Sign-in provider must be defined');
@@ -387,10 +387,10 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Signs out <code>currentUser</code> and removes from
-	 *   <code>localStorage</code>.
-	 * @return {CancellablePromise}
-	 */
+   * Signs out <code>currentUser</code> and removes from
+   *   <code>localStorage</code>.
+   * @return {CancellablePromise}
+   */
   signOut() {
     assertUserSignedIn(this.currentUser);
     return this.buildUrl_()
@@ -406,11 +406,11 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Builds URL by joining headers and withCredentials.
-	 * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
-	 *   be chained.
-	 * @chainable
-	 */
+   * Builds URL by joining headers and withCredentials.
+   * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
+   *   be chained.
+   * @chainable
+   */
   buildUrl_() {
     return this.wedeployClient
       .url(this.authUrl)
@@ -419,9 +419,9 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Unloads all information for <code>currentUser</code> and removes from
-	 * <code>localStorage</code> if present.
-	 */
+   * Unloads all information for <code>currentUser</code> and removes from
+   * <code>localStorage</code> if present.
+   */
   unloadCurrentUser_() {
     this.currentUser = null;
     if (this.storage) {
@@ -431,12 +431,12 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Method for verifying tokens. If the provided token has the correct
-	 * format, is not expired, and is properly signed, the method returns the
-	 * decoded token.
-	 * @param {!string} token
-	 * @return {CancellablePromise}
-	 */
+   * Method for verifying tokens. If the provided token has the correct
+   * format, is not expired, and is properly signed, the method returns the
+   * decoded token.
+   * @param {!string} token
+   * @return {CancellablePromise}
+   */
   verifyToken(token) {
     assertDefAndNotNull(token, 'Token must be specified');
     return this.buildUrl_()
@@ -448,15 +448,15 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-	 * Method for verifying user by token. If the provided token has the correct
-	 * format, is not expired, and is properly signed, the method returns the
-	 * user payload.
-	 * @param {!string} tokenOrEmail Either an authorization token,
-	 * or the email.
-	 * @param {string=} opt_password If a email is given as the first param,
-	 * this should be the password.
-	 * @return {CancellablePromise}
-	 */
+   * Method for verifying user by token. If the provided token has the correct
+   * format, is not expired, and is properly signed, the method returns the
+   * user payload.
+   * @param {!string} tokenOrEmail Either an authorization token,
+   * or the email.
+   * @param {string=} opt_password If a email is given as the first param,
+   * this should be the password.
+   * @return {CancellablePromise}
+   */
   verifyUser(tokenOrEmail, opt_password) {
     assertDefAndNotNull(tokenOrEmail, 'Token or email must be specified');
     return this.buildUrl_()

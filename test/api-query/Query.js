@@ -104,9 +104,9 @@ describe('Query', function() {
         .filter('name', 'Foo');
 
       const bodyStr =
-				'{"filter":[{"age":{"operator":">","value":12}},' +
-				'{"age":{"operator":"<","value":15}},' +
-				'{"name":{"operator":"=","value":"Foo"}}]}';
+        '{"filter":[{"age":{"operator":">","value":12}},' +
+        '{"age":{"operator":"<","value":15}},' +
+        '{"name":{"operator":"=","value":"Foo"}}]}';
       assert.strictEqual(bodyStr, query.toString());
     });
   });
@@ -133,7 +133,7 @@ describe('Query', function() {
       assert.deepEqual(body, query.body());
 
       const bodyStr =
-				'{"type":"search","filter":[{"*":{"operator":"match","value":"foo"}}]}';
+        '{"type":"search","filter":[{"*":{"operator":"match","value":"foo"}}]}';
       assert.strictEqual(bodyStr, query.toString());
     });
 
@@ -153,7 +153,7 @@ describe('Query', function() {
       assert.deepEqual(body, query.body());
 
       const bodyStr =
-				'{"type":"search","filter":[{"name":{"operator":"match","value":"foo"}}]}';
+        '{"type":"search","filter":[{"name":{"operator":"match","value":"foo"}}]}';
       assert.strictEqual(bodyStr, query.toString());
     });
 
@@ -173,7 +173,7 @@ describe('Query', function() {
       assert.deepEqual(body, query.body());
 
       const bodyStr =
-				'{"type":"search","filter":[{"age":{"operator":"<","value":12}}]}';
+        '{"type":"search","filter":[{"age":{"operator":"<","value":12}}]}';
       assert.strictEqual(bodyStr, query.toString());
     });
 
@@ -185,28 +185,28 @@ describe('Query', function() {
     it('should add an existing filter', function() {
       const query = Query.search(Filter.gt('age', 12));
       const bodyStr =
-				'{"type":"search","filter":[{"age":{"operator":">","value":12}}]}';
+        '{"type":"search","filter":[{"age":{"operator":">","value":12}}]}';
       assert.strictEqual(bodyStr, query.toString());
     });
 
     it('should add filter from text', function() {
       const query = Query.search('foo');
       const bodyStr =
-				'{"type":"search","filter":[{"*":{"operator":"match","value":"foo"}}]}';
+        '{"type":"search","filter":[{"*":{"operator":"match","value":"foo"}}]}';
       assert.strictEqual(bodyStr, query.toString());
     });
 
     it('should add filter from field and text', function() {
       const query = Query.search('name', 'foo');
       const bodyStr =
-				'{"type":"search","filter":[{"name":{"operator":"match","value":"foo"}}]}';
+        '{"type":"search","filter":[{"name":{"operator":"match","value":"foo"}}]}';
       assert.strictEqual(bodyStr, query.toString());
     });
 
     it('should add filter from field, operator and text', function() {
       const query = Query.search('age', '<', 12);
       const bodyStr =
-				'{"type":"search","filter":[{"age":{"operator":"<","value":12}}]}';
+        '{"type":"search","filter":[{"age":{"operator":"<","value":12}}]}';
       assert.strictEqual(bodyStr, query.toString());
     });
 
@@ -217,12 +217,12 @@ describe('Query', function() {
         .search('age', '<', 12);
 
       const bodyStr =
-				'{"type":"search","filter":[' +
-				'{"age":{"operator":">","value":12}},' +
-				'{"*":{"operator":"match","value":"foo"}},' +
-				'{"name":{"operator":"match","value":"foo"}},' +
-				'{"age":{"operator":"<","value":12}}' +
-				']}';
+        '{"type":"search","filter":[' +
+        '{"age":{"operator":">","value":12}},' +
+        '{"*":{"operator":"match","value":"foo"}},' +
+        '{"name":{"operator":"match","value":"foo"}},' +
+        '{"age":{"operator":"<","value":12}}' +
+        ']}';
       assert.strictEqual(bodyStr, query.toString());
     });
   });
@@ -352,13 +352,13 @@ describe('Query', function() {
         .limit(10)
         .fetch();
       const bodyStr =
-				'{' +
-				'"filter":[{"age":{"operator":">","value":12}}],' +
-				'"sort":[{"age":"desc"},{"name":"asc"}],' +
-				'"offset":5,' +
-				'"limit":10,' +
-				'"type":"fetch"' +
-				'}';
+        '{' +
+        '"filter":[{"age":{"operator":">","value":12}}],' +
+        '"sort":[{"age":"desc"},{"name":"asc"}],' +
+        '"offset":5,' +
+        '"limit":10,' +
+        '"type":"fetch"' +
+        '}';
       assert.strictEqual(bodyStr, query.toString());
     });
   });
@@ -372,14 +372,14 @@ describe('Query', function() {
     it('should add an existing aggregation', function() {
       const query = Query.aggregate('aggr', Aggregation.histogram('age', 100));
       const bodyStr =
-				'{"aggregation":[{"age":{"name":"aggr","operator":"histogram","value":100}}]}';
+        '{"aggregation":[{"age":{"name":"aggr","operator":"histogram","value":100}}]}';
       assert.strictEqual(bodyStr, query.toString());
     });
 
     it('should add an aggregation from the given field and operator', function() {
       const query = Query.aggregate('aggr', 'foo', 'count');
       const bodyStr =
-				'{"aggregation":[{"foo":{"name":"aggr","operator":"count"}}]}';
+        '{"aggregation":[{"foo":{"name":"aggr","operator":"count"}}]}';
       assert.strictEqual(bodyStr, query.toString());
     });
 
@@ -389,10 +389,10 @@ describe('Query', function() {
         Aggregation.histogram('age', 100)
       ).aggregate('aggr', 'foo', 'count');
       const bodyStr =
-				'{"aggregation":[' +
-				'{"age":{"name":"aggr","operator":"histogram","value":100}},' +
-				'{"foo":{"name":"aggr","operator":"count"}}' +
-				']}';
+        '{"aggregation":[' +
+        '{"age":{"name":"aggr","operator":"histogram","value":100}},' +
+        '{"foo":{"name":"aggr","operator":"count"}}' +
+        ']}';
       assert.strictEqual(bodyStr, query.toString());
     });
   });
@@ -413,6 +413,24 @@ describe('Query', function() {
         .highlight('name', 10)
         .highlight('lastName', 10, 5);
       const bodyStr = '{"highlight":["address","name","lastName"]}';
+      assert.strictEqual(bodyStr, query.toString());
+    });
+  });
+
+  describe('Query.fields', function() {
+    it('should be chainnable', function() {
+      const query = Query.fields();
+      assert.strictEqual(query, query.fields('name'));
+    });
+
+    it('should add a fields entry for a field', function() {
+      const query = Query.fields('name');
+      assert.strictEqual('{"fields":["name"]}', query.toString());
+    });
+
+    it('should add multiple fields', function() {
+      const query = Query.fields(['address', 'name', 'lastName']);
+      const bodyStr = '{"fields":["address","name","lastName"]}';
       assert.strictEqual(bodyStr, query.toString());
     });
   });

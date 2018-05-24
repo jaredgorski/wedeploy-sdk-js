@@ -37,9 +37,9 @@ import AuthProvider from './AuthProvider';
  */
 class FacebookAuthProvider extends AuthProvider {
   /**
-	 * Constructs an {@link FacebookAuthProvider} instance.
-	 * @constructor
-	 */
+   * Constructs an {@link FacebookAuthProvider} instance.
+   * @constructor
+   */
   constructor() {
     super();
     this.provider = FacebookAuthProvider.PROVIDER;

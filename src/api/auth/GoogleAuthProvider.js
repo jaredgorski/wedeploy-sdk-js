@@ -37,9 +37,9 @@ import AuthProvider from './AuthProvider';
  */
 class GoogleAuthProvider extends AuthProvider {
   /**
-	 * Constructs an {@link GoogleAuthProvider} instance.
-	 * @constructor
-	 */
+   * Constructs an {@link GoogleAuthProvider} instance.
+   * @constructor
+   */
   constructor() {
     super();
     this.provider = GoogleAuthProvider.PROVIDER;

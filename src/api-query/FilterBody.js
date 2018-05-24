@@ -39,14 +39,14 @@ import Embodied from './Embodied';
  */
 class FilterBody {
   /**
-	 * Constructs a {@link FilterBody} instance.
-	 * @param {string} field The name of the field to filter by.
-	 * @param {*} operatorOrValue If a third param is given, this should
-	 *   be the filter's operator (like ">="). Otherwise, this will be
-	 *   used as the filter's value, and the filter's operator will be "=".
-	 * @param {*=} opt_value The filter's value.
-	 * @constructor
-	 */
+   * Constructs a {@link FilterBody} instance.
+   * @param {string} field The name of the field to filter by.
+   * @param {*} operatorOrValue If a third param is given, this should
+   *   be the filter's operator (like ">="). Otherwise, this will be
+   *   used as the filter's value, and the filter's operator will be "=".
+   * @param {*=} opt_value The filter's value.
+   * @constructor
+   */
   constructor(field, operatorOrValue, opt_value) {
     let obj = {
       operator: core.isDef(opt_value) ? operatorOrValue : '=',
@@ -69,11 +69,11 @@ class FilterBody {
   }
 
   /**
-	 * Composes the current filter with the given operator.
-	 * @param {string} operator
-	 * @param {Filter=} opt_filter Another filter to compose this filter with,
-	 *   if the operator is not unary.
-	 */
+   * Composes the current filter with the given operator.
+   * @param {string} operator
+   * @param {Filter=} opt_filter Another filter to compose this filter with,
+   *   if the operator is not unary.
+   */
   add(operator, opt_filter) {
     if (opt_filter) {
       this.addArrayOperator_(operator, opt_filter);
@@ -83,12 +83,12 @@ class FilterBody {
   }
 
   /**
-	 * Composes the current filter with an operator that stores its values in an
-	 * array.
-	 * @param {string} operator
-	 * @param {!Filter} filter
-	 * @protected
-	 */
+   * Composes the current filter with an operator that stores its values in an
+   * array.
+   * @param {string} operator
+   * @param {!Filter} filter
+   * @protected
+   */
   addArrayOperator_(operator, filter) {
     if (!(this.body_[operator] instanceof Array)) {
       this.createBody_(operator, [this.body_]);
@@ -97,10 +97,10 @@ class FilterBody {
   }
 
   /**
-	 * Adds filters to be composed with this filter body using the given operator.
-	 * @param {string} operator
-	 * @param {...*} filters A variable amount of filters to be composed.
-	 */
+   * Adds filters to be composed with this filter body using the given operator.
+   * @param {string} operator
+   * @param {...*} filters A variable amount of filters to be composed.
+   */
   addMany(operator, ...filters) {
     for (let i = 0; i < filters.length; i++) {
       this.add(operator, filters[i]);
@@ -108,21 +108,21 @@ class FilterBody {
   }
 
   /**
-	 * Creates a new body object, setting the requested key to the given value.
-	 * @param {string} key The key to set in the new body object
-	 * @param {*} value The value the requested key should have in the new body
-	 *   object.
-	 * @protected
-	 */
+   * Creates a new body object, setting the requested key to the given value.
+   * @param {string} key The key to set in the new body object
+   * @param {*} value The value the requested key should have in the new body
+   *   object.
+   * @protected
+   */
   createBody_(key, value) {
     this.body_ = {};
     this.body_[key] = value;
   }
 
   /**
-	 * Gets the json object that represents this filter's body.
-	 * @return {!Object}
-	 */
+   * Gets the json object that represents this filter's body.
+   * @return {!Object}
+   */
   getObject() {
     return this.body_;
   }
