@@ -80,6 +80,15 @@ class Query extends Embodied {
 	 * @return {!Query}
 	 * @static
 	 */
+   * Adds a fields entry to this {@link Query} instance.
+   * @param {string|Array} fields Single field or an array of fields
+   * @return {!Query}
+   * @static
+   */
+  static fields(fields) {
+    return new Query().fields(fields);
+  }
+
   static filter(fieldOrFilter, opt_operatorOrValue, opt_value) {
     return new Query().filter(fieldOrFilter, opt_operatorOrValue, opt_value);
   }
@@ -225,6 +234,26 @@ class Query extends Embodied {
 	 *   chained.
 	 * @chainnable
 	 */
+   * Adds fields entry to this {@link Query} instance.
+   * @param {string|Array} fields Single field name or an array of fields
+   * @return {Query} Returns the {@link Query} object itself, so calls can be
+   *   chained.
+   * @chainnable
+   */
+  fields(fields) {
+    if (!Array.isArray(fields)) {
+      fields = [fields];
+    }
+
+    if (!this.body_.fields) {
+      this.body_.fields = fields;
+    } else {
+      this.body_.fields = this.body_.fields.concat(fields);
+    }
+
+    return this;
+  }
+
   filter(fieldOrFilter, opt_operatorOrValue, opt_value) {
     let filter = Filter.toFilter(fieldOrFilter, opt_operatorOrValue, opt_value);
     if (!this.body_.filter) {

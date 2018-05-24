@@ -281,6 +281,16 @@ class DataApiHelper extends ApiHelper {
 	 *   calls can be chained.
 	 * @chainnable
 	 */
+   * Adds a fields entry to this request's {@link Query} instance.
+   * @param {string|Array} fields Since field name or an array of fields
+   * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
+   *   calls can be chained.
+   * @chainnable
+   */
+  fields(fields) {
+    this.getOrCreateQuery_().fields(fields);
+    return this;
+  }
   range(field, rangeOrMin, opt_max) {
     return this.where(Filter.range(field, rangeOrMin, opt_max));
   }

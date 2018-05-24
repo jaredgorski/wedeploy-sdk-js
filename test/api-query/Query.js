@@ -416,4 +416,22 @@ describe('Query', function() {
       assert.strictEqual(bodyStr, query.toString());
     });
   });
+
+  describe('Query.fields', function() {
+    it('should be chainnable', function() {
+      const query = Query.fields();
+      assert.strictEqual(query, query.fields('name'));
+    });
+
+    it('should add a fields entry for a field', function() {
+      const query = Query.fields('name');
+      assert.strictEqual('{"fields":["name"]}', query.toString());
+    });
+
+    it('should add multiple fields', function() {
+      const query = Query.fields(['address', 'name', 'lastName']);
+      const bodyStr = '{"fields":["address","name","lastName"]}';
+      assert.strictEqual(bodyStr, query.toString());
+    });
+  });
 });

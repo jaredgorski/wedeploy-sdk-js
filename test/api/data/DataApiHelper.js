@@ -558,6 +558,50 @@ describe('DataApiHelper', function() {
     });
   });
 
+  describe('.fields()', function() {
+    it('should send request with query fields in the body', function(done) {
+      RequestMock.intercept(
+        'GET',
+        'http://localhost/food?fields=%5B%22field%22%5D'
+      ).reply(200, '[{"field": 1}, {"field": 1}]');
+
+      WeDeploy.data('http://localhost')
+        .fields('field')
+        .get('food')
+        .then(function(response) {
+          assert.strictEqual('[{"field": 1}, {"field": 1}]', response);
+          done();
+        });
+    });
+
+    it('should send request when fields is set multiple times', function(done) {
+      RequestMock.intercept(
+        'GET',
+        'http://localhost/food?fields=%5B%22field1%22%2C%22field2%22%5D'
+      ).reply(200, '[{"field1": 1}, {"field2": 1}]');
+
+      WeDeploy.data('http://localhost')
+        .fields('field1')
+        .fields('field2')
+        .get('food')
+        .then(function(response) {
+          assert.strictEqual('[{"field1": 1}, {"field2": 1}]', response);
+          done();
+        });
+    });
+
+    it('should build single field into the query body', function() {
+      const data = WeDeploy.data('http://localhost').fields('field');
+
+      assert.deepEqual(data.query_.body().fields, ['field']);
+    });
+
+    it('should build multiple fields into the query body', function() {
+      const data = WeDeploy.data('http://localhost').fields(['one', 'two']);
+      assert.deepEqual(data.query_.body().fields, ['one', 'two']);
+    });
+  });
+
   describe('.offset()', function() {
     it('should send request with query offset in the body', function(done) {
       RequestMock.intercept('GET', 'http://localhost/food?offset=2').reply(
