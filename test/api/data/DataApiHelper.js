@@ -686,9 +686,9 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=' +
-					'%5B%7B%22and%22%3A%5B%7B%22name%22%3A%7B%22operator%22%3A' +
-					'%22none%22%2C%22value%22%3A%5B%22cuscuz%22%2C' +
-					'%22tapioca%22%5D%7D%7D%5D%7D%5D'
+          '%5B%7B%22and%22%3A%5B%7B%22name%22%3A%7B%22operator%22%3A' +
+          '%22none%22%2C%22value%22%3A%5B%22cuscuz%22%2C' +
+          '%22tapioca%22%5D%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "melancia"}]');
 
       WeDeploy.data('http://localhost')
@@ -779,8 +779,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=%5B%7B%22and%22%3A%5B%7B' +
-					'%22name%22%3A%7B%22operator%22%3A%22match%22%2C%22value%22%3A' +
-					'%22cuscuz%22%7D%7D%5D%7D%5D'
+          '%22name%22%3A%7B%22operator%22%3A%22match%22%2C%22value%22%3A' +
+          '%22cuscuz%22%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuz"}]');
 
       WeDeploy.data('http://localhost')
@@ -823,8 +823,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/books?filter=%5B%7B%22and%22%3A%5B%7B%22' +
-					'title%22%3A%7B%22operator%22%3A%22phrase%22%2C%22value%22%' +
-					'3A%22quick%20brown%20fox%22%7D%7D%5D%7D%5D'
+          'title%22%3A%7B%22operator%22%3A%22phrase%22%2C%22value%22%' +
+          '3A%22quick%20brown%20fox%22%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "title": "the quick brown fox"}]');
 
       WeDeploy.data('http://localhost')
@@ -873,8 +873,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=%5B%7B%22and%22%3A%5B%7B%22' +
-					'name%22%3A%7B%22operator%22%3A%22prefix%22%2C%22value%22%' +
-					'3A%22cus%22%7D%7D%5D%7D%5D'
+          'name%22%3A%7B%22operator%22%3A%22prefix%22%2C%22value%22%' +
+          '3A%22cus%22%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuz"}]');
 
       WeDeploy.data('http://localhost')
@@ -917,8 +917,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=%5B%7B%22and%22%3A%5B%7B' +
-					'%22name%22%3A%7B%22operator%22%3A%22similar%22%2C' +
-					'%22value%22%3A%7B%22query%22%3A%22cusc%22%7D%7D%7D%5D%7D%5D'
+          '%22name%22%3A%7B%22operator%22%3A%22similar%22%2C' +
+          '%22value%22%3A%7B%22query%22%3A%22cusc%22%7D%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuz"}]');
 
       WeDeploy.data('http://localhost')
@@ -963,8 +963,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=%5B%7B%22and%22%3A%5B%7B' +
-					'%22size%22%3A%7B%22operator%22%3A%22%3C%22%2C' +
-					'%22value%22%3A30%7D%7D%5D%7D%5D'
+          '%22size%22%3A%7B%22operator%22%3A%22%3C%22%2C' +
+          '%22value%22%3A30%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuz", "size": 10}]');
 
       WeDeploy.data('http://localhost')
@@ -1010,8 +1010,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=%5B%7B%22and%22%3A%5B%7B' +
-					'%22size%22%3A%7B%22operator%22%3A%22%3C%3D%22%2C' +
-					'%22value%22%3A30%7D%7D%5D%7D%5D'
+          '%22size%22%3A%7B%22operator%22%3A%22%3C%3D%22%2C' +
+          '%22value%22%3A30%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuz", "size": 10}]');
 
       WeDeploy.data('http://localhost')
@@ -1057,8 +1057,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=%5B%7B%22and%22%3A%5B%7B' +
-					'%22size%22%3A%7B%22operator%22%3A%22%3E%22%2C' +
-					'%22value%22%3A30%7D%7D%5D%7D%5D'
+          '%22size%22%3A%7B%22operator%22%3A%22%3E%22%2C' +
+          '%22value%22%3A30%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuz", "size": 10}]');
 
       WeDeploy.data('http://localhost')
@@ -1104,8 +1104,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=%5B%7B%22and' +
-					'%22%3A%5B%7B%22size%22%3A%7B%22operator%22%3A%22%3E%3' +
-					'D%22%2C%22value%22%3A30%7D%7D%5D%7D%5D'
+          '%22%3A%5B%7B%22size%22%3A%7B%22operator%22%3A%22%3E%3' +
+          'D%22%2C%22value%22%3A30%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuz", "size": 10}]');
 
       WeDeploy.data('http://localhost')
@@ -1151,8 +1151,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=%5B%7B%22and%22%3A%5B%7B' +
-					'%22name%22%3A%7B%22operator%22%3A%22any%22%2C' +
-					'%22value%22%3A%5B%22cuscuz%22%2C%22tapioca%22%5D%7D%7D%5D%7D%5D'
+          '%22name%22%3A%7B%22operator%22%3A%22any%22%2C' +
+          '%22value%22%3A%5B%22cuscuz%22%2C%22tapioca%22%5D%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuz"}]');
 
       WeDeploy.data('http://localhost')
@@ -1199,8 +1199,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/restaurants?filter=%5B%7B%22and%22%3A%5B%7B' +
-					'%22shape%22%3A%7B%22operator%22%3A%22gp%22%2C' +
-					'%22value%22%3A%5B%2220%2C0%22%2C%5B0%2C20%5D%5D%7D%7D%5D%7D%5D'
+          '%22shape%22%3A%7B%22operator%22%3A%22gp%22%2C' +
+          '%22value%22%3A%5B%2220%2C0%22%2C%5B0%2C20%5D%5D%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuzeria"}]');
 
       WeDeploy.data('http://localhost')
@@ -1246,8 +1246,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/restaurants?filter=%5B%7B%22and%22%3A%5B%7B' +
-					'%22point%22%3A%7B%22operator%22%3A%22gd%22%2C%22value%22%3A%7B' +
-					'%22location%22%3A%5B0%2C0%5D%2C%22max%22%3A2%7D%7D%7D%5D%7D%5D'
+          '%22point%22%3A%7B%22operator%22%3A%22gd%22%2C%22value%22%3A%7B' +
+          '%22location%22%3A%5B0%2C0%5D%2C%22max%22%3A2%7D%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuzeria"}]');
 
       WeDeploy.data('http://localhost')
@@ -1296,8 +1296,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/restaurants?filter=%5B%7B%22and%22%3A%5B%7B' +
-					'%22points%22%3A%7B%22operator%22%3A%22range%22%2C' +
-					'%22value%22%3A%7B%22from%22%3A12%2C%22to%22%3A15%7D%7D%7D%5D%7D%5D'
+          '%22points%22%3A%7B%22operator%22%3A%22range%22%2C' +
+          '%22value%22%3A%7B%22from%22%3A12%2C%22to%22%3A15%7D%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "cuscuzeria", "points": 13}]');
 
       WeDeploy.data('http://localhost')
@@ -1346,8 +1346,8 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=%5B%7B%22and%22%3A%5B%7B' +
-					'%22name%22%3A%7B%22operator%22%3A%22%3D%22%2C' +
-					'%22value%22%3A%22foo%22%7D%7D%5D%7D%5D'
+          '%22name%22%3A%7B%22operator%22%3A%22%3D%22%2C' +
+          '%22value%22%3A%22foo%22%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "ping": "pong1"}, {"id": 3, "ping": "pong2"}]');
 
       WeDeploy.data('http://localhost')
@@ -1398,9 +1398,9 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?filter=%5B%7B%22or%22%3A%5B%7B' +
-					'%22and%22%3A%5B%7B%22name%22%3A%7B%22operator%22%3A%22%3D%22%2C' +
-					'%22value%22%3A%22foo%22%7D%7D%5D%7D%2C%7B%22name%22%3A%7B' +
-					'%22operator%22%3A%22!%3D%22%2C%22value%22%3A%22bar%22%7D%7D%5D%7D%5D'
+          '%22and%22%3A%5B%7B%22name%22%3A%7B%22operator%22%3A%22%3D%22%2C' +
+          '%22value%22%3A%22foo%22%7D%7D%5D%7D%2C%7B%22name%22%3A%7B' +
+          '%22operator%22%3A%22!%3D%22%2C%22value%22%3A%22bar%22%7D%7D%5D%7D%5D'
       ).reply(200, '[{"id": 2, "name": "foo"}]');
       WeDeploy.data('http://localhost')
         .where('name', '=', 'foo')
@@ -1455,7 +1455,7 @@ describe('DataApiHelper', function() {
       RequestMock.intercept(
         'GET',
         'http://localhost/food?aggregation=%5B%7B%22field%22%3A%7B%22' +
-					'name%22%3A%22name%22%2C%22operator%22%3A%22terms%22%7D%7D%5D'
+          'name%22%3A%22name%22%2C%22operator%22%3A%22terms%22%7D%7D%5D'
       ).reply(200, '[{"id": 2, "ping": "pong1"}, {"id": 3, "ping": "pong2"}]');
 
       WeDeploy.data('http://localhost')
@@ -1544,9 +1544,9 @@ describe('DataApiHelper', function() {
         RequestMock.intercept(
           'GET',
           'http://localhost/food?type=search&filter=%5B%7B%22and%22%3A%5B%7B' +
-						'%22name%22%3A%7B%22operator%22%3A%22%3D%22%2C%22value%22%3A' +
-						'%22foo%22%7D%7D%2C%7B%22name%22%3A%7B%22operator%22%3A%22%3D%22%2C' +
-						'%22value%22%3A%22bar%22%7D%7D%5D%7D%5D'
+            '%22name%22%3A%7B%22operator%22%3A%22%3D%22%2C%22value%22%3A' +
+            '%22foo%22%7D%7D%2C%7B%22name%22%3A%7B%22operator%22%3A%22%3D%22%2C' +
+            '%22value%22%3A%22bar%22%7D%7D%5D%7D%5D'
         ).reply(
           200,
           '{"total":1,"documents":[{"id":2,"ping":"pong1"}],"scores":{"2":0.13102644681930542},"queryTime":1}'

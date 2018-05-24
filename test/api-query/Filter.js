@@ -316,8 +316,8 @@ describe('Filter', function() {
     it('should compose current filter with another using the "add" method', function() {
       let filter = Filter.gt('age', 12).add('and', Filter.lt('age', 15));
       const bodyStr =
-				'{"and":[{"age":{"operator":">","value":12}},' +
-				'{"age":{"operator":"<","value":15}}]}';
+        '{"and":[{"age":{"operator":">","value":12}},' +
+        '{"age":{"operator":"<","value":15}}]}';
       assert.strictEqual(bodyStr, filter.toString());
 
       filter = Filter.gt('age', 12).add('and', 'age', '<', 15);
@@ -327,8 +327,8 @@ describe('Filter', function() {
     it('should compose current filter with another using the "and" operator', function() {
       let filter = Filter.gt('age', 12).and(Filter.lt('age', 15));
       const bodyStr =
-				'{"and":[{"age":{"operator":">","value":12}},' +
-				'{"age":{"operator":"<","value":15}}]}';
+        '{"and":[{"age":{"operator":">","value":12}},' +
+        '{"age":{"operator":"<","value":15}}]}';
       assert.strictEqual(bodyStr, filter.toString());
 
       filter = Filter.gt('age', 12).and('age', '<', 15);
@@ -338,8 +338,8 @@ describe('Filter', function() {
     it('should compose current filter with another using the "or" operator', function() {
       let filter = Filter.gt('age', 12).or(Filter.lt('age', 15));
       const bodyStr =
-				'{"or":[{"age":{"operator":">","value":12}},' +
-				'{"age":{"operator":"<","value":15}}]}';
+        '{"or":[{"age":{"operator":">","value":12}},' +
+        '{"age":{"operator":"<","value":15}}]}';
       assert.strictEqual(bodyStr, filter.toString());
 
       filter = Filter.gt('age', 12).or('age', '<', 15);
@@ -353,9 +353,9 @@ describe('Filter', function() {
         Filter.equal('age', 13)
       );
       const bodyStr =
-				'{"and":[{"age":{"operator":">","value":12}},' +
-				'{"age":{"operator":"<","value":15}},' +
-				'{"age":{"operator":"=","value":13}}]}';
+        '{"and":[{"age":{"operator":">","value":12}},' +
+        '{"age":{"operator":"<","value":15}},' +
+        '{"age":{"operator":"=","value":13}}]}';
       assert.strictEqual(bodyStr, filter.toString());
     });
   });
@@ -411,7 +411,7 @@ describe('Filter', function() {
       assert.deepEqual(body, filter.body());
 
       const bodyStr =
-				'{"point":{"operator":"gd","value":{"location":[0,0],"max":2}}}';
+        '{"point":{"operator":"gd","value":{"location":[0,0],"max":2}}}';
       assert.strictEqual(bodyStr, filter.toString());
     });
 
@@ -430,7 +430,7 @@ describe('Filter', function() {
       assert.deepEqual(body, filter.body());
 
       const bodyStr =
-				'{"point":{"operator":"gd","value":{"location":[0,0],"max":2}}}';
+        '{"point":{"operator":"gd","value":{"location":[0,0],"max":2}}}';
       assert.strictEqual(bodyStr, filter.toString());
     });
 
@@ -450,7 +450,7 @@ describe('Filter', function() {
       assert.deepEqual(body, filter.body());
 
       const bodyStr =
-				'{"point":{"operator":"gd","value":{"location":[0,0],"min":1,"max":2}}}';
+        '{"point":{"operator":"gd","value":{"location":[0,0],"min":1,"max":2}}}';
       assert.strictEqual(bodyStr, filter.toString());
     });
 
@@ -469,7 +469,7 @@ describe('Filter', function() {
       assert.deepEqual(body, filter.body());
 
       const bodyStr =
-				'{"point":{"operator":"gd","value":{"location":[0,0],"min":1}}}';
+        '{"point":{"operator":"gd","value":{"location":[0,0],"min":1}}}';
       assert.strictEqual(bodyStr, filter.toString());
     });
   });
@@ -809,9 +809,9 @@ describe('Filter', function() {
       assert.deepEqual(body, filter.body());
 
       const bodyStr =
-				'{"shape":{"operator":"gs","value":{"type":"geometrycollection",' +
-				'"geometries":[{"type":"circle","coordinates":[0,0],"radius":"2km"},' +
-				'{"type":"envelope","coordinates":[[20,0],[0,20]]}]}}}';
+        '{"shape":{"operator":"gs","value":{"type":"geometrycollection",' +
+        '"geometries":[{"type":"circle","coordinates":[0,0],"radius":"2km"},' +
+        '{"type":"envelope","coordinates":[[20,0],[0,20]]}]}}}';
       assert.strictEqual(bodyStr, filter.toString());
     });
   });

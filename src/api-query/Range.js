@@ -39,11 +39,11 @@ import Embodied from './Embodied';
  */
 class Range extends Embodied {
   /**
-	 * Constructs a {@link Range} instance.
-	 * @param {*} from
-	 * @param {*} opt_to
-	 * @constructor
-	 */
+   * Constructs a {@link Range} instance.
+   * @param {*} from
+   * @param {*} opt_to
+   * @constructor
+   */
   constructor(from, opt_to) {
     super();
     if (core.isDefAndNotNull(from)) {
@@ -55,32 +55,32 @@ class Range extends Embodied {
   }
 
   /**
-	 * Constructs a {@link Range} instance.
-	 * @param {*} from
-	 * @return {!Range}
-	 * @static
-	 */
+   * Constructs a {@link Range} instance.
+   * @param {*} from
+   * @return {!Range}
+   * @static
+   */
   static from(from) {
     return new Range(from);
   }
 
   /**
-	 * Constructs a {@link Range} instance.
-	 * @param {*} from
-	 * @param {*} to
-	 * @return {!Range}
-	 * @static
-	 */
+   * Constructs a {@link Range} instance.
+   * @param {*} from
+   * @param {*} to
+   * @return {!Range}
+   * @static
+   */
   static range(from, to) {
     return new Range(from, to);
   }
 
   /**
-	 * Constructs a {@link Range} instance.
-	 * @param {*} to
-	 * @return {!Range}
-	 * @static
-	 */
+   * Constructs a {@link Range} instance.
+   * @param {*} to
+   * @return {!Range}
+   * @static
+   */
   static to(to) {
     return new Range(null, to);
   }

@@ -44,13 +44,13 @@ import {
  */
 class Auth {
   /**
-	 * Constructs an {@link Auth} instance.
-	 * @param {string} tokenOrEmail Either the authorization token, or
-	 *   the username.
-	 * @param {string=} opt_password If a username is given as the first param,
-	 *   this should be the password.
-	 * @constructor
-	 */
+   * Constructs an {@link Auth} instance.
+   * @param {string} tokenOrEmail Either the authorization token, or
+   *   the username.
+   * @param {string=} opt_password If a username is given as the first param,
+   *   this should be the password.
+   * @constructor
+   */
   constructor(tokenOrEmail, opt_password = null) {
     this.token = core.isString(opt_password) ? null : tokenOrEmail;
     this.email = core.isString(opt_password) ? tokenOrEmail : null;
@@ -67,13 +67,13 @@ class Auth {
   }
 
   /**
-	 * Constructs an {@link Auth} instance.
-	 * @param {string} authOrTokenOrEmail Either an auth instance, the
-	 *   authorization token, or the username.
-	 * @param {string=} opt_password If a username is given as the first param,
-	 *   this should be the password.
-	 * @return {!Auth}
-	 */
+   * Constructs an {@link Auth} instance.
+   * @param {string} authOrTokenOrEmail Either an auth instance, the
+   *   authorization token, or the username.
+   * @param {string=} opt_password If a username is given as the first param,
+   *   this should be the password.
+   * @return {!Auth}
+   */
   static create(authOrTokenOrEmail, opt_password) {
     if (authOrTokenOrEmail instanceof Auth) {
       return authOrTokenOrEmail;
@@ -83,7 +83,7 @@ class Auth {
       return new Auth(authOrTokenOrEmail);
     } else if (
       isDefAndNotNull(authOrTokenOrEmail) &&
-			isObject(authOrTokenOrEmail)
+      isObject(authOrTokenOrEmail)
     ) {
       return Auth.createFromData(authOrTokenOrEmail);
     } else {
@@ -92,12 +92,12 @@ class Auth {
   }
 
   /**
-	 * Makes user Auth from data object.
-	 * @param {Object} data
-	 * @param {?string=} authUrl
-	 * @return {Auth}
-	 * @protected
-	 */
+   * Makes user Auth from data object.
+   * @param {Object} data
+   * @param {?string=} authUrl
+   * @return {Auth}
+   * @protected
+   */
   static createFromData(data, authUrl) {
     let auth = new Auth();
     if (isObject(data)) {
@@ -117,138 +117,138 @@ class Auth {
   }
 
   /**
-	 * Gets the created at date.
-	 * @return {string}
-	 */
+   * Gets the created at date.
+   * @return {string}
+   */
   getCreatedAt() {
     return this.createdAt;
   }
 
   /**
-	 * Gets the auth data
-	 * @return {Object}
-	 */
+   * Gets the auth data
+   * @return {Object}
+   */
   getData() {
     return this.data_;
   }
 
   /**
-	 * Gets the email.
-	 * @return {string}
-	 */
+   * Gets the email.
+   * @return {string}
+   */
   getEmail() {
     return this.email;
   }
 
   /**
-	 * Gets the id.
-	 * @return {string}
-	 */
+   * Gets the id.
+   * @return {string}
+   */
   getId() {
     return this.id;
   }
 
   /**
-	 * Gets the name.
-	 * @return {string}
-	 */
+   * Gets the name.
+   * @return {string}
+   */
   getName() {
     return this.name;
   }
 
   /**
-	 * Gets the password.
-	 * @return {string}
-	 */
+   * Gets the password.
+   * @return {string}
+   */
   getPassword() {
     return this.password;
   }
 
   /**
-	 * Gets the photo url.
-	 * @return {string}
-	 */
+   * Gets the photo url.
+   * @return {string}
+   */
   getPhotoUrl() {
     return this.photoUrl;
   }
 
   /**
-	 * Gets the supported scopes.
-	 * @return {array.<string>}
-	 */
+   * Gets the supported scopes.
+   * @return {array.<string>}
+   */
   getSupportedScopes() {
     return this.supportedScopes;
   }
 
   /**
-	 * Gets the token.
-	 * @return {string}
-	 */
+   * Gets the token.
+   * @return {string}
+   */
   getToken() {
     return this.token;
   }
 
   /**
-	 * Checks if created at is set.
-	 * @return {boolean}
-	 */
+   * Checks if created at is set.
+   * @return {boolean}
+   */
   hasCreatedAt() {
     return core.isDefAndNotNull(this.createdAt);
   }
 
   /**
-	 * Checks if data is set.
-	 * @return {boolean}
-	 */
+   * Checks if data is set.
+   * @return {boolean}
+   */
   hasData() {
     return core.isDefAndNotNull(this.data_);
   }
 
   /**
-	 * Checks if the email is set.
-	 * @return {boolean}
-	 */
+   * Checks if the email is set.
+   * @return {boolean}
+   */
   hasEmail() {
     return core.isDefAndNotNull(this.email);
   }
 
   /**
-	 * Checks if the id is set.
-	 * @return {boolean}
-	 */
+   * Checks if the id is set.
+   * @return {boolean}
+   */
   hasId() {
     return core.isDefAndNotNull(this.id);
   }
 
   /**
-	 * Checks if the name is set.
-	 * @return {boolean}
-	 */
+   * Checks if the name is set.
+   * @return {boolean}
+   */
   hasName() {
     return core.isDefAndNotNull(this.name);
   }
 
   /**
-	 * Checks if the password is set.
-	 * @return {boolean}
-	 */
+   * Checks if the password is set.
+   * @return {boolean}
+   */
   hasPassword() {
     return core.isDefAndNotNull(this.password);
   }
 
   /**
-	 * Checks if the photo url is set.
-	 * @return {boolean}
-	 */
+   * Checks if the photo url is set.
+   * @return {boolean}
+   */
   hasPhotoUrl() {
     return core.isDefAndNotNull(this.photoUrl);
   }
 
   /**
-	 * Checks if the user has scopes.
-	 * @param {string|array.<string>} scopes Scope or array of scopes to check.
-	 * @return {boolean}
-	 */
+   * Checks if the user has scopes.
+   * @param {string|array.<string>} scopes Scope or array of scopes to check.
+   * @return {boolean}
+   */
   hasSupportedScopes(scopes) {
     if (Array.isArray(scopes)) {
       return scopes.every(val => this.supportedScopes.indexOf(val) > -1);
@@ -258,41 +258,41 @@ class Auth {
   }
 
   /**
-	 * Checks if the token is set.
-	 * @return {boolean}
-	 */
+   * Checks if the token is set.
+   * @return {boolean}
+   */
   hasToken() {
     return core.isDefAndNotNull(this.token);
   }
 
   /**
-	 * Sets created at.
-	 * @param {string} createdAt
-	 */
+   * Sets created at.
+   * @param {string} createdAt
+   */
   setCreatedAt(createdAt) {
     this.createdAt = createdAt;
   }
 
   /**
-	 * Sets data.
-	 * @param {Object} data
-	 */
+   * Sets data.
+   * @param {Object} data
+   */
   setData(data) {
     this.data_ = data;
   }
 
   /**
-	 * Sets the email.
-	 * @param {string} email
-	 */
+   * Sets the email.
+   * @param {string} email
+   */
   setEmail(email) {
     this.email = email;
   }
 
   /**
-	 * Sets the headers.
-	 * @param {!MultiMap|Object} headers The headers to be set
-	 */
+   * Sets the headers.
+   * @param {!MultiMap|Object} headers The headers to be set
+   */
   setHeaders(headers) {
     if (!(headers instanceof MultiMap)) {
       headers = MultiMap.fromObject(headers);
@@ -308,68 +308,68 @@ class Auth {
   }
 
   /**
-	 * Sets the id.
-	 * @param {string} id
-	 */
+   * Sets the id.
+   * @param {string} id
+   */
   setId(id) {
     this.id = id;
   }
 
   /**
-	 * Sets the name.
-	 * @param {string} name
-	 */
+   * Sets the name.
+   * @param {string} name
+   */
   setName(name) {
     this.name = name;
   }
 
   /**
-	 * Sets the password.
-	 * @param {string} password
-	 */
+   * Sets the password.
+   * @param {string} password
+   */
   setPassword(password) {
     this.password = password;
   }
 
   /**
-	 * Sets the photo url.
-	 * @param {string} photoUrl
-	 */
+   * Sets the photo url.
+   * @param {string} photoUrl
+   */
   setPhotoUrl(photoUrl) {
     this.photoUrl = photoUrl;
   }
 
   /**
-	 * Sets supported scopes.
-	 * @param {array.<string>} supportedScopes
-	 */
+   * Sets supported scopes.
+   * @param {array.<string>} supportedScopes
+   */
   setSupportedScopes(supportedScopes) {
     this.supportedScopes = supportedScopes;
   }
 
   /**
-	 * Sets the token.
-	 * @param {string} token
-	 */
+   * Sets the token.
+   * @param {string} token
+   */
   setToken(token) {
     this.token = token;
   }
 
   /**
-	 * Sets the WeDeploy client.
-	 * @param {Object} wedeployClient
-	 * @param {?string=} authUrl
-	 */
+   * Sets the WeDeploy client.
+   * @param {Object} wedeployClient
+   * @param {?string=} authUrl
+   */
   setWedeployClient(wedeployClient, authUrl) {
     this.authUrl = authUrl;
     this.wedeployClient = wedeployClient;
   }
 
   /**
-	 * Updates the user.
-	 * @param {!Object} data
-	 * @return {CompletableFuture}
-	 */
+   * Updates the user.
+   * @param {!Object} data
+   * @return {CompletableFuture}
+   */
   updateUser(data) {
     assertObject(data, 'User data must be specified as object');
     return this.buildUrl_()
@@ -380,9 +380,9 @@ class Auth {
   }
 
   /**
-	 * Deletes the current user.
-	 * @return {CompletableFuture}
-	 */
+   * Deletes the current user.
+   * @return {CompletableFuture}
+   */
   deleteUser() {
     assertDefAndNotNull(this.getId(), 'Cannot delete user without id');
     return this.buildUrl_()
@@ -393,11 +393,11 @@ class Auth {
   }
 
   /**
-	 * Builds URL by joining the headers.
-	 * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
-	 *   be chained.
-	 * @chainable
-	 */
+   * Builds URL by joining the headers.
+   * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
+   *   be chained.
+   * @chainable
+   */
   buildUrl_() {
     assertDefAndNotNull(
       this.authUrl,

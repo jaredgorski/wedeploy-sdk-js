@@ -163,15 +163,15 @@ function assertValidFieldTypes(fieldTypes) {
     const value = fieldTypes[key];
     if (
       core.isObject(value) &&
-			!Array.isArray(value) &&
-			!core.isFunction(value)
+      !Array.isArray(value) &&
+      !core.isFunction(value)
     ) {
       assertValidFieldTypes(value);
     } else {
       if (collectionTypes.indexOf(value) === -1) {
         throw new Error(
           `Invalid type mapping "${value}". Valid types are: ` +
-						`${collectionTypes.join(', ')}.`
+            `${collectionTypes.join(', ')}.`
         );
       }
     }

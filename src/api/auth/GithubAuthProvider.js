@@ -37,9 +37,9 @@ import AuthProvider from './AuthProvider';
  */
 class GithubAuthProvider extends AuthProvider {
   /**
-	 * Constructs an {@link GithubAuthProvider} instance.
-	 * @constructor
-	 */
+   * Constructs an {@link GithubAuthProvider} instance.
+   * @constructor
+   */
   constructor() {
     super();
     this.provider = GithubAuthProvider.PROVIDER;

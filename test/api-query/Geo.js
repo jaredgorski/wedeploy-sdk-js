@@ -54,7 +54,7 @@ describe('Geo', function() {
       assert.deepEqual(body, line.body());
 
       const bodyStr =
-				'{"type":"linestring","coordinates":["10,20",[10,30],[10,40]]}';
+        '{"type":"linestring","coordinates":["10,20",[10,30],[10,40]]}';
       assert.deepEqual(bodyStr, line.toString());
     });
   });
@@ -111,10 +111,10 @@ describe('Geo', function() {
       assert.deepEqual(body, polygon.body());
 
       const bodyStr =
-				'{' +
-				'"type":"polygon",' +
-				'"coordinates":[["0,0",[0,30],[40,0]],["5,5",[5,8],[9,5]]]' +
-				'}';
+        '{' +
+        '"type":"polygon",' +
+        '"coordinates":[["0,0",[0,30],[40,0]],["5,5",[5,8],[9,5]]]' +
+        '}';
       assert.deepEqual(bodyStr, polygon.toString());
     });
   });

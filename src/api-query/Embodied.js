@@ -36,37 +36,37 @@
  */
 class Embodied {
   /**
-	 * Constructs a Embodied instance.
-	 * @constructor
-	 */
+   * Constructs a Embodied instance.
+   * @constructor
+   */
   constructor() {
     this.body_ = {};
   }
 
   /**
-	 * Gets the json object that represents this instance.
-	 * @return {!Object}
-	 */
+   * Gets the json object that represents this instance.
+   * @return {!Object}
+   */
   body() {
     return this.body_;
   }
 
   /**
-	 * If the given object is an instance of Embodied, this will
-	 * return its body content. Otherwise this will return the
-	 * original object.
-	 * @param {*} obj
-	 * @return {*}
-	 * @static
-	 */
+   * If the given object is an instance of Embodied, this will
+   * return its body content. Otherwise this will return the
+   * original object.
+   * @param {*} obj
+   * @return {*}
+   * @static
+   */
   static toBody(obj) {
     return obj instanceof Embodied ? obj.body() : obj;
   }
 
   /**
-	 * Gets the json string that represents this instance.
-	 * @return {string}
-	 */
+   * Gets the json string that represents this instance.
+   * @return {string}
+   */
   toString() {
     return JSON.stringify(this.body());
   }

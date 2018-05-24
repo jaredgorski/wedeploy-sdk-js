@@ -39,11 +39,11 @@ import ApiHelper from '../ApiHelper';
  */
 class EmailApiHelper extends ApiHelper {
   /**
-	 * Constructs an {@link EmailApiHelper} instance.
-	 * @param {!WeDeploy} wedeployClient {@link WeDeploy} client reference.
-	 * @param {!string} emailUrl
-	 * @constructor
-	 */
+   * Constructs an {@link EmailApiHelper} instance.
+   * @param {!WeDeploy} wedeployClient {@link WeDeploy} client reference.
+   * @param {!string} emailUrl
+   * @constructor
+   */
   constructor(wedeployClient, emailUrl) {
     super(wedeployClient);
     this.emailUrl = emailUrl;
@@ -51,12 +51,12 @@ class EmailApiHelper extends ApiHelper {
   }
 
   /**
-	 * Set from attribute on params to be send on email request.
-	 * @param  {string} from
-	 * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
-	 *   so calls can be chained.
-	 * @chainable
-	 */
+   * Set from attribute on params to be send on email request.
+   * @param  {string} from
+   * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
+   *   so calls can be chained.
+   * @chainable
+   */
   from(from) {
     assertDefAndNotNull(from, 'Parameter "from" must be specified');
 
@@ -66,12 +66,12 @@ class EmailApiHelper extends ApiHelper {
   }
 
   /**
-	 * Set bcc attribute on params to be send on email request.
-	 * @param  {string} bcc
-	 * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
-	 *   so calls can be chained.
-	 * @chainable
-	 */
+   * Set bcc attribute on params to be send on email request.
+   * @param  {string} bcc
+   * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
+   *   so calls can be chained.
+   * @chainable
+   */
   bcc(bcc) {
     assertDefAndNotNull(bcc, 'Parameter "bcc" must be specified');
 
@@ -81,12 +81,12 @@ class EmailApiHelper extends ApiHelper {
   }
 
   /**
-	 * Set cc attribute on params to be send on email request.
-	 * @param  {string} cc
-	 * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
-	 *   so calls can be chained.
-	 * @chainable
-	 */
+   * Set cc attribute on params to be send on email request.
+   * @param  {string} cc
+   * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
+   *   so calls can be chained.
+   * @chainable
+   */
   cc(cc) {
     assertDefAndNotNull(cc, 'Parameter "cc" must be specified');
 
@@ -96,12 +96,12 @@ class EmailApiHelper extends ApiHelper {
   }
 
   /**
-	 * Set message attribute on params to be send on email request.
-	 * @param  {string} message
-	 * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
-	 *   so calls can be chained.
-	 * @chainable
-	 */
+   * Set message attribute on params to be send on email request.
+   * @param  {string} message
+   * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
+   *   so calls can be chained.
+   * @chainable
+   */
   message(message) {
     assertDefAndNotNull(message, 'Parameter "message" must be specified');
 
@@ -111,12 +111,12 @@ class EmailApiHelper extends ApiHelper {
   }
 
   /**
-	 * Set priority attribute on params to be send on email request.
-	 * @param  {string} priority
-	 * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
-	 *   so calls can be chained.
-	 * @chainable
-	 */
+   * Set priority attribute on params to be send on email request.
+   * @param  {string} priority
+   * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
+   *   so calls can be chained.
+   * @chainable
+   */
   priority(priority) {
     assertDefAndNotNull(priority, 'Parameter "priority" must be specified');
 
@@ -126,12 +126,12 @@ class EmailApiHelper extends ApiHelper {
   }
 
   /**
-	 * Set replyTo attribute on params to be send on email request.
-	 * @param  {string} replyTo
-	 * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
-	 *   so calls can be chained.
-	 * @chainable
-	 */
+   * Set replyTo attribute on params to be send on email request.
+   * @param  {string} replyTo
+   * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
+   *   so calls can be chained.
+   * @chainable
+   */
   replyTo(replyTo) {
     assertDefAndNotNull(replyTo, 'Parameter "replyTo" must be specified');
 
@@ -141,12 +141,12 @@ class EmailApiHelper extends ApiHelper {
   }
 
   /**
-	 * Set to attribute on params to be send on email request.
-	 * @param  {string} to
-	 * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
-	 *   so calls can be chained.
-	 * @chainable
-	 */
+   * Set to attribute on params to be send on email request.
+   * @param  {string} to
+   * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
+   *   so calls can be chained.
+   * @chainable
+   */
   to(to) {
     assertDefAndNotNull(to, 'Parameter "to" must be specified');
 
@@ -156,12 +156,12 @@ class EmailApiHelper extends ApiHelper {
   }
 
   /**
-	 * Set subject attribute on params to be send on email request.
-	 * @param  {string} subject
-	 * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
-	 *   so calls can be chained.
-	 * @chainable
-	 */
+   * Set subject attribute on params to be send on email request.
+   * @param  {string} subject
+   * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
+   *   so calls can be chained.
+   * @chainable
+   */
   subject(subject) {
     assertDefAndNotNull(subject, 'Parameter "subject" must be specified');
 
@@ -171,9 +171,9 @@ class EmailApiHelper extends ApiHelper {
   }
 
   /**
-	 * Sends an email based on given params.
-	 * @return {!CancellablePromise}
-	 */
+   * Sends an email based on given params.
+   * @return {!CancellablePromise}
+   */
   send() {
     const client = this.buildUrl_().path('emails');
 
@@ -196,10 +196,10 @@ class EmailApiHelper extends ApiHelper {
   }
 
   /**
-	 * Checks the status of an email.
-	 * @param  {string} emailId
-	 * @return {!CancellablePromise}
-	 */
+   * Checks the status of an email.
+   * @param  {string} emailId
+   * @return {!CancellablePromise}
+   */
   status(emailId) {
     assertDefAndNotNull(emailId, 'Parameter "emailId" param must be specified');
 
@@ -211,11 +211,11 @@ class EmailApiHelper extends ApiHelper {
   }
 
   /**
-	 * Builds URL by joining headers, auth and withCredentials.
-	 * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
-	 *   be chained.
-	 * @chainable
-	 */
+   * Builds URL by joining headers, auth and withCredentials.
+   * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
+   *   be chained.
+   * @chainable
+   */
   buildUrl_() {
     return this.wedeployClient
       .url(this.emailUrl)

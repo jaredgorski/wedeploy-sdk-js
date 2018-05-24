@@ -44,8 +44,8 @@ import FormData from 'form-data';
  */
 class NodeTransport extends Transport {
   /**
-	 * @inheritDoc
-	 */
+   * @inheritDoc
+   */
   send(clientRequest) {
     let deferred = this.request(
       clientRequest.url(),
@@ -72,17 +72,17 @@ class NodeTransport extends Transport {
   }
 
   /**
-	 * Requests the url using XMLHttpRequest.
-	 * @param {!string} url
-	 * @param {!string} method
-	 * @param {?string} body
-	 * @param {MultiMap} opt_headers
-	 * @param {MultiMap} opt_params
-	 * @param {number=} opt_timeout
-	 * @param {boolean} opt_follow_redirect
-	 * @return {CancellablePromise} Deferred ajax request.
-	 * @protected
-	 */
+   * Requests the url using XMLHttpRequest.
+   * @param {!string} url
+   * @param {!string} method
+   * @param {?string} body
+   * @param {MultiMap} opt_headers
+   * @param {MultiMap} opt_params
+   * @param {number=} opt_timeout
+   * @param {boolean} opt_follow_redirect
+   * @return {CancellablePromise} Deferred ajax request.
+   * @protected
+   */
   request(
     url,
     method,

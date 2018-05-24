@@ -223,7 +223,7 @@ describe('WeDeploy Tests', function() {
     RequestMock.intercept(
       'GET',
       'http://localhost/url' +
-				'?filter=%5B%7B%22name%22%3A%7B%22operator%22%3A%22%3D%22%2C%22value%22%3A%22foo%22%7D%7D%5D'
+        '?filter=%5B%7B%22name%22%3A%7B%22operator%22%3A%22%3D%22%2C%22value%22%3A%22foo%22%7D%7D%5D'
     ).reply(200);
     WeDeploy.url('http://localhost/url')
       .get(Filter.field('name', 'foo'))
@@ -232,7 +232,7 @@ describe('WeDeploy Tests', function() {
         assert.strictEqual('GET', response.request().method());
         assert.ok(!response.request().body());
         const paramsStr =
-					'{"filter":["[{\\"name\\":{\\"operator\\":\\"=\\",\\"value\\":\\"foo\\"}}]"]}';
+          '{"filter":["[{\\"name\\":{\\"operator\\":\\"=\\",\\"value\\":\\"foo\\"}}]"]}';
         assert.strictEqual(
           paramsStr,
           response

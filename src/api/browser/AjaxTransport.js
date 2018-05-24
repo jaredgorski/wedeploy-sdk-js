@@ -41,8 +41,8 @@ import Uri from 'metal-uri';
  */
 class AjaxTransport extends Transport {
   /**
-	 * @inheritDoc
-	 */
+   * @inheritDoc
+   */
   send(clientRequest) {
     if (!clientRequest.followRedirect()) {
       console.warn('Disabling redirects is not supported in the browser');
