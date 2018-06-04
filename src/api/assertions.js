@@ -105,7 +105,7 @@ function assertObject(value, errorMessage) {
  * method of response object returns true. Throws an exception if the returned
  * value is false.
  * @param {!Object} response The response to be checked
- * @return {Object} The response itself if valid. Otherwise throws an exception
+ * @return {Object} The response itself if valid, throws an exception otherwise
  */
 function assertResponseSucceeded(response) {
   if (!response.succeeded()) {
@@ -127,7 +127,7 @@ function assertUserSignedIn(user) {
 
 /**
  * Checks if authApiHelper has a token in its authScope
- * @param {!AuthApiHelper} authApiHelper - The user to be checked
+ * @param {!AuthApiHelper} authApiHelper The user to be checked
  */
 function assertAuthScope(authApiHelper) {
   const authScope = authApiHelper.resolveAuthScope();
