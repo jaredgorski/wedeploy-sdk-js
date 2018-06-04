@@ -211,7 +211,7 @@ class EmailApiHelper extends ApiHelper {
   }
 
   /**
-   * Builds URL by joining headers, auth and withCredentials.
+   * Builds Url by joining headers, auth and withCredentials.
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
    *   be chained.
    * @chainable

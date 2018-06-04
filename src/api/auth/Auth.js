@@ -68,11 +68,11 @@ class Auth {
 
   /**
    * Constructs an {@link Auth} instance.
-   * @param {string} authOrTokenOrEmail Either an auth instance, the
+   * @param {string} authOrTokenOrEmail Either an Auth instance, the
    *   authorization token, or the username.
    * @param {string=} opt_password If a username is given as the first param,
    *   this should be the password.
-   * @return {!Auth}
+   * @return {!Auth} Returns a new instance of Auth
    */
   static create(authOrTokenOrEmail, opt_password) {
     if (authOrTokenOrEmail instanceof Auth) {
@@ -93,9 +93,9 @@ class Auth {
 
   /**
    * Makes user Auth from data object.
-   * @param {Object} data
-   * @param {?string=} authUrl
-   * @return {Auth}
+   * @param {Object} data The user data
+   * @param {?string=} authUrl Url to Auth service
+   * @return {Auth} Returns a new instance of Auth
    * @protected
    */
   static createFromData(data, authUrl) {
@@ -118,15 +118,15 @@ class Auth {
 
   /**
    * Gets the created at date.
-   * @return {string}
+   * @return {string} Returns time of creation as Unix epoch time
    */
   getCreatedAt() {
     return this.createdAt;
   }
 
   /**
-   * Gets the auth data
-   * @return {Object}
+   * Gets the auth data.
+   * @return {Object} Returns user data
    */
   getData() {
     return this.data_;
@@ -134,7 +134,7 @@ class Auth {
 
   /**
    * Gets the email.
-   * @return {string}
+   * @return {string} Returns the user email
    */
   getEmail() {
     return this.email;
@@ -142,7 +142,7 @@ class Auth {
 
   /**
    * Gets the id.
-   * @return {string}
+   * @return {string} Returns the user Id
    */
   getId() {
     return this.id;
@@ -150,7 +150,7 @@ class Auth {
 
   /**
    * Gets the name.
-   * @return {string}
+   * @return {string} Returns the user name
    */
   getName() {
     return this.name;
@@ -158,15 +158,15 @@ class Auth {
 
   /**
    * Gets the password.
-   * @return {string}
+   * @return {string} Returns the user password
    */
   getPassword() {
     return this.password;
   }
 
   /**
-   * Gets the photo url.
-   * @return {string}
+   * Gets the photo Url.
+   * @return {string} Returns the photo Url
    */
   getPhotoUrl() {
     return this.photoUrl;
@@ -174,15 +174,15 @@ class Auth {
 
   /**
    * Gets the supported scopes.
-   * @return {array.<string>}
+   * @return {array.<string>} Returns the list of supported scopes
    */
   getSupportedScopes() {
     return this.supportedScopes;
   }
 
   /**
-   * Gets the token.
-   * @return {string}
+   * Gets the user token.
+   * @return {string} Returns the user token
    */
   getToken() {
     return this.token;
@@ -190,7 +190,7 @@ class Auth {
 
   /**
    * Checks if created at is set.
-   * @return {boolean}
+   * @return {boolean} Returns true if createdAt is set, false otherwise
    */
   hasCreatedAt() {
     return core.isDefAndNotNull(this.createdAt);
@@ -198,7 +198,7 @@ class Auth {
 
   /**
    * Checks if data is set.
-   * @return {boolean}
+   * @return {boolean} Returns true if data is set, false otherwise
    */
   hasData() {
     return core.isDefAndNotNull(this.data_);
@@ -206,7 +206,7 @@ class Auth {
 
   /**
    * Checks if the email is set.
-   * @return {boolean}
+   * @return {boolean} Returns true if email is set, false otherwise
    */
   hasEmail() {
     return core.isDefAndNotNull(this.email);
@@ -214,7 +214,7 @@ class Auth {
 
   /**
    * Checks if the id is set.
-   * @return {boolean}
+   * @return {boolean} Returns true if Id is set, false otherwise
    */
   hasId() {
     return core.isDefAndNotNull(this.id);
@@ -222,7 +222,7 @@ class Auth {
 
   /**
    * Checks if the name is set.
-   * @return {boolean}
+   * @return {boolean} Returns true if name is set, false otherwise
    */
   hasName() {
     return core.isDefAndNotNull(this.name);
@@ -230,7 +230,7 @@ class Auth {
 
   /**
    * Checks if the password is set.
-   * @return {boolean}
+   * @return {boolean} Returns true if password is set, false otherwise
    */
   hasPassword() {
     return core.isDefAndNotNull(this.password);
@@ -238,7 +238,7 @@ class Auth {
 
   /**
    * Checks if the photo url is set.
-   * @return {boolean}
+   * @return {boolean} Returns true if photoUrl is set, false otherwise
    */
   hasPhotoUrl() {
     return core.isDefAndNotNull(this.photoUrl);
@@ -247,7 +247,8 @@ class Auth {
   /**
    * Checks if the user has scopes.
    * @param {string|array.<string>} scopes Scope or array of scopes to check.
-   * @return {boolean}
+   * @return {boolean} Returns true if given set of supported scopes is
+   *   provided, false otherwise
    */
   hasSupportedScopes(scopes) {
     if (Array.isArray(scopes)) {
@@ -258,8 +259,8 @@ class Auth {
   }
 
   /**
-   * Checks if the token is set.
-   * @return {boolean}
+   * Checks if the user token is set.
+   * @return {boolean} Returns true if token is set, false otherwise
    */
   hasToken() {
     return core.isDefAndNotNull(this.token);
@@ -267,7 +268,7 @@ class Auth {
 
   /**
    * Sets created at.
-   * @param {string} createdAt
+   * @param {!string} createdAt The creation date to be set
    */
   setCreatedAt(createdAt) {
     this.createdAt = createdAt;
@@ -275,7 +276,7 @@ class Auth {
 
   /**
    * Sets data.
-   * @param {Object} data
+   * @param {!Object} data The user data to be set
    */
   setData(data) {
     this.data_ = data;
@@ -283,7 +284,7 @@ class Auth {
 
   /**
    * Sets the email.
-   * @param {string} email
+   * @param {!string} email The user email to be set
    */
   setEmail(email) {
     this.email = email;
@@ -309,7 +310,7 @@ class Auth {
 
   /**
    * Sets the id.
-   * @param {string} id
+   * @param {string} id The user id to be set
    */
   setId(id) {
     this.id = id;
@@ -317,7 +318,7 @@ class Auth {
 
   /**
    * Sets the name.
-   * @param {string} name
+   * @param {string} name The user name to be set
    */
   setName(name) {
     this.name = name;
@@ -325,7 +326,7 @@ class Auth {
 
   /**
    * Sets the password.
-   * @param {string} password
+   * @param {string} password The user password to be set
    */
   setPassword(password) {
     this.password = password;
@@ -333,7 +334,7 @@ class Auth {
 
   /**
    * Sets the photo url.
-   * @param {string} photoUrl
+   * @param {string} photoUrl The photo url to be set
    */
   setPhotoUrl(photoUrl) {
     this.photoUrl = photoUrl;
@@ -341,15 +342,15 @@ class Auth {
 
   /**
    * Sets supported scopes.
-   * @param {array.<string>} supportedScopes
+   * @param {array.<string>} supportedScopes The supported scopes to be set
    */
   setSupportedScopes(supportedScopes) {
     this.supportedScopes = supportedScopes;
   }
 
   /**
-   * Sets the token.
-   * @param {string} token
+   * Sets the user token.
+   * @param {string} token The user token to be set
    */
   setToken(token) {
     this.token = token;
@@ -357,8 +358,8 @@ class Auth {
 
   /**
    * Sets the WeDeploy client.
-   * @param {Object} wedeployClient
-   * @param {?string=} authUrl
+   * @param {Object} wedeployClient The WeDeploy client to be set
+   * @param {?string=} authUrl Url to Auth service
    */
   setWedeployClient(wedeployClient, authUrl) {
     this.authUrl = authUrl;
@@ -367,8 +368,8 @@ class Auth {
 
   /**
    * Updates the user.
-   * @param {!Object} data
-   * @return {CompletableFuture}
+   * @param {!Object} data The new user data to be set
+   * @return {CompletableFuture} Resolves when the user is updated
    */
   updateUser(data) {
     assertObject(data, 'User data must be specified as object');
@@ -381,7 +382,7 @@ class Auth {
 
   /**
    * Deletes the current user.
-   * @return {CompletableFuture}
+   * @return {CompletableFuture} Resolves when user is deleted
    */
   deleteUser() {
     assertDefAndNotNull(this.getId(), 'Cannot delete user without id');
@@ -393,9 +394,9 @@ class Auth {
   }
 
   /**
-   * Builds URL by joining the headers.
+   * Builds Url by joining the headers.
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
-   *   be chained.
+   *   be chained
    * @chainable
    */
   buildUrl_() {
