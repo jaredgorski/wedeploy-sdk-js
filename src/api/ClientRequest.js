@@ -68,7 +68,8 @@ class ClientRequest extends ClientMessage {
 
   /**
    * Fluent getter and setter for follow redirect option.
-   * @param {boolean=} opt_followRedirect
+   * @param {boolean=} opt_followRedirect Optional parameter to specify if the
+   *   redirect should be followed
    * @return {!ClientRequest|boolean} Returns the {@link ClientMessage} object
    *   itself when used as setter, otherwise returns the current value of follow
    *   redirect option.
@@ -103,8 +104,8 @@ class ClientRequest extends ClientMessage {
    * Adds a query. If a query with the same name already exists, it will not
    * be overwritten, but new value will be stored as well. The order is
    * preserved.
-   * @param {string} name
-   * @param {string} value
+   * @param {string} name The name of the param to be set
+   * @param {string} value The value of the param to be set
    * @return {!ClientMessage} Returns the {@link ClientMessage} object itself,
    *   so calls can be chained
    * @chainable

@@ -51,7 +51,7 @@ class ClientMessage {
    *   the current value of the body will be returned.
    * @return {*} Returns request body if no body value was given. Otherwise
    *   returns the {@link ClientMessage} object itself, so calls can be chained
-   * @chainable Chainable when used as setter.
+   * @chainable
    */
   body(opt_body) {
     if (core.isDef(opt_body)) {
@@ -65,8 +65,8 @@ class ClientMessage {
    * Adds a header. If a header with the same name already exists, it will not
    * be overwritten, but the new value will be stored as well. The order is
    * preserved.
-   * @param {string} name
-   * @param {string} value
+   * @param {string} name The name of the header to be set
+   * @param {string} value The value of the header to be set
    * @return {!ClientMessage} Returns the {@link ClientMessage}
    *   object itself, so calls can be chained
    * @chainable
@@ -87,7 +87,7 @@ class ClientMessage {
    * @return {!MultiMap|ClientMessage} Returns map of request headers
    *   if no new value was given. Otherwise returns the {@link ClientMessage}
    *   object itself, so calls can be chained
-   * @chainable Chainable when used as setter.
+   * @chainable
    */
   headers(opt_headers) {
     if (core.isDef(opt_headers)) {
