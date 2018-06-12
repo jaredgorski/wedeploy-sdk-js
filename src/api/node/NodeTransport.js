@@ -39,8 +39,8 @@ import Uri from 'metal-uri';
 import FormData from 'form-data';
 
 /**
- * Provides a convenient interface for data transport.
- * @interface
+ * The implementation of Node transport to be used with {@link WeDeploy}.
+ * @extends {Transport}
  */
 class NodeTransport extends Transport {
   /**
@@ -72,15 +72,18 @@ class NodeTransport extends Transport {
   }
 
   /**
-   * Requests the url using XMLHttpRequest.
-   * @param {!string} url
-   * @param {!string} method
-   * @param {?string} body
-   * @param {MultiMap} opt_headers
-   * @param {MultiMap} opt_params
-   * @param {number=} opt_timeout
-   * @param {boolean} opt_follow_redirect
-   * @return {CancellablePromise} Deferred ajax request.
+   * Requests the Url and resolves with server response.
+   * @param {!string} url The Url to which request should be sent
+   * @param {!string} method The request method
+   * @param {?string} body The request body
+   * @param {MultiMap} opt_headers Optional headers to be sent with the request
+   * @param {MultiMap} opt_params Optional params to be sent with the request
+   * @param {number=} opt_timeout Optional request timeout. This is the number
+   *   of milliseconds to wait for a server to send response headers
+   * @param {boolean} opt_follow_redirect Optionally set if redirect responses
+   *   should be followed. By default HTTP 3xx responses will be followed.
+   * @return {CancellablePromise} Deferred request, resolves with server
+   *   response.
    * @protected
    */
   request(

@@ -36,7 +36,7 @@ import Transport from '../Transport';
 import Uri from 'metal-uri';
 
 /**
- * The implementation of an ajax transport to be used with {@link WeDeploy}.
+ * The implementation of an Ajax transport to be used with {@link WeDeploy}.
  * @extends {Transport}
  */
 class AjaxTransport extends Transport {
