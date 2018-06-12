@@ -35,13 +35,13 @@ import {MultiMap} from 'metal-structs';
 import ApiHelper from '../ApiHelper';
 
 /**
- * Class responsible for encapsulate email api calls.
+ * Class responsible for encapsulate email API calls.
  */
 class EmailApiHelper extends ApiHelper {
   /**
    * Constructs an {@link EmailApiHelper} instance.
    * @param {!WeDeploy} wedeployClient {@link WeDeploy} client reference.
-   * @param {!string} emailUrl
+   * @param {!string} emailUrl The Url to Email service
    * @constructor
    */
   constructor(wedeployClient, emailUrl) {
@@ -52,7 +52,7 @@ class EmailApiHelper extends ApiHelper {
 
   /**
    * Set from attribute on params to be send on email request.
-   * @param  {string} from
+   * @param  {string} from Set `from` parameter to the request
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
    *   so calls can be chained
    * @chainable
@@ -67,7 +67,7 @@ class EmailApiHelper extends ApiHelper {
 
   /**
    * Set bcc attribute on params to be send on email request.
-   * @param  {string} bcc
+   * @param  {string} bcc Set `bcc` parameter to the request
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
    *   so calls can be chained
    * @chainable
@@ -82,7 +82,7 @@ class EmailApiHelper extends ApiHelper {
 
   /**
    * Set cc attribute on params to be send on email request.
-   * @param  {string} cc
+   * @param  {string} cc Set `cc` parameter to the request
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
    *   so calls can be chained
    * @chainable
@@ -97,7 +97,7 @@ class EmailApiHelper extends ApiHelper {
 
   /**
    * Set message attribute on params to be send on email request.
-   * @param  {string} message
+   * @param  {string} message Set `message` parameter to the request
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
    *   so calls can be chained
    * @chainable
@@ -112,7 +112,7 @@ class EmailApiHelper extends ApiHelper {
 
   /**
    * Set priority attribute on params to be send on email request.
-   * @param  {string} priority
+   * @param  {string} priority Set `priority` parameter to the request
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
    *   so calls can be chained
    * @chainable
@@ -127,7 +127,7 @@ class EmailApiHelper extends ApiHelper {
 
   /**
    * Set replyTo attribute on params to be send on email request.
-   * @param  {string} replyTo
+   * @param  {string} replyTo Set `replyTo` parameter to the request
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
    *   so calls can be chained
    * @chainable
@@ -142,7 +142,7 @@ class EmailApiHelper extends ApiHelper {
 
   /**
    * Set to attribute on params to be send on email request.
-   * @param  {string} to
+   * @param  {string} to Set `to` parameter to the request
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
    *   so calls can be chained
    * @chainable
@@ -157,7 +157,7 @@ class EmailApiHelper extends ApiHelper {
 
   /**
    * Set subject attribute on params to be send on email request.
-   * @param  {string} subject
+   * @param  {string} subject Set `subject` parameter to the request
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
    *   so calls can be chained
    * @chainable
@@ -172,7 +172,7 @@ class EmailApiHelper extends ApiHelper {
 
   /**
    * Sends an email based on given params.
-   * @return {!CancellablePromise}
+   * @return {!CancellablePromise} Resolves with response body
    */
   send() {
     const client = this.buildUrl_().path('emails');
@@ -197,8 +197,8 @@ class EmailApiHelper extends ApiHelper {
 
   /**
    * Checks the status of an email.
-   * @param  {string} emailId
-   * @return {!CancellablePromise}
+   * @param  {string} emailId The Id of the email to be checked
+   * @return {!CancellablePromise} Resolves with response body
    */
   status(emailId) {
     assertDefAndNotNull(emailId, 'Parameter "emailId" param must be specified');
