@@ -180,7 +180,7 @@ class Query extends Embodied {
    * @param {string=} opt_operator The aggregation operator.
    * @return {Query} Returns the {@link Query} object itself, so calls can be
    *   chained.
-   * @chainnable
+   * @chainable
    */
   aggregate(name, aggregationOrField, opt_operator) {
     let aggregation = aggregationOrField;
@@ -209,7 +209,7 @@ class Query extends Embodied {
    * Sets this query's type to "count".
    * @return {Query} Returns the {@link Query} object itself, so calls can be
    *   chained.
-   * @chainnable
+   * @chainable
    */
   count() {
     return this.type('count');
@@ -219,7 +219,7 @@ class Query extends Embodied {
    * Sets this query's type to "fetch".
    * @return {Query} Returns the {@link Query} object itself, so calls can be
    *   chained.
-   * @chainnable
+   * @chainable
    */
   fetch() {
     return this.type('fetch');
@@ -230,7 +230,7 @@ class Query extends Embodied {
    * @param {string|Array} fields Single field name or an array of fields
    * @return {Query} Returns the {@link Query} object itself, so calls can be
    *   chained.
-   * @chainnable
+   * @chainable
    */
   fields(fields) {
     if (!Array.isArray(fields)) {
@@ -254,7 +254,7 @@ class Query extends Embodied {
    * @param {*=} opt_value The filter's value.
    * @return {Query} Returns the {@link Query} object itself, so calls can be
    *   chained.
-   * @chainnable
+   * @chainable
    */
   filter(fieldOrFilter, opt_operatorOrValue, opt_value) {
     let filter = Filter.toFilter(fieldOrFilter, opt_operatorOrValue, opt_value);
@@ -271,7 +271,7 @@ class Query extends Embodied {
    *   by this query.
    * @return {Query} Returns the {@link Query} object itself, so calls can be
    *   chained.
-   * @chainnable
+   * @chainable
    */
   offset(offset) {
     this.body_.offset = offset;
@@ -283,7 +283,7 @@ class Query extends Embodied {
    * @param {string} field The field's name.
    * @return {Query} Returns the {@link Query} object itself, so calls can be
    *   chained.
-   * @chainnable
+   * @chainable
    */
   highlight(field) {
     if (!this.body_.highlight) {
@@ -300,7 +300,7 @@ class Query extends Embodied {
    *   return.
    * @return {Query} Returns the {@link Query} object itself, so calls can be
    *   chained.
-   * @chainnable
+   * @chainable
    */
   limit(limit) {
     this.body_.limit = limit;
@@ -322,7 +322,7 @@ class Query extends Embodied {
    *   only be passed if an operator was passed as the second argument.
    * @return {Query} Returns the {@link Query} object itself, so calls can be
    *   chained.
-   * @chainnable
+   * @chainable
    */
   search(filterOrTextOrField, opt_textOrOperator, opt_value) {
     let filter = filterOrTextOrField;
@@ -352,7 +352,7 @@ class Query extends Embodied {
    *   If none is given, "asc" is used by default.
    * @return {Query} Returns the {@link Query} object itself, so calls can be
    *   chained.
-   * @chainnable
+   * @chainable
    */
   sort(field, opt_direction) {
     if (!this.body_.sort) {
@@ -369,7 +369,7 @@ class Query extends Embodied {
    * @param {string} type The query's type. For example: "count", "fetch".
    * @return {Query} Returns the {@link Query} object itself, so calls can be
    *   chained.
-   * @chainnable
+   * @chainable
    */
   type(type) {
     this.body_.type = type;

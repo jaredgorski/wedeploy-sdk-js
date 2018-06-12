@@ -60,7 +60,7 @@ class ApiHelper {
    * @param {string} name
    * @param {string} value
    * @return {!ApiHelper} Returns the {@link ApiHelper}
-   *   object itself, so calls can be chained.
+   *   object itself, so calls can be chained
    * @chainable
    */
   header(name, value) {
@@ -90,7 +90,7 @@ class ApiHelper {
    * Assigns the passed value to the internal with credentials option.
    * @param {boolean} withCredentials
    * @return {ApiHelper} Returns the {@link ApiHelper} object itself, so calls
-   *   can be chained.
+   *   can be chained
    * @chainable
    */
   withCredentials(withCredentials) {

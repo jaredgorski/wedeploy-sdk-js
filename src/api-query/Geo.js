@@ -228,7 +228,7 @@ class Polygon extends Embodied {
    * Adds the given points as a hole inside this polygon.
    * @param {...*} points
    * @return {Polygon} Returns the {@link Polygon} object itself, so calls can
-   *   be chained.
+   *   be chained
    * @chainable
    */
   hole(...points) {

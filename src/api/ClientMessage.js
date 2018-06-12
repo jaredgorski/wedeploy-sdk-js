@@ -50,7 +50,7 @@ class ClientMessage {
    * @param {*=} opt_body Request body to be set. If none is given,
    *   the current value of the body will be returned.
    * @return {*} Returns request body if no body value was given. Otherwise
-   *   returns the {@link ClientMessage} object itself, so calls can be chained.
+   *   returns the {@link ClientMessage} object itself, so calls can be chained
    * @chainable Chainable when used as setter.
    */
   body(opt_body) {
@@ -68,7 +68,7 @@ class ClientMessage {
    * @param {string} name
    * @param {string} value
    * @return {!ClientMessage} Returns the {@link ClientMessage}
-   *   object itself, so calls can be chained.
+   *   object itself, so calls can be chained
    * @chainable
    */
   header(name, value) {
@@ -86,7 +86,7 @@ class ClientMessage {
    *   be returned.
    * @return {!MultiMap|ClientMessage} Returns map of request headers
    *   if no new value was given. Otherwise returns the {@link ClientMessage}
-   *   object itself, so calls can be chained.
+   *   object itself, so calls can be chained
    * @chainable Chainable when used as setter.
    */
   headers(opt_headers) {

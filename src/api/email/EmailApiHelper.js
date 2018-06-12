@@ -54,7 +54,7 @@ class EmailApiHelper extends ApiHelper {
    * Set from attribute on params to be send on email request.
    * @param  {string} from
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
-   *   so calls can be chained.
+   *   so calls can be chained
    * @chainable
    */
   from(from) {
@@ -69,7 +69,7 @@ class EmailApiHelper extends ApiHelper {
    * Set bcc attribute on params to be send on email request.
    * @param  {string} bcc
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
-   *   so calls can be chained.
+   *   so calls can be chained
    * @chainable
    */
   bcc(bcc) {
@@ -84,7 +84,7 @@ class EmailApiHelper extends ApiHelper {
    * Set cc attribute on params to be send on email request.
    * @param  {string} cc
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
-   *   so calls can be chained.
+   *   so calls can be chained
    * @chainable
    */
   cc(cc) {
@@ -99,7 +99,7 @@ class EmailApiHelper extends ApiHelper {
    * Set message attribute on params to be send on email request.
    * @param  {string} message
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
-   *   so calls can be chained.
+   *   so calls can be chained
    * @chainable
    */
   message(message) {
@@ -114,7 +114,7 @@ class EmailApiHelper extends ApiHelper {
    * Set priority attribute on params to be send on email request.
    * @param  {string} priority
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
-   *   so calls can be chained.
+   *   so calls can be chained
    * @chainable
    */
   priority(priority) {
@@ -129,7 +129,7 @@ class EmailApiHelper extends ApiHelper {
    * Set replyTo attribute on params to be send on email request.
    * @param  {string} replyTo
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
-   *   so calls can be chained.
+   *   so calls can be chained
    * @chainable
    */
   replyTo(replyTo) {
@@ -144,7 +144,7 @@ class EmailApiHelper extends ApiHelper {
    * Set to attribute on params to be send on email request.
    * @param  {string} to
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
-   *   so calls can be chained.
+   *   so calls can be chained
    * @chainable
    */
   to(to) {
@@ -159,7 +159,7 @@ class EmailApiHelper extends ApiHelper {
    * Set subject attribute on params to be send on email request.
    * @param  {string} subject
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
-   *   so calls can be chained.
+   *   so calls can be chained
    * @chainable
    */
   subject(subject) {
@@ -213,7 +213,7 @@ class EmailApiHelper extends ApiHelper {
   /**
    * Builds Url by joining headers, auth and withCredentials.
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
-   *   be chained.
+   *   be chained
    * @chainable
    */
   buildUrl_() {

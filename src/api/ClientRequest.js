@@ -88,7 +88,7 @@ class ClientRequest extends ClientMessage {
    *   the current method value will be returned.
    * @return {!ClientMessage|string} Returns request method if no new value was
    *   given. Otherwise returns the {@link ClientMessage} object itself, so
-   *   calls can be chained.
+   *   calls can be chained
    * @chainable Chainable when used as setter.
    */
   method(opt_method) {
@@ -106,7 +106,7 @@ class ClientRequest extends ClientMessage {
    * @param {string} name
    * @param {string} value
    * @return {!ClientMessage} Returns the {@link ClientMessage} object itself,
-   *   so calls can be chained.
+   *   so calls can be chained
    * @chainable
    */
   param(name, value) {
@@ -123,7 +123,7 @@ class ClientRequest extends ClientMessage {
    *   If none is given the current value of the params will be returned.
    * @return {!MultiMap|ClientMessage} Returns map of request querystring if
    *   no new value was given. Otherwise returns the {@link ClientMessage}
-   *   object itself, so calls can be chained.
+   *   object itself, so calls can be chained
    */
   params(opt_params) {
     if (core.isDef(opt_params)) {

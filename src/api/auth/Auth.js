@@ -246,7 +246,7 @@ class Auth {
 
   /**
    * Checks if the user has scopes.
-   * @param {string|array.<string>} scopes Scope or array of scopes to check.
+   * @param {string|array.<string>} scopes Scope or array of scopes to check
    * @return {boolean} Returns true if given set of supported scopes is
    *   provided, false otherwise
    */

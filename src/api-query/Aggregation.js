@@ -234,7 +234,7 @@ class DistanceAggregation extends Aggregation {
    * @param {*} rangeOrFrom
    * @param {*=} opt_to
    * @return {Aggregation} Returns the {@link Aggregation} object itself, so
-   *   calls can be chained.
+   *   calls can be chained
    * @chainable
    */
   range(rangeOrFrom, opt_to) {
@@ -250,7 +250,7 @@ class DistanceAggregation extends Aggregation {
    * Sets this aggregation's unit.
    * @param {string} unit
    * @return {Aggregation} Returns the {@link Aggregation} object itself, so
-   *   calls can be chained.
+   *   calls can be chained
    * @chainable
    */
   unit(unit) {
@@ -281,7 +281,7 @@ class RangeAggregation extends Aggregation {
    * @param {*} rangeOrFrom
    * @param {*=} opt_to
    * @return {Aggregation} Returns the {@link Aggregation} object itself, so
-   *   calls can be chained.
+   *   calls can be chained
    * @chainable
    */
   range(rangeOrFrom, opt_to) {
