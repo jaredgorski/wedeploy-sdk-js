@@ -50,7 +50,7 @@ class AuthProvider {
 
   /**
    * Checks if provider is defined and not null.
-   * @return {boolean}
+   * @return {boolean} Returns true if provider is set, false otherwise
    */
   hasProvider() {
     return core.isDefAndNotNull(this.provider);
@@ -58,15 +58,15 @@ class AuthProvider {
 
   /**
    * Checks if scope is defined and not null.
-   * @return {boolean}
+   * @return {boolean} Returns true if scope is set, false otherwise
    */
   hasProviderScope() {
     return core.isDefAndNotNull(this.providerScope);
   }
 
   /**
-   * Checks if redirect uri is defined and not null.
-   * @return {boolean}
+   * Checks if redirect Uri is defined and not null.
+   * @return {boolean} Returns true if redirect Uri is set, false otherwise
    */
   hasRedirectUri() {
     return core.isDefAndNotNull(this.redirectUri);
@@ -74,16 +74,16 @@ class AuthProvider {
 
   /**
    * Checks if scope is defined and not null.
-   * @return {boolean}
+   * @return {boolean} Returns true if scope is set, false otherwise
    */
   hasScope() {
     return core.isDefAndNotNull(this.scope);
   }
 
   /**
-   * Makes authorization url. An optional authorization URL might be provided.
-   * @param {string} opt_authUrl Optional authorization URL.
-   * @return {string} Normalized authorization URL.
+   * Makes authorization url. An optional authorization Url might be provided.
+   * @param {string} opt_authUrl Optional authorization Url.
+   * @return {string} Normalized authorization Url
    */
   makeAuthorizationUrl(opt_authUrl) {
     let uri = new Uri(opt_authUrl);
@@ -112,7 +112,7 @@ class AuthProvider {
 
   /**
    * Gets provider name.
-   * @return {string} Provider name.
+   * @return {string} Returns the name of the current provider
    */
   getProvider() {
     return this.provider;
@@ -120,15 +120,15 @@ class AuthProvider {
 
   /**
    * Gets provider scope.
-   * @return {string} String with scopes.
+   * @return {string} Returns the provider scopes
    */
   getProviderScope() {
     return this.providerScope;
   }
 
   /**
-   * Gets redirect uri.
-   * @return {string}.
+   * Gets redirect Uri.
+   * @return {string} Returns the redirect Uri
    */
   getRedirectUri() {
     return this.redirectUri;
@@ -136,7 +136,7 @@ class AuthProvider {
 
   /**
    * Gets scope.
-   * @return {string} String with scopes.
+   * @return {string} Returns the current scope
    */
   getScope() {
     return this.scope;
@@ -145,7 +145,7 @@ class AuthProvider {
   /**
    * Sets provider scope.
    * @param {string=} providerScope Scope string. Separate by space for multiple
-   *   scopes, e.g. "scope1 scope2".
+   *   scopes, e.g. "scope1 scope2"
    */
   setProviderScope(providerScope) {
     assertStringIfDefAndNotNull(
@@ -156,9 +156,9 @@ class AuthProvider {
   }
 
   /**
-   * Sets redirect uri.
-   * @param {string} redirectUri The redirect URI to be set to the current
-   *   instance.
+   * Sets redirect Uri.
+   * @param {string} redirectUri The redirect Uri to be set to the current
+   *   instance
    */
   setRedirectUri(redirectUri) {
     assertStringIfDefAndNotNull(redirectUri, 'Redirect uri must be a string');
@@ -168,7 +168,7 @@ class AuthProvider {
   /**
    * Sets scope.
    * @param {string=} scope Scope string. Separate by space for multiple
-   *   scopes, e.g. "scope1 scope2".
+   *   scopes, e.g. "scope1 scope2"
    */
   setScope(scope) {
     assertStringIfDefAndNotNull(scope, 'Scope must be a string');
@@ -179,7 +179,7 @@ class AuthProvider {
 /**
  * Throws an exception if the provided value is defined and not null, but not a
  *   string.
- * @param {!*} value The value to be checked.
+ * @param {!*} value The value to be checked
  * @param {!string} errorMessage The message to be provided to the exception.
  */
 function assertStringIfDefAndNotNull(value, errorMessage) {

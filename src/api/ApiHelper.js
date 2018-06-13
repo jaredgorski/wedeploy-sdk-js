@@ -40,7 +40,7 @@ import Auth from './auth/Auth';
 class ApiHelper {
   /**
    * Constructs an {@link ApiHelper} instance.
-   * @param {!WeDeploy} wedeployClient {@link WeDeploy} client reference.
+   * @param {!WeDeploy} wedeployClient {@link WeDeploy} client reference
    * @constructor
    */
   constructor(wedeployClient) {
@@ -57,10 +57,10 @@ class ApiHelper {
    * Adds a header. If a header with the same name already exists, it will not
    * be overwritten, but the new value will be stored as well. The order is
    * preserved.
-   * @param {string} name
-   * @param {string} value
-   * @return {!ApiHelper} Returns the {@link ApiHelper}
-   *   object itself, so calls can be chained.
+   * @param {!string} name The name of the header to be set
+   * @param {!string} value The value of the header to be set
+   * @return {!ApiHelper} Returns the {@link ApiHelper} object itself,
+   *   so calls can be chained
    * @chainable
    */
   header(name, value) {
@@ -74,9 +74,9 @@ class ApiHelper {
   /**
    * Adds authorization information to this request.
    * @param {!Auth|string} authOrTokenOrEmail Either an {@link Auth} instance,
-   * an authorization token, or the email.
-   * @param {string=} opt_password If a email is given as the first param,
-   * this should be the password.
+   *   an authorization token, or the email
+   * @param {string=} opt_password Optionally sets the password. If an email is
+   *   given as the first param, `password` param should be set.
    * @return {ApiHelper}
    * @chainable
    */
@@ -88,9 +88,10 @@ class ApiHelper {
 
   /**
    * Assigns the passed value to the internal with credentials option.
-   * @param {boolean} withCredentials
+   * @param {boolean} withCredentials The value of `withCredentials` request
+   *   param
    * @return {ApiHelper} Returns the {@link ApiHelper} object itself, so calls
-   *   can be chained.
+   *   can be chained
    * @chainable
    */
   withCredentials(withCredentials) {

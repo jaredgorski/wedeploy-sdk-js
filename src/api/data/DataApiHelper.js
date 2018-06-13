@@ -42,13 +42,13 @@ import {
 import {core} from 'metal';
 
 /**
- * Class responsible for encapsulate data api calls.
+ * Class responsible for encapsulating data API calls.
  */
 class DataApiHelper extends ApiHelper {
   /**
    * Constructs an {@link DataApiHelper} instance.
-   * @param {!WeDeploy} wedeployClient {@link WeDeploy} client reference.
-   * @param {!string} dataUrl
+   * @param {!WeDeploy} wedeployClient {@link WeDeploy} client reference
+   * @param {!string} dataUrl The Url to Data service
    * @constructor
    */
   constructor(wedeployClient, dataUrl) {
@@ -62,10 +62,11 @@ class DataApiHelper extends ApiHelper {
    * Adds a filter to this request's {@link Query}.
    * @param {!Filter|string} fieldOrFilter Either a Filter instance or the
    *   name of the field to filter by.
-   * @param {*=} opt_operatorOrValue Either the field's operator or its value.
-   * @param {*=} opt_value The filter's value.
+   * @param {*=} opt_operatorOrValue Optionally set either the field's operator
+   *   or its value
+   * @param {*=} opt_value Optionally set the filter's value
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
+   *   calls can be chained
    * @chainable
    */
   where(fieldOrFilter, opt_operatorOrValue, opt_value) {
@@ -80,12 +81,13 @@ class DataApiHelper extends ApiHelper {
   /**
    * Adds a filter to be composed with this filter using the "or" operator.
    * @param {!Filter|string} fieldOrFilter Either a {@link Filter} instance or
-   *   the name of the field to filter by.
-   * @param {*=} opt_operatorOrValue Either the field's operator or its value.
-   * @param {*=} opt_value The filter's value.
+   *   the name of the field to filter by
+   * @param {*=} opt_operatorOrValue Optionally set either the field's operator
+   *   or its value.
+   * @param {*=} opt_value Optionally set the filter's value
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   or(fieldOrFilter, opt_operatorOrValue, opt_value) {
     if (this.getOrCreateFilter_().body().and.length === 0) {
@@ -99,77 +101,77 @@ class DataApiHelper extends ApiHelper {
   }
 
   /**
-   * Adds a filter to be compose with this filter using "none" operator.
-   * @param {string} field The name of the field to filter by.
+   * Adds a filter to be composed with this filter using "none" operator.
+   * @param {string} field The name of the field to filter by
    * @param {!(Array|*)} args A variable amount of values to be used with
    * the "none" operator. Can be passed either as a single array or as
-   * separate params.
+   * separate params
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   none(field, ...args) {
     return this.where(Filter.none(field, args));
   }
 
   /**
-   * Adds a filter to be compose with this filter using "exists" operator.
-   * @param {!string} field The name of the field to filter by.
+   * Adds a filter to be composed with this filter using "exists" operator.
+   * @param {!string} field The name of the field to filter by
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   exists(field) {
     return this.where(Filter.exists(field));
   }
 
   /**
-   * Adds a filter to be compose with this filter using "match" operator.
+   * Adds a filter to be composed with this filter using "match" operator.
    * @param {string} field If no second string argument is given, this
    *   should be the query string, in which case all fields will be matched.
    *   Otherwise, this should be the name of the field to match.
    * @param {string=} opt_query The query string.
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   match(field, opt_query) {
     return this.where(Filter.match(field, opt_query));
   }
 
   /**
-   * Adds a filter to be compose with this filter using "phrase" operator.
-   * @param {string} field The name of the field to filter by.
-   * @param {string=} opt_query The query string.
+   * Adds a filter to be composed with this filter using "phrase" operator.
+   * @param {string} field The name of the field to filter by
+   * @param {string=} opt_query The query string
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   phrase(field, opt_query) {
     return this.where(Filter.phrase(field, opt_query));
   }
 
   /**
-   * Adds a filter to be compose with this filter using "prefix" operator.
-   * @param {string} field The name of the field to filter by.
-   * @param {string=} opt_query The query string.
+   * Adds a filter to be composed with this filter using "prefix" operator.
+   * @param {string} field The name of the field to filter by
+   * @param {string=} opt_query The query string
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   prefix(field, opt_query) {
     return this.where(Filter.prefix(field, opt_query));
   }
 
   /**
-   * Adds a filter to be compose with this filter using "similar" operator.
+   * Adds a filter to be composed with this filter using "similar" operator.
    * @param {string} fieldOrQuery If no second string argument is given, this
-   * should be the query string, in which case all fields will be matched.
-   * Otherwise, this should be the name of the field to match.
+   *   should be the query string, in which case all fields will be matched.
+   *   Otherwise, this should be the name of the field to match.
    * @param {?string} query The query string.
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   similar(fieldOrQuery, query) {
     return this.where(Filter.similar(fieldOrQuery, query));
@@ -177,11 +179,11 @@ class DataApiHelper extends ApiHelper {
 
   /**
    * Returns a {@link Filter} instance that uses the "<" operator.
-   * @param {string} field The name of the field to filter by.
-   * @param {*} value The filter's value.
+   * @param {string} field The name of the field to filter by
+   * @param {*} value The filter's value
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   lt(field, value) {
     return this.where(Filter.lt(field, value));
@@ -189,11 +191,11 @@ class DataApiHelper extends ApiHelper {
 
   /**
    * Returns a {@link Filter} instance that uses the "<=" operator.
-   * @param {string} field The name of the field to filter by.
-   * @param {*} value The filter's value.
+   * @param {string} field The name of the field to filter by
+   * @param {*} value The filter's value
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   lte(field, value) {
     return this.where(Filter.lte(field, value));
@@ -201,11 +203,11 @@ class DataApiHelper extends ApiHelper {
 
   /**
    * Returns a {@link Filter} instance that uses the ">" operator.
-   * @param {string} field The name of the field to filter by.
-   * @param {*} value The filter's value.
+   * @param {string} field The name of the field to filter by
+   * @param {*} value The filter's value
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   gt(field, value) {
     return this.where(Filter.gt(field, value));
@@ -213,40 +215,40 @@ class DataApiHelper extends ApiHelper {
 
   /**
    * Returns a {@link Filter} instance that uses the ">=" operator.
-   * @param {string} field The name of the field to filter by.
-   * @param {*} value The filter's value.
+   * @param {string} field The name of the field to filter by
+   * @param {*} value The filter's value
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   gte(field, value) {
     return this.where(Filter.gte(field, value));
   }
 
   /**
-   * Adds a filter to be compose with this filter using "any" operator.
-   * @param {string} field The name of the field to filter by.
+   * Adds a filter to be composed with this filter using "any" operator.
+   * @param {string} field The name of the field to filter by
    * @param {!(Array|*)} args A variable amount of values to be used with
-   * the "none" operator. Can be passed either as a single array or as
-   * separate params.
+   *   the "none" operator. Can be passed either as a single array or as
+   *   separate params.
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   any(field, ...args) {
     return this.where(Filter.any(field, args));
   }
 
   /**
-   * Adds a filter to be compose with this filter using "gp" operator. This is a
-   * special use case of `Filter.polygon` for bounding boxes.
-   * @param {string} field The field's name.
+   * Adds a filter to be composed with this filter using "gp" operator. This is
+   * a special use case of `Filter.polygon` for bounding boxes.
+   * @param {string} field The field's name
    * @param {*} boxOrUpperLeft Either a `Geo.BoundingBox` instance, or a
-   * bounding box's upper left coordinate.
+   *   bounding box's upper left coordinate
    * @param {*=} opt_lowerRight A bounding box's lower right coordinate.
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   boundingBox(field, boxOrUpperLeft, opt_lowerRight) {
     return this.where(
@@ -255,15 +257,14 @@ class DataApiHelper extends ApiHelper {
   }
 
   /**
-   * Adds a filter to be compose with this filter using "gd" operator.
-   * @param {string} field The field's name.
-   * @param {*} locationOrCircle Either a `Geo.Circle` instance or a
-   * coordinate.
+   * Adds a filter to be composed with this filter using "gd" operator.
+   * @param {string} field The field's name
+   * @param {*} locationOrCircle Either a `Geo.Circle` instance or a coordinate
    * @param {Range|string=} opt_rangeOrDistance Either a `Range` instance or
-   * the distance value.
+   *   the distance value.
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   distance(field, locationOrCircle, opt_rangeOrDistance) {
     return this.where(
@@ -275,8 +276,8 @@ class DataApiHelper extends ApiHelper {
    * Adds a fields entry to this request's {@link Query} instance.
    * @param {string|Array} fields Single field name or an array of fields
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   fields(fields) {
     this.getOrCreateQuery_().fields(fields);
@@ -284,14 +285,13 @@ class DataApiHelper extends ApiHelper {
   }
 
   /**
-   * Adds a filter to be compose with this filter using "range" operator.
-   * @param {string} field The field's name.
-   * @param {*} rangeOrMin Either a `Range` instance or a the range's min
-   * value.
-   * @param {*=} opt_max The range's max value.
+   * Adds a filter to be composed with this filter using "range" operator.
+   * @param {string} field The field's name
+   * @param {*} rangeOrMin Either a `Range` instance or a the range's min value
+   * @param {*=} opt_max The range's max value
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   range(field, rangeOrMin, opt_max) {
     return this.where(Filter.range(field, rangeOrMin, opt_max));
@@ -300,10 +300,10 @@ class DataApiHelper extends ApiHelper {
   /**
    * Sets the limit for this request's {@link Query}.
    * @param {number} limit The max amount of entries that this request should
-   *   return.
+   *   return
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   limit(limit) {
     this.getOrCreateQuery_().limit(limit);
@@ -313,10 +313,10 @@ class DataApiHelper extends ApiHelper {
   /**
    * Sets the offset for this request's {@link Query}.
    * @param {number} offset The index of the first entry that should be
-   * returned by this query.
+   *    returned by this query
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   offset(offset) {
     this.getOrCreateQuery_().offset(offset);
@@ -325,10 +325,10 @@ class DataApiHelper extends ApiHelper {
 
   /**
    * Adds a highlight entry to this request's {@link Query} instance.
-   * @param {string} field The field's name.
+   * @param {string} field The field's name
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   highlight(field) {
     this.getOrCreateQuery_().highlight(field);
@@ -337,13 +337,13 @@ class DataApiHelper extends ApiHelper {
 
   /**
    * Adds an aggregation to this {@link Query} instance.
-   * @param {string} name The aggregation name.
-   * @param {!Aggregation|string} aggregationOrField Either an {@link
-   * Aggregation} instance or the name of the aggregation field.
-   * @param {string=} opt_operator The aggregation operator.
+   * @param {string} name The aggregation name
+   * @param {!Aggregation|string} aggregationOrField Either an
+   *   {@link Aggregation} instance or the name of the aggregation field
+   * @param {string=} opt_operator Optional aggregation operator.
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   aggregate(name, aggregationOrField, opt_operator = 'terms') {
     this.getOrCreateQuery_().aggregate(name, aggregationOrField, opt_operator);
@@ -353,8 +353,8 @@ class DataApiHelper extends ApiHelper {
   /**
    * Sets this request's query type to 'count'.
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   count() {
     this.getOrCreateQuery_().type('count');
@@ -363,12 +363,12 @@ class DataApiHelper extends ApiHelper {
 
   /**
    * Adds a sort query to this request's body.
-   * @param {string} field The field that the query should be sorted by.
+   * @param {string} field The field that the query should be sorted by
    * @param {string=} opt_direction The direction the sort operation should
-   * use. If none is given, 'asc' is used by default.
+   *   use. If none is given, 'asc' is used by default
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
-   *   calls can be chained.
-   * @chainnable
+   *   calls can be chained
+   * @chainable
    */
   orderBy(field, opt_direction) {
     this.getOrCreateQuery_().sort(field, opt_direction);
@@ -379,7 +379,7 @@ class DataApiHelper extends ApiHelper {
    * Creates an object (or multiple objects) and saves it to WeDeploy data. If
    * there's a validation registered in the collection and the request is
    * successful, the resulting object (or array of objects) is returned. The
-   * data parameter can be either an Object or an Array of Objects.
+   * data parameter can be either an object or an array of objects.
    * These Objects describe the attributes on the objects that are to be
    *   created.
    * ```javascript
@@ -398,9 +398,14 @@ class DataApiHelper extends ApiHelper {
    * 			 console.log(movies)
    *     });
    * ```
-   * @param {string} collection Collection (key) used to create the new data.
-   * @param {Object} data Attributes on the object that is to be created.
-   * @return {!CancellablePromise}
+   * @param {string} collection Collection (key) used to create the new data
+   * @param {Object|Array<Object>} data An object or an array of objects to be
+   *   created
+   * @return {!CancellablePromise} Resolves with server response. In case of
+   *   single object, returns the created object. In case of multiple documents,
+   *   returns an object with two properties:
+   *   - hasFailures: <true or false>
+   *   - results: <array of the created documents>
    */
   create(collection, data) {
     assertDefAndNotNull(collection, 'Collection key must be specified.');
@@ -415,9 +420,9 @@ class DataApiHelper extends ApiHelper {
 
   /**
    * Creates a collection and maps the field types.
-   * @param {!string} collection The name of the collection.
-   * @param {!Object} fieldTypes Field types mappings of the collection.
-   * @return {!CancellablePromise}
+   * @param {!string} collection The name of the collection
+   * @param {!Object} fieldTypes Field types mappings of the collection
+   * @return {!CancellablePromise} Resolves with response body
    */
   createCollection(collection, fieldTypes) {
     assertDefAndNotNull(collection, 'Collection key must be specified.');
@@ -455,7 +460,7 @@ class DataApiHelper extends ApiHelper {
    * ```
    * @param {string} doc Key used to update the document.
    * @param {Object} data Attributes on the object that is to be updated.
-   * @return {!CancellablePromise}
+   * @return {!CancellablePromise} Resolves with response body
    */
   replace(doc, data) {
     assertDefAndNotNull(doc, 'Document key must be specified.');
@@ -483,7 +488,7 @@ class DataApiHelper extends ApiHelper {
    * ```
    * @param {string} doc Key used to update the document.
    * @param {Object} data Attributes on the object that is to be updated.
-   * @return {!CancellablePromise}
+   * @return {!CancellablePromise} Resolves with response body
    */
   update(doc, data) {
     assertDefAndNotNull(doc, 'Document key must be specified.');
@@ -498,9 +503,8 @@ class DataApiHelper extends ApiHelper {
 
   /**
    * Deletes a [document/field/collection].
-   * @param {string} key Key used to delete the
-   * document/field/collection.
-   * @return {!CancellablePromise}
+   * @param {string} key Key used to delete the document/field/collection
+   * @return {!CancellablePromise} Resolves when delete request finishes
    */
   delete(key) {
     assertDefAndNotNull(key, 'Document/Field/Collection key must be specified');
@@ -514,8 +518,8 @@ class DataApiHelper extends ApiHelper {
 
   /**
    * Retrieve data from a [document/field/collection].
-   * @param {string} key Key used to delete the document/field/collection.
-   * @return {!CancellablePromise}
+   * @param {string} key Key used to delete the document/field/collection
+   * @return {!CancellablePromise} Resolves with response body
    */
   get(key) {
     assertDefAndNotNull(key, 'Document/Field/Collection key must be specified');
@@ -530,8 +534,8 @@ class DataApiHelper extends ApiHelper {
   /**
    * Retrieve data from a [document/field/collection] and put it in a search
    * format.
-   * @param {string} key Key used to delete the document/field/collection.
-   * @return {!CancellablePromise}
+   * @param {string} key Key used to delete the document/field/collection
+   * @return {!CancellablePromise} Resolves with response body
    */
   search(key) {
     assertDefAndNotNull(key, 'Document/Field/Collection key must be specified');
@@ -547,9 +551,9 @@ class DataApiHelper extends ApiHelper {
 
   /**
    * Updates the mapped field types of a collection.
-   * @param {!string} collection The name of the collection.
-   * @param {!Object} fieldTypes Field types mappings of the collection.
-   * @return {!CancellablePromise}
+   * @param {!string} collection The name of the collection
+   * @param {!Object} fieldTypes Field types mappings of the collection
+   * @return {!CancellablePromise} Resolves with response body
    */
   updateCollection(collection, fieldTypes) {
     assertDefAndNotNull(collection, 'Collection key must be specified.');
@@ -579,9 +583,10 @@ class DataApiHelper extends ApiHelper {
   /**
    * Creates new socket.io instance. Monitor the arrival of new broadcasted
    * data.
-   * @param  {string} collection key/collection used to find organized data.
-   * @param  {Object=} opt_options Object with Socket IO options.
-   * @return {!io} Socket IO reference. Server events can be listened on it.
+   * @param  {string} collection key/collection used to find organized data
+   * @param  {Object=} opt_options Object with Socket IO options
+   * @return {!io} Returns an Socket IO reference so server events can be
+   *   listened
    */
   watch(collection, opt_options) {
     assertDefAndNotNull(collection, 'Collection key must be specified');
@@ -592,9 +597,9 @@ class DataApiHelper extends ApiHelper {
   }
 
   /**
-   * Builds URL by joining headers, auth and withCredentials.
+   * Builds Url by joining headers, auth and withCredentials.
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
-   *   be chained.
+   *   be chained
    * @chainable
    */
   buildUrl_() {
@@ -608,7 +613,7 @@ class DataApiHelper extends ApiHelper {
   /**
    * Gets the currently used main {@link Filter} object. If none exists yet, a
    * new one is created.
-   * @return {!Query}
+   * @return {!Query} Returns an instance of {@link Query}
    * @protected
    */
   getOrCreateFilter_() {
@@ -621,7 +626,7 @@ class DataApiHelper extends ApiHelper {
   /**
    * Gets the currently used {@link Query} object. If none exists yet,
    * a new one is created.
-   * @return {!Query}
+   * @return {!Query} Returns an instance of {@link Query}
    * @protected
    */
   getOrCreateQuery_() {
@@ -634,7 +639,7 @@ class DataApiHelper extends ApiHelper {
   /**
    * Aggregate filters into query and return its latest value. Query and
    * filters are cleaned after aggregation.
-   * @return {Query}
+   * @return {Query} Returns an instance of {@link Query}
    * @protected
    */
   processAndResetQueryState() {

@@ -72,9 +72,9 @@ if (typeof globals.window !== 'undefined') {
 class WeDeploy {
   /**
    * WeDeploy constructor function.
-   * @param {string} url The base url.
+   * @param {string} url The base Url
    * @param {...string} paths Any amount of paths to be appended to the base
-   * url.
+   *   Url
    * @constructor
    */
   constructor(url, ...paths) {
@@ -95,9 +95,9 @@ class WeDeploy {
   }
 
   /**
-   * Static factory for creating WeDeploy data for the given url.
-   * @param {string=} dataUrl The url that points to the data services.
-   * @return {!DataApiHelper} Returns an {@link DataApiHelper} instance.
+   * Static factory for creating WeDeploy data for the given Url.
+   * @param {string=} dataUrl The Url that points to the data service
+   * @return {!DataApiHelper} Returns a {@link DataApiHelper} instance
    */
   static data(dataUrl) {
     assertDefAndNotNull(dataUrl, 'The data url should be provided');
@@ -107,9 +107,9 @@ class WeDeploy {
   }
 
   /**
-   * Static factory for creating WeDeploy email for the given url.
-   * @param {string=} emailUrl The url that points to the email services.
-   * @return {!EmailApiHelper} Returns an {@link EmailApiHelper} instance.
+   * Static factory for creating WeDeploy email for the given Url.
+   * @param {string=} emailUrl The Url that points to the email services
+   * @return {!EmailApiHelper} Returns an {@link EmailApiHelper} instance
    */
   static email(emailUrl) {
     assertDefAndNotNull(emailUrl, 'The email url should be provided');
@@ -119,9 +119,9 @@ class WeDeploy {
   }
 
   /**
-   * Static factory for creating WeDeploy auth for the given url.
-   * @param {string=} authUrl The url that points to the auth service.
-   * @return {!AuthApiHelper} Returns an {@link AuthApiHelper} instance.
+   * Static factory for creating WeDeploy auth for the given Url.
+   * @param {string=} authUrl The Url that points to the auth service
+   * @return {!AuthApiHelper} Returns an {@link AuthApiHelper} instance
    */
   static auth(authUrl) {
     assertDefAndNotNull(authUrl, 'The auth url should be provided');
@@ -133,11 +133,11 @@ class WeDeploy {
   /**
    * Adds authorization information to this request.
    * @param {!Auth|string} authOrTokenOrEmail Either an {@link Auth} instance,
-   * an authorization token, or the email.
+   * an authorization token, or the email
    * @param {string=} opt_password If a email is given as the first param,
-   * this should be the password.
+   *   this should be the password
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
-   *   be chained.
+   *   be chained
    * @chainable
    */
   auth(authOrTokenOrEmail, opt_password) {
@@ -148,9 +148,9 @@ class WeDeploy {
 
   /**
    * Sets the body that will be sent with this request.
-   * @param {*} body
+   * @param {*} body The body to be sent with the request
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
-   *   be chained.
+   *   be chained
    * @chainable
    */
   body(body) {
@@ -160,7 +160,7 @@ class WeDeploy {
 
   /**
    * Converts the given body object to query params.
-   * @param {!ClientRequest} clientRequest Client request.
+   * @param {!ClientRequest} clientRequest Client request
    * @param {*} body
    * @protected
    */
@@ -179,10 +179,10 @@ class WeDeploy {
 
   /**
    * Creates client request and encode.
-   * @param {string} method
-   * @param {*} body
-   * @return {!ClientRequest} Client request.
+   * @param {string} method The method to be used in the request
+   * @param {*} body The body to be set to the request
    * @protected
+   * @return {!ClientRequest} Client request
    */
   createClientRequest_(method, body) {
     const clientRequest = new ClientRequest();
@@ -210,8 +210,8 @@ class WeDeploy {
   /**
    * Decodes clientResponse body, parsing the body for example.
    * @param {!ClientResponse} clientResponse The response object to be
-   * decoded.
-   * @return {!ClientResponse} The decoded response.
+   *   decoded
+   * @return {!ClientResponse} Resolves with the decoded response
    */
   decode(clientResponse) {
     if (WeDeploy.isContentTypeJson(clientResponse)) {
@@ -224,8 +224,8 @@ class WeDeploy {
 
   /**
    * Sends message with the DELETE http verb.
-   * @param {string=} opt_body Content to be sent as the request's body.
-   * @return {!CancellablePromise}
+   * @param {string=} opt_body Content to be sent as the request's body
+   * @return {!CancellablePromise} Resolves when `delete` request finishes
    */
   delete(opt_body) {
     return this.sendAsync('DELETE', opt_body);
@@ -234,8 +234,8 @@ class WeDeploy {
   /**
    * Encodes the given {@link ClientRequest}, converting its body to an
    * appropriate format for example.
-   * @param {!ClientRequest} clientRequest The request object to encode.
-   * @return {!ClientRequest} The encoded request.
+   * @param {!ClientRequest} clientRequest The request object to encode
+   * @return {!ClientRequest} The encoded request
    */
   encode(clientRequest) {
     let body = clientRequest.body();
@@ -272,7 +272,7 @@ class WeDeploy {
 
   /**
    * Encodes the params for the given request, according to their types.
-   * @param {!ClientRequest} clientRequest
+   * @param {!ClientRequest} clientRequest The request object to encode
    * @protected
    */
   encodeParams_(clientRequest) {
@@ -295,10 +295,10 @@ class WeDeploy {
    * format.
    * If the body is set by other means (for example, through the `body` method),
    * this will be ignored.
-   * @param {string} name
-   * @param {*} value
+   * @param {string} name The name of the field
+   * @param {*} value The value of the field
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
-   *   be chained.
+   *   be chained
    * @chainable
    */
   form(name, value) {
@@ -318,7 +318,7 @@ class WeDeploy {
   /**
    * Sends message with the GET http verb.
    * @param {*=} opt_params Params to be added to the request url.
-   * @return {!CancellablePromise}
+   * @return {!CancellablePromise} Resolves when `get` request finishes
    */
   get(opt_params) {
     return this.sendAsync('GET', opt_params);
@@ -327,10 +327,10 @@ class WeDeploy {
   /**
    * Adds a header. If the header with the same name already exists, it will
    * not be overwritten, but new value will be stored. The order is preserved.
-   * @param {string} name Header key.
-   * @param {*} value Header value.
+   * @param {string} name The name of the header to be set
+   * @param {*} value The value of the header to be set
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
-   *   be chained.
+   *   be chained
    * @chainable
    */
   header(name, value) {
@@ -348,9 +348,9 @@ class WeDeploy {
    * @param {MultiMap|Object=} opt_headers Headers to be set
    * @return {WeDeploy|MultiMap} If headers were passed to te function,
    *   the returned result will be the {@link WeDeploy} object itself, so calls
-   *   can be chained. If headers were not passed to the function, the returned
+   *   can be chained If headers were not passed to the function, the returned
    *   result will be the current headers.
-   * @chainable Chainable when used as setter.
+   * @chainable Chainable when used as setter
    */
   headers(opt_headers) {
     if (core.isDefAndNotNull(opt_headers)) {
@@ -374,8 +374,9 @@ class WeDeploy {
 
   /**
    * Check if clientMessage content type is application/json.
-   * @param {ClientMessage} clientMessage Client message.
-   * @return {boolean}
+   * @param {ClientMessage} clientMessage Client message
+   * @return {boolean} Returns true if content type is application/json, false
+   *   otherwise
    */
   static isContentTypeJson(clientMessage) {
     const contentType = clientMessage.headers().get('content-type') || '';
@@ -385,9 +386,10 @@ class WeDeploy {
   /**
    * Wraps the given `Embodied` instance with a {@link Query} instance if
    * needed.
-   * @param {Embodied} embodied
-   * @return {Embodied}
+   * @param {Embodied|Filter} embodied An {@link Embodied} or {@link Filter}
+   *   instance
    * @protected
+   * @return {Embodied} Returns an {@link Embodied} instance
    */
   maybeWrapWithQuery_(embodied) {
     if (embodied instanceof Filter) {
@@ -399,10 +401,10 @@ class WeDeploy {
   /**
    * Adds a query. If the query with the same name already exists, it will not
    * be overwritten, but new value will be stored. The order is preserved.
-   * @param {string} name Param key.
-   * @param {*} value Param value.
+   * @param {string} name Param key
+   * @param {*} value Param value
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
-   *   be chained.
+   *   be chained
    * @chainable
    */
   param(name, value) {
@@ -415,7 +417,7 @@ class WeDeploy {
 
   /**
    * Gets the query strings map.
-   * @return {!MultiMap}
+   * @return {!MultiMap} Returns an instance of {@link MultiMap}
    */
   params() {
     return this.params_;
@@ -424,7 +426,7 @@ class WeDeploy {
   /**
    * Sends message with the PATCH http verb.
    * @param {string=} opt_body Content to be sent as the request's body.
-   * @return {!CancellablePromise}
+   * @return {!CancellablePromise} Resolves when `patch` request finishes
    */
   patch(opt_body) {
     return this.sendAsync('PATCH', opt_body);
@@ -433,9 +435,9 @@ class WeDeploy {
   /**
    * Creates a new {@link WeDeploy} instance for handling the url resulting in
    * the union of the current url with the given paths.
-   * @param {...string} paths Any number of paths.
+   * @param {...string} paths Any number of paths
    * @return {!WeDeploy} A new {@link WeDeploy} instance for handling the given
-   *   paths.
+   *   paths
    */
   path(...paths) {
     let wedeployClient = new WeDeploy(this.url(), ...paths);
@@ -453,7 +455,7 @@ class WeDeploy {
   /**
    * Sends message with the POST http verb.
    * @param {string=} opt_body Content to be sent as the request's body.
-   * @return {!CancellablePromise}
+   * @return {!CancellablePromise} Resolves when `post` request finishes
    */
   post(opt_body) {
     return this.sendAsync('POST', opt_body);
@@ -462,7 +464,7 @@ class WeDeploy {
   /**
    * Sends message with the PUT http verb.
    * @param {string=} opt_body Content to be sent as the request's body.
-   * @return {!CancellablePromise}
+   * @return {!CancellablePromise} Resolves when `put` request finishes
    */
   put(opt_body) {
     return this.sendAsync('PUT', opt_body);
@@ -470,7 +472,7 @@ class WeDeploy {
 
   /**
    * Adds the authentication information to the request.
-   * @param {!ClientRequest} clientRequest
+   * @param {!ClientRequest} clientRequest  The request object
    * @protected
    */
   resolveAuthentication_(clientRequest) {
@@ -491,9 +493,9 @@ class WeDeploy {
   /**
    * Uses transport to send request with given method name and body
    * asynchronously.
-   * @param {string} method The HTTP method to be used when sending data.
-   * @param {string} body Content to be sent as the request's body.
-   * @return {!CancellablePromise} Deferred request.
+   * @param {string} method The HTTP method to be used when sending data
+   * @param {string} body Content to be sent as the request's body
+   * @return {!CancellablePromise} Deferred request
    */
   sendAsync(method, body) {
     const transport =
@@ -505,16 +507,16 @@ class WeDeploy {
   }
 
   /**
-   * Sets the socket transport
-   * @param {Object} socket implementation object.
+   * Sets the socket transport.
+   * @param {Object} socket implementation object
    */
   static socket(socket) {
     io = socket;
   }
 
   /**
-   * Sets the FormData
-   * @param {Object} formData implementation object.
+   * Sets the FormData.
+   * @param {Object} formData implementation object
    */
   static formData(formData) {
     FormDataImpl = formData;
@@ -523,16 +525,16 @@ class WeDeploy {
   /**
    * Static factory for creating WeDeploy client for the given url.
    * @param {string} url The url that the client should use for sending
-   *   requests.
+   *   requests
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
-   *   be chained.
+   *   be chained
    */
   static url(url) {
     return new WeDeploy(url).use(this.customTransport_);
   }
 
   /**
-   * Returns the URL used by this client.
+   * Returns the Url used by this client.
    * @return {!string}
    */
   url() {
@@ -541,9 +543,9 @@ class WeDeploy {
 
   /**
    * Indicate whether or not to follow redirects.
-   * @param {!boolean} followRedirect
+   * @param {!boolean} followRedirect True if redirects has to be followed
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
-   *   be chained.
+   *   be chained
    */
   followRedirect(followRedirect) {
     this.followRedirect_ = followRedirect;
@@ -553,9 +555,9 @@ class WeDeploy {
   /**
    * Specifies {@link Transport} implementation.
    * @param {!Transport} transport The transport implementation that should be
-   * used.
+   * use
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
-   *   be chained.
+   *   be chained
    */
   use(transport) {
     this.customTransport_ = transport;
@@ -572,9 +574,9 @@ class WeDeploy {
    * io('domain:8080/?url=path%2Fa%3Fid%3DmyId', {foo: true});
    * ```
    *
-   * @param {Object=} opt_params Params to be sent with the Socket IO request.
-   * @param {Object=} opt_options Object with Socket IO options.
-   * @return {!io} Socket IO reference. Server events can be listened on it.
+   * @param {Object=} opt_params Params to be sent with the Socket IO request
+   * @param {Object=} opt_options Object with Socket IO options
+   * @return {!io} Socket IO reference. Server events can be listened on it
    */
   watch(opt_params, opt_options) {
     if (typeof io === 'undefined') {
@@ -640,9 +642,10 @@ class WeDeploy {
 
   /**
    * Assigns the passed value to the internal with credentials option.
-   * @param {boolean} withCredentials
+   * @param {boolean} withCredentials True if withCredentials has to be set on
+   *   the request
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
-   *   be chained.
+   *   be chained
    */
   withCredentials(withCredentials) {
     this.withCredentials_ = !!withCredentials;

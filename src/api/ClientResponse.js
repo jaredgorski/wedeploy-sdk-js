@@ -41,7 +41,7 @@ class ClientResponse extends ClientMessage {
   /**
    * Constructs an {@link ClientResponse} instance.
    * @param {!ClientRequest} clientRequest Instance of {@link ClientRequest}
-   *   object.
+   *   object
    * @constructor
    */
   constructor(clientRequest) {
@@ -54,7 +54,7 @@ class ClientResponse extends ClientMessage {
 
   /**
    * Returns request that created this response.
-   * @return {!ClientRequest}
+   * @return {!ClientRequest} Returns an instance of {@link ClientRequest}
    */
   request() {
     return this.clientRequest_;
@@ -66,7 +66,7 @@ class ClientResponse extends ClientMessage {
    *  given, the current status code value will be returned.
    * @return {!ClientMessage|number} Returns response status code if no new
    *   value was given. Otherwise returns the {@link ClientMessage} object
-   *   itself, so calls can be chained.
+   *   itself, so calls can be chained
    * @chainable Chainable when used as setter.
    */
   statusCode(opt_statusCode) {
@@ -83,7 +83,7 @@ class ClientResponse extends ClientMessage {
    *   given, the current status text value will be returned.
    * @return {!ClientMessage|number} Returns response status text if no new
    *   value was given. Otherwise returns the {@link ClientMessage} object
-   *   itself, so calls can be chained.
+   *   itself, so calls can be chained
    * @chainable Chainable when used as setter.
    */
   statusText(opt_statusText) {
@@ -95,7 +95,7 @@ class ClientResponse extends ClientMessage {
   }
 
   /**
-   * Checks if response succeeded. Any status code 2xx or 3xx is considered
+   * Checks if response succeeded. Any status code 2xx or 3xx is considered as
    * valid.
    * @return {boolean}
    */

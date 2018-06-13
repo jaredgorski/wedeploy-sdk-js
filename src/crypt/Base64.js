@@ -37,8 +37,8 @@
 class Base64 {
   /**
    * Creates a base-64 encoded ASCII string from a "string" of binary data.
-   * @param {string} string to be encoded.
-   * @return {string}
+   * @param {string} string The string to be encoded
+   * @return {string} Returns the encoded string
    * @static
    */
   static encodeString(string) {

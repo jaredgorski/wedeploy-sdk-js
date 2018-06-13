@@ -54,8 +54,8 @@ import {
 class AuthApiHelper extends ApiHelper {
   /**
    * Constructs an {@link AuthApiHelper} instance.
-   * @param {!WeDeploy} wedeployClient
-   * @param {!string} authUrl
+   * @param {!WeDeploy} wedeployClient Instance of WeDeploy
+   * @param {!string} authUrl Url to Auth service
    * @constructor
    */
   constructor(wedeployClient, authUrl) {
@@ -80,7 +80,7 @@ class AuthApiHelper extends ApiHelper {
 
   /**
    * Creates access token cookie.
-   * @param {string} accessToken
+   * @param {string} accessToken The access token
    */
   createAccessTokenCookie(accessToken) {
     if (globals.document && globals.window) {
@@ -94,8 +94,9 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-   * @param {Object} data
-   * @return {Auth}
+   * Creates Auth instance from data.
+   * @param {Object} data Auth data
+   * @return {Auth} Returns an Auth instance
    */
   createAuthFromData(data) {
     const auth = Auth.createFromData(data, this.authUrl);
@@ -105,8 +106,8 @@ class AuthApiHelper extends ApiHelper {
 
   /**
    * Creates user.
-   * @param {!Object} data The data to be used to create the user.
-   * @return {CancellablePromise}
+   * @param {!Object} data The data to be used to create the user
+   * @return {CancellablePromise} Resolves with Auth instance
    */
   createUser(data) {
     assertObject(data, 'User data must be specified as object');
@@ -138,8 +139,8 @@ class AuthApiHelper extends ApiHelper {
 
   /**
    * Deletes user by id.
-   * @param {!string} userId
-   * @return {CancellablePromise}
+   * @param {!string} userId User id
+   * @return {CancellablePromise} Resolves when user is deleted
    */
   deleteUser(userId) {
     assertDefAndNotNull(userId, 'Cannot delete user without id');
@@ -153,9 +154,9 @@ class AuthApiHelper extends ApiHelper {
 
   /**
    * Updates user by id.
-   * @param {!string} userId
-   * @param {!Object} data
-   * @return {CancellablePromise}
+   * @param {!string} userId User Id
+   * @param {!Object} data New user data
+   * @return {CancellablePromise} Resolves when the user is updated
    */
   updateUser(userId, data) {
     assertDefAndNotNull(userId, 'Cannot update user without id');
@@ -169,9 +170,8 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-   * Gets all auth users
-   * @param {!string} userId
-   * @return {CancellablePromise}
+   * Gets all auth users.
+   * @return {CancellablePromise} Resolves with all users
    */
   getAllUsers() {
     assertAuthScope(this);
@@ -185,8 +185,8 @@ class AuthApiHelper extends ApiHelper {
 
   /**
    * Gets the current browser url without the fragment part.
-   * @return {!string}
    * @protected
+   * @return {!string} Returns the current browser url
    */
   getHrefWithoutFragment_() {
     let location = globals.window.location;
@@ -200,8 +200,8 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-   * Gets the access token from the url fragment and removes it.
-   * @return {?string}
+   * Gets the access token from the url fragment.
+   * @return {?string} Returns the access token or null if not available
    * @protected
    */
   getRedirectAccessToken_() {
@@ -216,8 +216,8 @@ class AuthApiHelper extends ApiHelper {
 
   /**
    * Gets user by id.
-   * @param {!string} userId
-   * @return {CancellablePromise}
+   * @param {!string} userId User id
+   * @return {CancellablePromise} Resolves with Auth instance
    */
   getUser(userId) {
     assertDefAndNotNull(userId, 'User userId must be specified');
@@ -232,8 +232,8 @@ class AuthApiHelper extends ApiHelper {
 
   /**
    * Loads current user. Requires a user token as argument.
-   * @param {!string} token
-   * @return {CancellablePromise}
+   * @param {!string} token The user token
+   * @return {CancellablePromise} Resolves with an Auth instance
    */
   loadCurrentUser(token) {
     return this.verifyUser(token).then(currentUser => {
@@ -271,7 +271,8 @@ class AuthApiHelper extends ApiHelper {
   /**
    * Fires passed callback when a user sign-in. Note that it keeps only the
    * last callback passed.
-   * @param {!Function} callback
+   * @param {!Function} callback The callback function to be called after
+   *   signing-in
    */
   onSignIn(callback) {
     assertFunction(callback, 'Sign-in callback must be a function');
@@ -281,7 +282,8 @@ class AuthApiHelper extends ApiHelper {
   /**
    * Fires passed callback when a user sign-out. Note that it keeps only the
    * last callback passed.
-   * @param {!Function} callback
+   * @param {!Function} callback The callback function to be called after
+   *   signing-out
    */
   onSignOut(callback) {
     assertFunction(callback, 'Sign-out callback must be a function');
@@ -322,7 +324,8 @@ class AuthApiHelper extends ApiHelper {
 
   /**
    * Resolves auth scope from last login or api helper.
-   * @return {Auth}
+   * @return {ApiHelper|Object} Returns auth scope from last login or api
+   *   helper.
    */
   resolveAuthScope() {
     if (this.helperAuthScope) {
@@ -333,9 +336,9 @@ class AuthApiHelper extends ApiHelper {
 
   /**
    * Sends password reset email to the specified email if found in database.
-   * For security reasons call do not fail if email not found.
-   * @param {!string} email
-   * @return {CancellablePromise}
+   * For security reasons call doesn't fail if email is not found.
+   * @param {!string} email The user email
+   * @return {CancellablePromise} Resolves when password reset email is sent
    */
   sendPasswordResetEmail(email) {
     assertDefAndNotNull(email, 'Send password reset email must be specified');
@@ -348,9 +351,9 @@ class AuthApiHelper extends ApiHelper {
 
   /**
    * Signs in using email and password.
-   * @param {!string} email
-   * @param {!string} password
-   * @return {CancellablePromise}
+   * @param {!string} email The user email
+   * @param {!string} password The user password
+   * @return {CancellablePromise} Resolves with user object
    */
   signInWithEmailAndPassword(email, password) {
     assertDefAndNotNull(email, 'Sign-in email must be specified');
@@ -373,7 +376,7 @@ class AuthApiHelper extends ApiHelper {
   /**
    * Signs in with redirect. Some providers and environment may not support
    * this flow.
-   * @param {AuthProvider} provider
+   * @param {AuthProvider} provider An Auth provider
    */
   signInWithRedirect(provider) {
     assertBrowserEnvironment();
@@ -389,7 +392,7 @@ class AuthApiHelper extends ApiHelper {
   /**
    * Signs out <code>currentUser</code> and removes from
    *   <code>localStorage</code>.
-   * @return {CancellablePromise}
+   * @return {CancellablePromise} Resolves when user is signed out
    */
   signOut() {
     assertUserSignedIn(this.currentUser);
@@ -406,9 +409,9 @@ class AuthApiHelper extends ApiHelper {
   }
 
   /**
-   * Builds URL by joining headers and withCredentials.
+   * Builds Url by joining headers and withCredentials.
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
-   *   be chained.
+   *   be chained
    * @chainable
    */
   buildUrl_() {
@@ -434,8 +437,8 @@ class AuthApiHelper extends ApiHelper {
    * Method for verifying tokens. If the provided token has the correct
    * format, is not expired, and is properly signed, the method returns the
    * decoded token.
-   * @param {!string} token
-   * @return {CancellablePromise}
+   * @param {!string} token Authentication token
+   * @return {CancellablePromise} Resolves with the user token
    */
   verifyToken(token) {
     assertDefAndNotNull(token, 'Token must be specified');
@@ -455,7 +458,7 @@ class AuthApiHelper extends ApiHelper {
    * or the email.
    * @param {string=} opt_password If a email is given as the first param,
    * this should be the password.
-   * @return {CancellablePromise}
+   * @return {CancellablePromise} Resolves with an Auth instance
    */
   verifyUser(tokenOrEmail, opt_password) {
     assertDefAndNotNull(tokenOrEmail, 'Token or email must be specified');

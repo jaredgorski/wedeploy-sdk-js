@@ -59,8 +59,8 @@ class TransportFactory {
 
   /**
    * Gets an instance of the transport implementation with the given name.
-   * @param {string} implementationName
-   * @return {!Transport}
+   * @param {!string} implementationName The name of transport implementation
+   * @return {!Transport} Returns an instance of {@link Transport}
    */
   get(implementationName) {
     let TransportClass = this.transports[implementationName];
@@ -78,7 +78,7 @@ class TransportFactory {
 
   /**
    * Returns the default transport implementation.
-   * @return {!Transport}
+   * @return {!Transport} Returns an instance of {@link Transport}
    */
   getDefault() {
     return this.get(TransportFactory.DEFAULT_TRANSPORT_NAME);
