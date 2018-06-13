@@ -40,8 +40,8 @@ import Embodied from './Embodied';
 class Range extends Embodied {
   /**
    * Constructs a {@link Range} instance.
-   * @param {*} from
-   * @param {*} opt_to
+   * @param {*} from Range's `from` value
+   * @param {*} opt_to Optional param, representing the `to` value of the range
    * @constructor
    */
   constructor(from, opt_to) {
@@ -56,8 +56,8 @@ class Range extends Embodied {
 
   /**
    * Constructs a {@link Range} instance.
-   * @param {*} from
-   * @return {!Range}
+   * @param {*} from Range's `from` value
+   * @return {!Range} Returns a new instance of {@link Range}
    * @static
    */
   static from(from) {
@@ -66,9 +66,9 @@ class Range extends Embodied {
 
   /**
    * Constructs a {@link Range} instance.
-   * @param {*} from
-   * @param {*} to
-   * @return {!Range}
+   * @param {*} from Range's `from` value
+   * @param {*} to Range's `to` value
+   * @return {!Range} Returns a new instance of {@link Range}
    * @static
    */
   static range(from, to) {
@@ -77,8 +77,8 @@ class Range extends Embodied {
 
   /**
    * Constructs a {@link Range} instance.
-   * @param {*} to
-   * @return {!Range}
+   * @param {*} to Range's `to` value
+   * @return {!Range} Returns a new instance of {@link Range}
    * @static
    */
   static to(to) {
