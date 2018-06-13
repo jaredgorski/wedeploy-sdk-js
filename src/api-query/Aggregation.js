@@ -97,7 +97,7 @@ class Aggregation {
 
   /**
    * Gets current aggregation's field.
-   * @return {string} Returns the field by which aggregation will be done
+   * @return {string} Returns the field by which aggregation should be done
    */
   getField() {
     return this.field_;
@@ -105,7 +105,7 @@ class Aggregation {
 
   /**
    * Gets current aggregation's operator.
-   * @return {string} Returns the operator by which aggregation will be done
+   * @return {string} Returns the operator by which aggregation should be done
    */
   getOperator() {
     return this.operator_;
@@ -113,7 +113,7 @@ class Aggregation {
 
   /**
    * Gets current aggregation's value.
-   * @return {*} Returns the value by which aggregation will be done
+   * @return {*} Returns the value by which aggregation should be done
    */
   getValue() {
     return this.value_;

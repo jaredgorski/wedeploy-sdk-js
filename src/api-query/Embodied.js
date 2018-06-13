@@ -44,8 +44,8 @@ class Embodied {
   }
 
   /**
-   * Gets the json object that represents this instance.
-   * @return {!Object}
+   * Gets the JSON object that represents this instance.
+   * @return {!Object} Returns the JSON representing the current instance
    */
   body() {
     return this.body_;
@@ -55,8 +55,10 @@ class Embodied {
    * If the given object is an instance of Embodied, this will
    * return its body content. Otherwise this will return the
    * original object.
-   * @param {*} obj
-   * @return {*}
+   * @param {*} obj An object or instance of {@link Embodied}
+   * @return {*} If passed `obj` param was an instance of {@link Embodied},
+   *  returns its JSON representation (the body content). Otherwise, it will
+   *  return the original object.
    * @static
    */
   static toBody(obj) {
@@ -64,8 +66,8 @@ class Embodied {
   }
 
   /**
-   * Gets the json string that represents this instance.
-   * @return {string}
+   * Gets the JSON string that represents this instance.
+   * @return {string} Returns the `body` of the current instance as a string
    */
   toString() {
     return JSON.stringify(this.body());
