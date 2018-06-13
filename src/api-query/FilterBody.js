@@ -40,11 +40,11 @@ import Embodied from './Embodied';
 class FilterBody {
   /**
    * Constructs a {@link FilterBody} instance.
-   * @param {string} field The name of the field to filter by.
+   * @param {string} field The name of the field to filter by
    * @param {*} operatorOrValue If a third param is given, this should
    *   be the filter's operator (like ">="). Otherwise, this will be
    *   used as the filter's value, and the filter's operator will be "=".
-   * @param {*=} opt_value The filter's value.
+   * @param {*=} opt_value The filter's value
    * @constructor
    */
   constructor(field, operatorOrValue, opt_value) {
@@ -70,9 +70,9 @@ class FilterBody {
 
   /**
    * Composes the current filter with the given operator.
-   * @param {string} operator
+   * @param {string} operator The filter's operator, like ">=")
    * @param {Filter=} opt_filter Another filter to compose this filter with,
-   *   if the operator is not unary.
+   *   if the operator is not unary
    */
   add(operator, opt_filter) {
     if (opt_filter) {
@@ -85,8 +85,8 @@ class FilterBody {
   /**
    * Composes the current filter with an operator that stores its values in an
    * array.
-   * @param {string} operator
-   * @param {!Filter} filter
+   * @param {string} operator The filter's operator, like ">=")
+   * @param {!Filter} filter Instance of {@link Filter}
    * @protected
    */
   addArrayOperator_(operator, filter) {
@@ -98,8 +98,8 @@ class FilterBody {
 
   /**
    * Adds filters to be composed with this filter body using the given operator.
-   * @param {string} operator
-   * @param {...*} filters A variable amount of filters to be composed.
+   * @param {string} operator The filter's operator, like ">=")
+   * @param {...*} filters A variable amount of filters to be composed
    */
   addMany(operator, ...filters) {
     for (let i = 0; i < filters.length; i++) {
@@ -111,7 +111,7 @@ class FilterBody {
    * Creates a new body object, setting the requested key to the given value.
    * @param {string} key The key to set in the new body object
    * @param {*} value The value the requested key should have in the new body
-   *   object.
+   *   object
    * @protected
    */
   createBody_(key, value) {
@@ -120,8 +120,8 @@ class FilterBody {
   }
 
   /**
-   * Gets the json object that represents this filter's body.
-   * @return {!Object}
+   * Gets the JSON object that represents this filter's body.
+   * @return {!Object} Returns the JSON representation of current filter's body
    */
   getObject() {
     return this.body_;
