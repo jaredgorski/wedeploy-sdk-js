@@ -42,11 +42,11 @@ import Aggregation from './Aggregation';
 class Query extends Embodied {
   /**
    * Adds an aggregation to this {@link Query} instance.
-   * @param {string} name The aggregation name.
+   * @param {string} name The aggregation name
    * @param {!Aggregation|string} aggregationOrField Either an
-   *   {@link Aggregation} instance or the name of the aggregation field.
-   * @param {string=} opt_operator The aggregation operator.
-   * @return {!Query}
+   *   {@link Aggregation} instance or the name of the aggregation field
+   * @param {string=} opt_operator The aggregation operator
+   * @return {!Query} Returns new instance of {@link Query}
    * @static
    */
   static aggregate(name, aggregationOrField, opt_operator) {
@@ -55,7 +55,7 @@ class Query extends Embodied {
 
   /**
    * Sets this query's type to "count".
-   * @return {!Query}
+   * @return {!Query} Returns new instance of {@link Query}
    * @static
    */
   static count() {
@@ -64,7 +64,7 @@ class Query extends Embodied {
 
   /**
    * Sets this query's type to "fetch".
-   * @return {!Query}
+   * @return {!Query} Returns new instance of {@link Query}
    * @static
    */
   static fetch() {
@@ -74,7 +74,7 @@ class Query extends Embodied {
   /**
    * Adds a fields entry to this {@link Query} instance.
    * @param {string|Array} fields Single field or an array of fields
-   * @return {!Query}
+   * @return {!Query} Returns new instance of {@link Query}
    * @static
    */
   static fields(fields) {
@@ -85,9 +85,9 @@ class Query extends Embodied {
    * Adds a filter to this Query.
    * @param {!Filter|string} fieldOrFilter Either a {@link Filter} or the
    *   name of the field to filter by.
-   * @param {*=} opt_operatorOrValue Either the field's operator or its value.
-   * @param {*=} opt_value The filter's value.
-   * @return {!Query}
+   * @param {*=} opt_operatorOrValue Either the field's operator or its value
+   * @param {*=} opt_value The filter's value
+   * @return {!Query} Returns new instance of {@link Query}
    * @static
    */
   static filter(fieldOrFilter, opt_operatorOrValue, opt_value) {
@@ -97,8 +97,8 @@ class Query extends Embodied {
   /**
    * Sets the query offset.
    * @param {number} offset The index of the first entry that should be returned
-   *   by this query.
-   * @return {!Query}
+   *   by this query
+   * @return {!Query} Returns new instance of {@link Query}
    * @static
    */
   static offset(offset) {
@@ -107,8 +107,8 @@ class Query extends Embodied {
 
   /**
    * Adds a highlight entry to this {@link Query} instance.
-   * @param {string} field The field's name.
-   * @return {!Query}
+   * @param {string} field The field's name
+   * @return {!Query} Returns new instance of {@link Query}
    * @static
    */
   static highlight(field) {
@@ -118,8 +118,8 @@ class Query extends Embodied {
   /**
    * Sets the query limit.
    * @param {number} limit The max amount of entries that this query should
-   *   return.
-   * @return {!Query}
+   *   return
+   * @return {!Query} Returns new instance of {@link Query}
    * @static
    */
   static limit(limit) {
@@ -138,7 +138,7 @@ class Query extends Embodied {
    *   match filter, or the operator that should be used.
    * @param {*=} opt_value The value to be used by the filter. Should
    *   only be passed if an operator was passed as the second argument.
-   * @return {!Query}
+   * @return {!Query} Returns new instance of {@link Query}
    * @static
    */
   static search(filterOrTextOrField, opt_textOrOperator, opt_value) {
@@ -152,10 +152,10 @@ class Query extends Embodied {
   /**
    * Adds a sort entry to this query, specifying the field this query should be
    * sorted by and, optionally, the sort direction.
-   * @param {string} field The field that the query should be sorted by.
+   * @param {string} field The field that the query should be sorted by
    * @param {string=} opt_direction The direction the sort operation should use.
    *   If none is given, "asc" is used by default.
-   * @return {!Query}
+   * @return {!Query} Returns new instance of {@link Query}
    * @static
    */
   static sort(field, opt_direction) {
@@ -165,7 +165,7 @@ class Query extends Embodied {
   /**
    * Sets the query type.
    * @param {string} type The query's type. For example: "count", "fetch".
-   * @return {!Query}
+   * @return {!Query} Returns new instance of {@link Query}
    * @static
    */
   static type(type) {
@@ -179,7 +179,7 @@ class Query extends Embodied {
    *   {@link Aggregation} instance or the name of the aggregation field.
    * @param {string=} opt_operator The aggregation operator.
    * @return {Query} Returns the {@link Query} object itself, so calls can be
-   *   chained.
+   *   chained
    * @chainable
    */
   aggregate(name, aggregationOrField, opt_operator) {
@@ -208,7 +208,7 @@ class Query extends Embodied {
   /**
    * Sets this query's type to "count".
    * @return {Query} Returns the {@link Query} object itself, so calls can be
-   *   chained.
+   *   chained
    * @chainable
    */
   count() {
@@ -218,7 +218,7 @@ class Query extends Embodied {
   /**
    * Sets this query's type to "fetch".
    * @return {Query} Returns the {@link Query} object itself, so calls can be
-   *   chained.
+   *   chained
    * @chainable
    */
   fetch() {
@@ -229,7 +229,7 @@ class Query extends Embodied {
    * Adds fields entry to this {@link Query} instance.
    * @param {string|Array} fields Single field name or an array of fields
    * @return {Query} Returns the {@link Query} object itself, so calls can be
-   *   chained.
+   *   chained
    * @chainable
    */
   fields(fields) {
@@ -250,10 +250,10 @@ class Query extends Embodied {
    * Adds a filter to this Query.
    * @param {!Filter|string} fieldOrFilter Either a {@link Filter} or the
    *   name of the field to filter by.
-   * @param {*=} opt_operatorOrValue Either the field's operator or its value.
-   * @param {*=} opt_value The filter's value.
+   * @param {*=} opt_operatorOrValue Either the field's operator or its value
+   * @param {*=} opt_value The filter's value
    * @return {Query} Returns the {@link Query} object itself, so calls can be
-   *   chained.
+   *   chained
    * @chainable
    */
   filter(fieldOrFilter, opt_operatorOrValue, opt_value) {
@@ -268,9 +268,9 @@ class Query extends Embodied {
   /**
    * Sets the query offset.
    * @param {number} offset The index of the first entry that should be returned
-   *   by this query.
+   *   by this query
    * @return {Query} Returns the {@link Query} object itself, so calls can be
-   *   chained.
+   *   chained
    * @chainable
    */
   offset(offset) {
@@ -280,9 +280,9 @@ class Query extends Embodied {
 
   /**
    * Adds a highlight entry to this {@link Query} instance.
-   * @param {string} field The field's name.
+   * @param {string} field The field's name
    * @return {Query} Returns the {@link Query} object itself, so calls can be
-   *   chained.
+   *   chained
    * @chainable
    */
   highlight(field) {
@@ -297,9 +297,9 @@ class Query extends Embodied {
   /**
    * Sets the query limit.
    * @param {number} limit The max amount of entries that this query should
-   *   return.
+   *   return
    * @return {Query} Returns the {@link Query} object itself, so calls can be
-   *   chained.
+   *   chained
    * @chainable
    */
   limit(limit) {
@@ -317,11 +317,11 @@ class Query extends Embodied {
    *   so the filter can be created. If the value of this parameter is
    *   undefined or null, no filter will be provided to the search query.
    * @param {string=} opt_textOrOperator Either a text to be used in a
-   *   match filter, or the operator that should be used.
+   *   match filter, or the operator that should be used
    * @param {*=} opt_value The value to be used by the filter. Should
-   *   only be passed if an operator was passed as the second argument.
+   *   only be passed if an operator was passed as second argument.
    * @return {Query} Returns the {@link Query} object itself, so calls can be
-   *   chained.
+   *   chained
    * @chainable
    */
   search(filterOrTextOrField, opt_textOrOperator, opt_value) {
@@ -347,11 +347,11 @@ class Query extends Embodied {
   /**
    * Adds a sort entry to this query, specifying the field this query should be
    * sorted by and, optionally, the sort direction.
-   * @param {string} field The field that the query should be sorted by.
+   * @param {string} field The field that the query should be sorted by
    * @param {string=} opt_direction The direction the sort operation should use.
    *   If none is given, "asc" is used by default.
    * @return {Query} Returns the {@link Query} object itself, so calls can be
-   *   chained.
+   *   chained
    * @chainable
    */
   sort(field, opt_direction) {
@@ -366,9 +366,9 @@ class Query extends Embodied {
 
   /**
    * Sets the query type.
-   * @param {string} type The query's type. For example: "count", "fetch".
+   * @param {string} type The query's type, for example: "count", "fetch"
    * @return {Query} Returns the {@link Query} object itself, so calls can be
-   *   chained.
+   *   chained
    * @chainable
    */
   type(type) {
