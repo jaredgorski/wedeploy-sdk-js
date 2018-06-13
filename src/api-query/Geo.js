@@ -38,10 +38,11 @@ import Embodied from './Embodied';
  */
 class Geo {
   /**
-   * Creates a new {@link BoundingBox} instance.
-   * @param {*} upperLeft The upper left point.
-   * @param {*} lowerRight The lower right point.
-   * @return {!BoundingBox}
+   * Creates a new {@link Geo.BoundingBox} instance.
+   * @param {*} upperLeft The upper left point
+   * @param {*} lowerRight The lower right point
+   * @return {!Geo.BoundingBox} Returns a new instance of
+   *   {@link Geo.BoundingBox}
    * @static
    */
   static boundingBox(upperLeft, lowerRight) {
@@ -49,10 +50,10 @@ class Geo {
   }
 
   /**
-   * Creates a new {@link Circle} instance.
-   * @param {*} center The circle's center coordinate.
-   * @param {string} radius The circle's radius.
-   * @return {!Circle}
+   * Creates a new {@link Geo.Circle} instance.
+   * @param {*} center The circle's center coordinate
+   * @param {string} radius The circle's radius
+   * @return {!Geo.Circle} Returns a new instance of {@link Geo.Circle}
    * @static
    */
   static circle(center, radius) {
@@ -60,9 +61,9 @@ class Geo {
   }
 
   /**
-   * Creates a new {@link Line} instance.
-   * @param {...*} points This line's points.
-   * @return {!Line}
+   * Creates a new {@link Geo.Line} instance.
+   * @param {...*} points This line's points
+   * @return {!Geo.Line} Returns a new instance of {@link Geo.Line}
    * @static
    */
   static line(...points) {
@@ -70,10 +71,10 @@ class Geo {
   }
 
   /**
-   * Creates a new {@link Point} instance.
+   * Creates a new {@link Geo.Point} instance.
    * @param {number} lat The latitude coordinate
    * @param {number} lon The longitude coordinate
-   * @return {!Point}
+   * @return {!Geo.Point} Returns a new instance of {@link Geo.Point}
    * @static
    */
   static point(lat, lon) {
@@ -81,9 +82,9 @@ class Geo {
   }
 
   /**
-   * Creates a new {@link Polygon} instance.
-   * @param {...*} points This polygon's points.
-   * @return {!Polygon}
+   * Creates a new {@link Geo.Polygon} instance.
+   * @param {...*} points This polygon's points
+   * @return {!Geo.Polygon} Returns a new instance of {@link Geo.Polygon}
    * @static
    */
   static polygon(...points) {
@@ -116,7 +117,7 @@ Geo.Point = Point;
 class Line extends Embodied {
   /**
    * Constructs a {@link Line} instance.
-   * @param {...*} points This line's points.
+   * @param {...*} points This line's points
    * @constructor
    */
   constructor(...points) {
@@ -136,8 +137,8 @@ Geo.Line = Line;
 class BoundingBox extends Embodied {
   /**
    * Constructs a {@link BoundingBox} instance.
-   * @param {*} upperLeft The upper left point.
-   * @param {*} lowerRight The lower right point.
+   * @param {*} upperLeft The upper left point
+   * @param {*} lowerRight The lower right point
    * @constructor
    */
   constructor(upperLeft, lowerRight) {
@@ -150,7 +151,7 @@ class BoundingBox extends Embodied {
 
   /**
    * Gets this bounding box's points.
-   * @return {!Array}
+   * @return {!Array} Returns current box's points
    */
   getPoints() {
     return this.body_.coordinates;
@@ -165,8 +166,8 @@ Geo.BoundingBox = BoundingBox;
 class Circle extends Embodied {
   /**
    * Constructs a {@link Circle} instance.
-   * @param {*} center The circle's center coordinate.
-   * @param {string} radius The circle's radius.
+   * @param {*} center The circle's center coordinate
+   * @param {string} radius The circle's radius
    * @constructor
    */
   constructor(center, radius) {
@@ -180,7 +181,7 @@ class Circle extends Embodied {
 
   /**
    * Gets this circle's center coordinate.
-   * @return {*}
+   * @return {*} Returns current circle's center coordinate
    */
   getCenter() {
     return this.body_.coordinates;
@@ -188,7 +189,7 @@ class Circle extends Embodied {
 
   /**
    * Gets this circle's radius.
-   * @return {string}
+   * @return {string} Returns current circle's radius
    */
   getRadius() {
     return this.body_.radius;
@@ -203,7 +204,7 @@ Geo.Circle = Circle;
 class Polygon extends Embodied {
   /**
    * Constructs a {@link Polygon} instance.
-   * @param {...*} points This polygon's points.
+   * @param {...*} points This polygon's points
    * @constructor
    */
   constructor(...points) {
@@ -217,7 +218,7 @@ class Polygon extends Embodied {
 
   /**
    * Adds the given points as coordinates for this polygon.
-   * @param {...*} points
+   * @param {...*} points The points to be added as coordinates
    * @protected
    */
   addCoordinates_(...points) {
@@ -226,9 +227,9 @@ class Polygon extends Embodied {
 
   /**
    * Adds the given points as a hole inside this polygon.
-   * @param {...*} points
-   * @return {Polygon} Returns the {@link Polygon} object itself, so calls can
-   *   be chained
+   * @param {...*} points The points to be added as coordinates
+   * @return {Polygon} Returns the {@link Geo.Polygon} object itself, so calls
+   * can be chained
    * @chainable
    */
   hole(...points) {
