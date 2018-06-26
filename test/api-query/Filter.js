@@ -815,4 +815,21 @@ describe('Filter', function() {
       assert.strictEqual(bodyStr, filter.toString());
     });
   });
+
+  describe('Filter.wildcard', function() {
+    it('should create Filter for "wildcard" operator', function() {
+      const filter = Filter.wildcard('name', '*ae*');
+      const body = {
+        name: {
+          operator: 'wildcard',
+          value: '*ae*',
+        },
+      };
+      assert.deepEqual(body, filter.body());
+      assert.strictEqual(
+        '{"name":{"operator":"wildcard","value":"*ae*"}}',
+        filter.toString()
+      );
+    });
+  });
 });

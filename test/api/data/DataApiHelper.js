@@ -2092,6 +2092,53 @@ describe('DataApiHelper', function() {
       });
     });
   });
+
+  describe('.wildcard()', function() {
+    it('should send request with query lte in the body', function(done) {
+      RequestMock.intercept(
+        'GET',
+        'http://localhost/food?filter=%5B%7B%22and%22%3A%5B%7B' +
+          '%22ingredients%22%3A%7B%22operator%22%3A%22wildcard%22%2C' +
+          '%22value%22%3A%22*oe*%22%7D%7D%5D%7D%5D'
+      ).reply(200, '[{"id": 2, "name": "cuscuz", "ingredients": "*oe*"}]');
+
+      WeDeploy.data('http://localhost')
+        .wildcard('ingredients', '*oe*')
+        .get('food')
+        .then(function(response) {
+          assert.strictEqual(
+            '[{"id": 2, "name": "cuscuz", "ingredients": "*oe*"}]',
+            response
+          );
+          done();
+        });
+    });
+
+    it('should build the wildcard query into the query body', function() {
+      const data = WeDeploy.data('http://localhost').wildcard('name', '*oe*');
+
+      const query = data.processAndResetQueryState();
+
+      const queryBody = {
+        body_: {
+          filter: [
+            {
+              and: [
+                {
+                  name: {
+                    operator: 'wildcard',
+                    value: '*oe*',
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      };
+
+      assert.deepEqual(queryBody, query);
+    });
+  });
 });
 
 /**
