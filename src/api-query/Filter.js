@@ -43,7 +43,7 @@ import Range from './Range';
 class Filter extends Embodied {
   /**
    * Constructs a {@link Filter} instance.
-   * @param {string} field The name of the field to filter by.
+   * @param {string} field The name of the field to filter by
    * @param {*} operatorOrValue If a third param is given, this should
    *   be the filter's operator (like ">="). Otherwise, this will be
    *   used as the filter's value, and the filter's operator will be "=".
@@ -90,7 +90,7 @@ class Filter extends Embodied {
   /**
    * Adds a filter to be composed with this filter using the "and" operator.
    * @param {!Filter|string} fieldOrFilter Either a {@link Filter} instance or
-   *   the name of the field to filter by.
+   *   the name of the field to filter by
    * @param {*=} opt_operatorOrValue Either the field's operator or its value
    * @param {*=} opt_value The filter's value
    * @return {Filter} Returns the {@link Filter} object itself, so calls can be
@@ -415,7 +415,7 @@ class Filter extends Embodied {
 
   /**
    * Returns a {@link Filter} instance that uses the "<" operator.
-   * @param {string} field The name of the field to filter by.
+   * @param {string} field The name of the field to filter by
    * @param {*} value The filter's value
    * @return {!Filter} Returns a new instance of {@link Filter}
    * @static
@@ -426,7 +426,7 @@ class Filter extends Embodied {
 
   /**
    * Returns a {@link Filter} instance that uses the "<=" operator.
-   * @param {string} field The name of the field to filter by.
+   * @param {string} field The name of the field to filter by
    * @param {*} value The filter's value
    * @return {!Filter} Returns a new instance of {@link Filter}
    * @static
@@ -465,7 +465,7 @@ class Filter extends Embodied {
   /**
    * Returns a {@link Filter} instance that uses the "not" operator.
    * @param {!Filter|string} fieldOrFilter Either a {@link Filter} instance or
-   * the name of the field to filter by.
+   * the name of the field to filter by
    * @param {*=} opt_operatorOrValue Either the field's operator or its value
    * @param {*=} opt_value The filter's value
    * @return {!Filter} Returns a new instance of {@link Filter}
@@ -479,7 +479,7 @@ class Filter extends Embodied {
 
   /**
    * Returns a {@link Filter} instance.
-   * @param {string} field The name of the field to filter by.
+   * @param {string} field The name of the field to filter by
    * @param {*} operatorOrValue If a third param is given, this should be the
    * filter's operator (like ">="). Otherwise, this will be used as the
    * filter's value, and the filter's operator will be "=".
@@ -521,6 +521,18 @@ class Filter extends Embodied {
       filter = Filter.field(fieldOrFilter, opt_operatorOrValue, opt_value);
     }
     return filter;
+  }
+
+  /**
+   * Returns a {@link Filter} instance that uses the "wildcard" operator.
+   * @param {string} field The name of the field to filter by
+   * @param {*} value The filter's value
+   * @return {!Filter} Returns a new instance of {@link Filter}
+   * @static
+   * @since 4.5.0
+   */
+  static wildcard(field, value) {
+    return new Filter(field, 'wildcard', value);
   }
 }
 

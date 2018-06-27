@@ -597,6 +597,19 @@ class DataApiHelper extends ApiHelper {
   }
 
   /**
+   * Returns a {@link Filter} instance that uses the "wildcard" operator.
+   * @param {string} field The name of the field to filter by
+   * @param {*} value The filter's value
+   * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
+   *   calls can be chained
+   * @since 4.5.0
+   * @chainable
+   */
+  wildcard(field, value) {
+    return this.where(Filter.wildcard(field, value));
+  }
+
+  /**
    * Builds Url by joining headers, auth and withCredentials.
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
    *   be chained
