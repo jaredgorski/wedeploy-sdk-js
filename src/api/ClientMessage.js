@@ -26,6 +26,8 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
+ * @ignore
+ * @name LICENSE
  */
 
 'use strict';
@@ -51,7 +53,6 @@ class ClientMessage {
    *   the current value of the body will be returned.
    * @return {*} Returns request body if no body value was given. Otherwise
    *   returns the {@link ClientMessage} object itself, so calls can be chained
-   * @chainable
    */
   body(opt_body) {
     if (core.isDef(opt_body)) {
@@ -69,7 +70,6 @@ class ClientMessage {
    * @param {string} value The value of the header to be set
    * @return {!ClientMessage} Returns the {@link ClientMessage}
    *   object itself, so calls can be chained
-   * @chainable
    */
   header(name, value) {
     if (arguments.length !== 2) {
@@ -87,7 +87,6 @@ class ClientMessage {
    * @return {!MultiMap|ClientMessage} Returns map of request headers
    *   if no new value was given. Otherwise returns the {@link ClientMessage}
    *   object itself, so calls can be chained
-   * @chainable
    */
   headers(opt_headers) {
     if (core.isDef(opt_headers)) {

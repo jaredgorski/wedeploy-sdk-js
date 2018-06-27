@@ -1,0 +1,39 @@
+toc:
+  - name: API
+  - WeDeploy
+  - name: Service Helpers
+  - ApiHelper
+  - AuthApiHelper
+  - DataApiHelper
+  - EmailApiHelper
+  - name: Save and fetch Data
+  - Transport
+  - TransportFactory
+  - AjaxTransport
+  - NodeTransport
+  - ClientMessage
+  - ClientRequest
+  - ClientResponse
+  - name: Users and Auth
+  - Auth
+  - AuthProvider
+  - FacebookAuthProvider
+  - GithubAuthProvider
+  - GoogleAuthProvider
+  - name: Filtering Data
+  - Embodied
+  - Filter
+  - FilterBody
+  - name: Data Aggregation
+  - Aggregation
+  - RangeAggregation
+  - DistanceAggregation
+  - name: Geolocation
+  - Geo
+  - BoundingBox
+  - Circle
+  - Line
+  - Point
+  - Polygon
+  - Query
+  - Range

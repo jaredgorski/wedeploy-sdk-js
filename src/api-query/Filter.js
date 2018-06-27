@@ -26,6 +26,8 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
+ * @ignore
+ * @name LICENSE
  */
 
 'use strict';
@@ -64,7 +66,6 @@ class Filter extends Embodied {
    * @param {*=} opt_value The filter's value
    * @return {Filter} Returns the {@link Filter} object itself, so calls can be
    *   chained
-   * @chainable
    */
   add(operator, fieldOrFilter, opt_operatorOrValue, opt_value) {
     let filter = fieldOrFilter
@@ -80,7 +81,6 @@ class Filter extends Embodied {
    * @param {...*} filters A variable amount of filters to be composed
    * @return {Filter} Returns the {@link Filter} object itself, so calls can be
    *   chained
-   * @chainable
    */
   addMany(operator, ...filters) {
     this.body_.addMany(operator, ...filters);
@@ -95,7 +95,6 @@ class Filter extends Embodied {
    * @param {*=} opt_value The filter's value
    * @return {Filter} Returns the {@link Filter} object itself, so calls can be
    *   chained
-   * @chainable
    */
   and(fieldOrFilter, opt_operatorOrValue, opt_value) {
     return this.add('and', fieldOrFilter, opt_operatorOrValue, opt_value);
@@ -240,7 +239,7 @@ class Filter extends Embodied {
    * @param {string|number=} opt_queryOrFuzziness If this is a string, it should
    *   be the query, otherwise it should be the fuzziness value
    * @param {number=} opt_fuzziness The fuzziness value
-   * @return {!Filter}
+   * @return {!Filter} Returns a new instance of {@link Filter}
    * @protected
    * @static
    */
@@ -438,7 +437,7 @@ class Filter extends Embodied {
   /**
    * Returns a {@link Filter} instance that uses the "none" operator.
    * @param {string} field The name of the field to filter by
-   * @param {!(Array|*)} value A variable amount of values to be used with
+   * @param {!(Array|*)} values A variable amount of values to be used with
    * the "none" operator. Can be passed either as a single array or as
    * separate params.
    * @return {!Filter} Returns a new instance of {@link Filter}
@@ -499,7 +498,6 @@ class Filter extends Embodied {
    * @param {*=} opt_value The filter's value
    * @return {Filter} Returns the {@link Filter} object itself, so calls can be
    *   chained
-   * @chainable
    */
   or(fieldOrFilter, opt_operatorOrValue, opt_value) {
     return this.add('or', fieldOrFilter, opt_operatorOrValue, opt_value);

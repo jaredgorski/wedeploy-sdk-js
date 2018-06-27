@@ -26,6 +26,8 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
+ * @ignore
+ * @name LICENSE
  */
 
 'use strict';
@@ -46,6 +48,10 @@ class FacebookAuthProvider extends AuthProvider {
   }
 }
 
+/**
+ * Provides the name of the provider. Default 'facebook'.
+ * @type {string}
+ */
 FacebookAuthProvider.PROVIDER = 'facebook';
 
 export default FacebookAuthProvider;

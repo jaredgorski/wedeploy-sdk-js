@@ -26,6 +26,8 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
+ * @ignore
+ * @name LICENSE
  */
 
 'use strict';
@@ -67,7 +69,6 @@ class DataApiHelper extends ApiHelper {
    * @param {*=} opt_value Optionally set the filter's value
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   where(fieldOrFilter, opt_operatorOrValue, opt_value) {
     this.getOrCreateFilter_().and(
@@ -87,7 +88,6 @@ class DataApiHelper extends ApiHelper {
    * @param {*=} opt_value Optionally set the filter's value
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   or(fieldOrFilter, opt_operatorOrValue, opt_value) {
     if (this.getOrCreateFilter_().body().and.length === 0) {
@@ -108,7 +108,6 @@ class DataApiHelper extends ApiHelper {
    * separate params
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   none(field, ...args) {
     return this.where(Filter.none(field, args));
@@ -119,7 +118,6 @@ class DataApiHelper extends ApiHelper {
    * @param {!string} field The name of the field to filter by
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   exists(field) {
     return this.where(Filter.exists(field));
@@ -133,7 +131,6 @@ class DataApiHelper extends ApiHelper {
    * @param {string=} opt_query The query string.
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   match(field, opt_query) {
     return this.where(Filter.match(field, opt_query));
@@ -145,7 +142,6 @@ class DataApiHelper extends ApiHelper {
    * @param {string=} opt_query The query string
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   phrase(field, opt_query) {
     return this.where(Filter.phrase(field, opt_query));
@@ -157,7 +153,6 @@ class DataApiHelper extends ApiHelper {
    * @param {string=} opt_query The query string
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   prefix(field, opt_query) {
     return this.where(Filter.prefix(field, opt_query));
@@ -171,7 +166,6 @@ class DataApiHelper extends ApiHelper {
    * @param {?string} query The query string.
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   similar(fieldOrQuery, query) {
     return this.where(Filter.similar(fieldOrQuery, query));
@@ -183,7 +177,6 @@ class DataApiHelper extends ApiHelper {
    * @param {*} value The filter's value
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   lt(field, value) {
     return this.where(Filter.lt(field, value));
@@ -195,7 +188,6 @@ class DataApiHelper extends ApiHelper {
    * @param {*} value The filter's value
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   lte(field, value) {
     return this.where(Filter.lte(field, value));
@@ -207,7 +199,6 @@ class DataApiHelper extends ApiHelper {
    * @param {*} value The filter's value
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   gt(field, value) {
     return this.where(Filter.gt(field, value));
@@ -219,7 +210,6 @@ class DataApiHelper extends ApiHelper {
    * @param {*} value The filter's value
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   gte(field, value) {
     return this.where(Filter.gte(field, value));
@@ -233,7 +223,6 @@ class DataApiHelper extends ApiHelper {
    *   separate params.
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   any(field, ...args) {
     return this.where(Filter.any(field, args));
@@ -248,7 +237,6 @@ class DataApiHelper extends ApiHelper {
    * @param {*=} opt_lowerRight A bounding box's lower right coordinate.
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   boundingBox(field, boxOrUpperLeft, opt_lowerRight) {
     return this.where(
@@ -264,7 +252,6 @@ class DataApiHelper extends ApiHelper {
    *   the distance value.
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   distance(field, locationOrCircle, opt_rangeOrDistance) {
     return this.where(
@@ -277,7 +264,6 @@ class DataApiHelper extends ApiHelper {
    * @param {string|Array} fields Single field name or an array of fields
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   fields(fields) {
     this.getOrCreateQuery_().fields(fields);
@@ -291,7 +277,6 @@ class DataApiHelper extends ApiHelper {
    * @param {*=} opt_max The range's max value
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   range(field, rangeOrMin, opt_max) {
     return this.where(Filter.range(field, rangeOrMin, opt_max));
@@ -303,7 +288,6 @@ class DataApiHelper extends ApiHelper {
    *   return
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   limit(limit) {
     this.getOrCreateQuery_().limit(limit);
@@ -316,7 +300,6 @@ class DataApiHelper extends ApiHelper {
    *    returned by this query
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   offset(offset) {
     this.getOrCreateQuery_().offset(offset);
@@ -328,7 +311,6 @@ class DataApiHelper extends ApiHelper {
    * @param {string} field The field's name
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   highlight(field) {
     this.getOrCreateQuery_().highlight(field);
@@ -343,7 +325,6 @@ class DataApiHelper extends ApiHelper {
    * @param {string=} opt_operator Optional aggregation operator.
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   aggregate(name, aggregationOrField, opt_operator = 'terms') {
     this.getOrCreateQuery_().aggregate(name, aggregationOrField, opt_operator);
@@ -354,7 +335,6 @@ class DataApiHelper extends ApiHelper {
    * Sets this request's query type to 'count'.
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   count() {
     this.getOrCreateQuery_().type('count');
@@ -368,7 +348,6 @@ class DataApiHelper extends ApiHelper {
    *   use. If none is given, 'asc' is used by default
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
-   * @chainable
    */
   orderBy(field, opt_direction) {
     this.getOrCreateQuery_().sort(field, opt_direction);
@@ -587,6 +566,16 @@ class DataApiHelper extends ApiHelper {
    * @param  {Object=} opt_options Object with Socket IO options
    * @return {!io} Returns an Socket IO reference so server events can be
    *   listened
+   * @example
+   * WeDeploy
+   *   .data('https://<serviceID>-<projectID>.wedeploy.io')
+   *   .watch('movies')
+   *   .on('changes', function(data) {
+   *     console.log(data);
+   *   })
+   *   .on('fail', function(error) {
+   *     console.log(error);
+   *   });
    */
   watch(collection, opt_options) {
     assertDefAndNotNull(collection, 'Collection key must be specified');
@@ -603,7 +592,6 @@ class DataApiHelper extends ApiHelper {
    * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
    *   calls can be chained
    * @since 4.5.0
-   * @chainable
    */
   wildcard(field, value) {
     return this.where(Filter.wildcard(field, value));
@@ -613,7 +601,7 @@ class DataApiHelper extends ApiHelper {
    * Builds Url by joining headers, auth and withCredentials.
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
    *   be chained
-   * @chainable
+   * @protected
    */
   buildUrl_() {
     return this.wedeployClient
@@ -677,5 +665,34 @@ class DataApiHelper extends ApiHelper {
     return query;
   }
 }
+
+/**
+ * Watches for newly created or updated documents. Returns list of previous 500
+ * changed documents.
+ * @event changes
+ * @memberof DataApiHelper
+ * @instance
+ */
+
+/**
+ * Watches for newly created documents. Returns most recently created document.
+ * @event create
+ * @memberof DataApiHelper
+ * @instance
+ */
+
+/**
+ * Watches for newly deleted documents. Returns most recently deleted document.
+ * @event delete
+ * @memberof DataApiHelper
+ * @instance
+ */
+
+/**
+ * Watches for newly updated. Returns most recently updated document.
+ * @event update
+ * @memberof DataApiHelper
+ * @instance
+ */
 
 export default DataApiHelper;

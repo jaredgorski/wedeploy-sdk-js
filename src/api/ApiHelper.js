@@ -26,6 +26,8 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
+ * @ignore
+ * @name LICENSE
  */
 
 'use strict';
@@ -61,7 +63,6 @@ class ApiHelper {
    * @param {!string} value The value of the header to be set
    * @return {!ApiHelper} Returns the {@link ApiHelper} object itself,
    *   so calls can be chained
-   * @chainable
    */
   header(name, value) {
     if (arguments.length !== 2) {
@@ -78,7 +79,6 @@ class ApiHelper {
    * @param {string=} opt_password Optionally sets the password. If an email is
    *   given as the first param, `password` param should be set.
    * @return {ApiHelper}
-   * @chainable
    */
   auth(authOrTokenOrEmail, opt_password) {
     this.helperAuthScope = Auth.create(authOrTokenOrEmail, opt_password);
@@ -92,7 +92,6 @@ class ApiHelper {
    *   param
    * @return {ApiHelper} Returns the {@link ApiHelper} object itself, so calls
    *   can be chained
-   * @chainable
    */
   withCredentials(withCredentials) {
     this.withCredentials_ = !!withCredentials;

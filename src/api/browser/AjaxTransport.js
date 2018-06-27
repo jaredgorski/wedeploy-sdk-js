@@ -26,6 +26,8 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
+ * @ignore
+ * @name LICENSE
  */
 
 'use strict';
@@ -37,11 +39,11 @@ import Uri from 'metal-uri';
 
 /**
  * The implementation of an Ajax transport to be used with {@link WeDeploy}.
- * @extends {Transport}
+ * @implements {Transport}
  */
 class AjaxTransport extends Transport {
   /**
-   * @inheritDoc
+   * @override
    */
   send(clientRequest) {
     if (!clientRequest.followRedirect()) {

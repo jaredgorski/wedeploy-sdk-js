@@ -26,6 +26,8 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
+ * @ignore
+ * @name LICENSE
  */
 
 'use strict';
@@ -370,6 +372,7 @@ class Auth {
    * Updates the user.
    * @param {!Object} data The new user data to be set
    * @return {CompletableFuture} Resolves when the user is updated
+   * @since 4.1.0
    */
   updateUser(data) {
     assertObject(data, 'User data must be specified as object');
@@ -397,7 +400,7 @@ class Auth {
    * Builds Url by joining the headers.
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
    *   be chained
-   * @chainable
+   * @protected
    */
   buildUrl_() {
     assertDefAndNotNull(

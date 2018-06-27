@@ -26,6 +26,8 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
+ * @ignore
+ * @name LICENSE
  */
 
 'use strict';
@@ -67,7 +69,6 @@ class ClientResponse extends ClientMessage {
    * @return {!ClientMessage|number} Returns response status code if no new
    *   value was given. Otherwise returns the {@link ClientMessage} object
    *   itself, so calls can be chained
-   * @chainable Chainable when used as setter.
    */
   statusCode(opt_statusCode) {
     if (core.isDef(opt_statusCode)) {
@@ -84,7 +85,6 @@ class ClientResponse extends ClientMessage {
    * @return {!ClientMessage|number} Returns response status text if no new
    *   value was given. Otherwise returns the {@link ClientMessage} object
    *   itself, so calls can be chained
-   * @chainable Chainable when used as setter.
    */
   statusText(opt_statusText) {
     if (core.isDef(opt_statusText)) {

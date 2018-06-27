@@ -26,6 +26,8 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
+ * @ignore
+ * @name LICENSE
  */
 
 'use strict';
@@ -138,7 +140,6 @@ class WeDeploy {
    *   this should be the password
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
    *   be chained
-   * @chainable
    */
   auth(authOrTokenOrEmail, opt_password) {
     this.auth_ = Auth.create(authOrTokenOrEmail, opt_password);
@@ -151,7 +152,6 @@ class WeDeploy {
    * @param {*} body The body to be sent with the request
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
    *   be chained
-   * @chainable
    */
   body(body) {
     this.body_ = body;
@@ -299,7 +299,6 @@ class WeDeploy {
    * @param {*} value The value of the field
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
    *   be chained
-   * @chainable
    */
   form(name, value) {
     if (typeof FormDataImpl === 'undefined') {
@@ -331,7 +330,6 @@ class WeDeploy {
    * @param {*} value The value of the header to be set
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
    *   be chained
-   * @chainable
    */
   header(name, value) {
     if (arguments.length !== 2) {
@@ -350,7 +348,6 @@ class WeDeploy {
    *   the returned result will be the {@link WeDeploy} object itself, so calls
    *   can be chained If headers were not passed to the function, the returned
    *   result will be the current headers.
-   * @chainable Chainable when used as setter
    */
   headers(opt_headers) {
     if (core.isDefAndNotNull(opt_headers)) {
@@ -405,7 +402,6 @@ class WeDeploy {
    * @param {*} value Param value
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
    *   be chained
-   * @chainable
    */
   param(name, value) {
     if (arguments.length !== 2) {

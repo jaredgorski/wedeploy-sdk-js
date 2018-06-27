@@ -26,6 +26,8 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
+ * @ignore
+ * @name LICENSE
  */
 
 'use strict';
@@ -181,6 +183,7 @@ class AuthProvider {
  *   string.
  * @param {!*} value The value to be checked
  * @param {!string} errorMessage The message to be provided to the exception.
+ * @ignore
  */
 function assertStringIfDefAndNotNull(value, errorMessage) {
   if (core.isDefAndNotNull(value) && !core.isString(value)) {

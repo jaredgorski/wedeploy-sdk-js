@@ -26,6 +26,8 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
+ * @ignore
+ * @name LICENSE
  */
 
 'use strict';
@@ -240,7 +242,6 @@ class DistanceAggregation extends Aggregation {
    *   set if `rangeOrFrom` parameter is a numeric value.
    * @return {Aggregation} Returns the {@link Aggregation} object itself, so
    *   calls can be chained
-   * @chainable
    */
   range(rangeOrFrom, opt_to) {
     let range = rangeOrFrom;
@@ -256,7 +257,6 @@ class DistanceAggregation extends Aggregation {
    * @param {string} unit The aggregation unit to be set
    * @return {Aggregation} Returns the {@link Aggregation} object itself, so
    *   calls can be chained
-   * @chainable
    */
   unit(unit) {
     this.value_.unit = unit;
@@ -289,7 +289,6 @@ class RangeAggregation extends Aggregation {
    *   set if `rangeOrFrom` parameter is a numeric value
    * @return {Aggregation} Returns the {@link Aggregation} object itself, so
    *   calls can be chained
-   * @chainable
    */
   range(rangeOrFrom, opt_to) {
     let range = rangeOrFrom;

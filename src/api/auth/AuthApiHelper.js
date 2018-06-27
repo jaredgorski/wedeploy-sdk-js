@@ -26,6 +26,8 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
+ * @ignore
+ * @name LICENSE
  */
 
 'use strict';
@@ -157,6 +159,7 @@ class AuthApiHelper extends ApiHelper {
    * @param {!string} userId User Id
    * @param {!Object} data New user data
    * @return {CancellablePromise} Resolves when the user is updated
+   * @since 4.1.0
    */
   updateUser(userId, data) {
     assertDefAndNotNull(userId, 'Cannot update user without id');
@@ -294,6 +297,7 @@ class AuthApiHelper extends ApiHelper {
    * Processes sign-in by detecting a presence of a fragment
    * <code>#access_token=</code> in the url or, alternatively, by local
    * storage current user.
+   * @protected
    */
   processSignIn_() {
     let redirectAccessToken = this.getRedirectAccessToken_();
@@ -412,7 +416,7 @@ class AuthApiHelper extends ApiHelper {
    * Builds Url by joining headers and withCredentials.
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
    *   be chained
-   * @chainable
+   * @protected
    */
   buildUrl_() {
     return this.wedeployClient
@@ -424,6 +428,7 @@ class AuthApiHelper extends ApiHelper {
   /**
    * Unloads all information for <code>currentUser</code> and removes from
    * <code>localStorage</code> if present.
+   * @protected
    */
   unloadCurrentUser_() {
     this.currentUser = null;
@@ -487,6 +492,7 @@ class AuthApiHelper extends ApiHelper {
  * - GithubAuthProvider.PROVIDER
  * - GoogleAuthProvider.PROVIDER
  * @param {!string} provider
+ * @ignore
  */
 function assertSupportedProvider(provider) {
   switch (provider.constructor.PROVIDER) {

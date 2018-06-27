@@ -26,6 +26,8 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
+ * @ignore
+ * @name LICENSE
  */
 
 'use strict';
@@ -55,7 +57,6 @@ class EmailApiHelper extends ApiHelper {
    * @param  {string} from Set `from` parameter to the request
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
    *   so calls can be chained
-   * @chainable
    */
   from(from) {
     assertDefAndNotNull(from, 'Parameter "from" must be specified');
@@ -70,7 +71,6 @@ class EmailApiHelper extends ApiHelper {
    * @param  {string} bcc Set `bcc` parameter to the request
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
    *   so calls can be chained
-   * @chainable
    */
   bcc(bcc) {
     assertDefAndNotNull(bcc, 'Parameter "bcc" must be specified');
@@ -85,7 +85,6 @@ class EmailApiHelper extends ApiHelper {
    * @param  {string} cc Set `cc` parameter to the request
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
    *   so calls can be chained
-   * @chainable
    */
   cc(cc) {
     assertDefAndNotNull(cc, 'Parameter "cc" must be specified');
@@ -100,7 +99,6 @@ class EmailApiHelper extends ApiHelper {
    * @param  {string} message Set `message` parameter to the request
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
    *   so calls can be chained
-   * @chainable
    */
   message(message) {
     assertDefAndNotNull(message, 'Parameter "message" must be specified');
@@ -115,7 +113,6 @@ class EmailApiHelper extends ApiHelper {
    * @param  {string} priority Set `priority` parameter to the request
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
    *   so calls can be chained
-   * @chainable
    */
   priority(priority) {
     assertDefAndNotNull(priority, 'Parameter "priority" must be specified');
@@ -130,7 +127,6 @@ class EmailApiHelper extends ApiHelper {
    * @param  {string} replyTo Set `replyTo` parameter to the request
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
    *   so calls can be chained
-   * @chainable
    */
   replyTo(replyTo) {
     assertDefAndNotNull(replyTo, 'Parameter "replyTo" must be specified');
@@ -145,7 +141,6 @@ class EmailApiHelper extends ApiHelper {
    * @param  {string} to Set `to` parameter to the request
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
    *   so calls can be chained
-   * @chainable
    */
   to(to) {
     assertDefAndNotNull(to, 'Parameter "to" must be specified');
@@ -160,7 +155,6 @@ class EmailApiHelper extends ApiHelper {
    * @param  {string} subject Set `subject` parameter to the request
    * @return {EmailApiHelper} Returns the {@link EmailApiHelper} object itself,
    *   so calls can be chained
-   * @chainable
    */
   subject(subject) {
     assertDefAndNotNull(subject, 'Parameter "subject" must be specified');
@@ -214,7 +208,7 @@ class EmailApiHelper extends ApiHelper {
    * Builds Url by joining headers, auth and withCredentials.
    * @return {WeDeploy} Returns the {@link WeDeploy} object itself, so calls can
    *   be chained
-   * @chainable
+   * @protected
    */
   buildUrl_() {
     return this.wedeployClient

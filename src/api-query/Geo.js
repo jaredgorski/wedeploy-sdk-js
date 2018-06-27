@@ -26,6 +26,8 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
+ * @ignore
+ * @name LICENSE
  */
 
 'use strict';
@@ -230,7 +232,6 @@ class Polygon extends Embodied {
    * @param {...*} points The points to be added as coordinates
    * @return {Polygon} Returns the {@link Geo.Polygon} object itself, so calls
    * can be chained
-   * @chainable
    */
   hole(...points) {
     this.addCoordinates_(...points);

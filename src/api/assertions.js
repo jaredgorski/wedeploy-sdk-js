@@ -26,6 +26,8 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
+ * @ignore
+ * @name LICENSE
  */
 
 'use strict';
@@ -49,6 +51,7 @@ const collectionTypes = [
 
 /**
  * Throws an exception if the current environment is not a browser.
+ * @ignore
  */
 function assertBrowserEnvironment() {
   if (!globals.window) {
@@ -60,6 +63,7 @@ function assertBrowserEnvironment() {
  * Throws an exception if given value is undefined or null.
  * @param {!*} value The value to be checked
  * @param {!string} errorMessage The message to be provided to the exception
+ * @ignore
  */
 function assertDefAndNotNull(value, errorMessage) {
   if (!core.isDefAndNotNull(value)) {
@@ -71,6 +75,7 @@ function assertDefAndNotNull(value, errorMessage) {
  * Throws an exception if given value is null.
  * @param {!*} value The value to be checked
  * @param {!string} errorMessage The message to be provided to the exception
+ * @ignore
  */
 function assertNotNull(value, errorMessage) {
   if (core.isNull(value)) {
@@ -82,6 +87,7 @@ function assertNotNull(value, errorMessage) {
  * Throws an exception if given value is not a function.
  * @param {!*} value The value to be checked
  * @param {!string} errorMessage The message to be provided to the exception
+ * @ignore
  */
 function assertFunction(value, errorMessage) {
   if (!core.isFunction(value)) {
@@ -93,6 +99,7 @@ function assertFunction(value, errorMessage) {
  * Throws an exception if given value is not an object.
  * @param {!*} value The value to be checked
  * @param {!string} errorMessage The message to be provided to the exception
+ * @ignore
  */
 function assertObject(value, errorMessage) {
   if (!core.isObject(value)) {
@@ -106,6 +113,7 @@ function assertObject(value, errorMessage) {
  * value is false.
  * @param {!Object} response The response to be checked
  * @return {Object} The response itself if valid, throws an exception otherwise
+ * @ignore
  */
 function assertResponseSucceeded(response) {
   if (!response.succeeded()) {
@@ -118,6 +126,7 @@ function assertResponseSucceeded(response) {
  * Checks if a valid user is provided to the function. Throws an exception
  * in case of an invalid user.
  * @param {!Object} user The user to be checked
+ * @ignore
  */
 function assertUserSignedIn(user) {
   if (!core.isDefAndNotNull(user)) {
@@ -128,6 +137,7 @@ function assertUserSignedIn(user) {
 /**
  * Checks if authApiHelper has a token in its authScope
  * @param {!AuthApiHelper} authApiHelper The user to be checked
+ * @ignore
  */
 function assertAuthScope(authApiHelper) {
   const authScope = authApiHelper.resolveAuthScope();
@@ -141,6 +151,7 @@ function assertAuthScope(authApiHelper) {
  * if the provided Url doesn't have a valid path.
  * @param {!string} url The Url to be checked
  * @param {!string} errorMessage The message to be provided to the exception
+ * @ignore
  */
 function assertUriWithNoPath(url, errorMessage) {
   let uri = new Uri(url);
@@ -153,6 +164,7 @@ function assertUriWithNoPath(url, errorMessage) {
  * Validates the field types in a collection. Throws an exception if some field
  * is mapped to an unsupported type.
  * @param {!Object} fieldTypes The collection which types should be validated
+ * @ignore
  */
 function assertValidFieldTypes(fieldTypes) {
   if (!core.isObject(fieldTypes)) {

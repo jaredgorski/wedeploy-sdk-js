@@ -26,6 +26,8 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
+ * @ignore
+ * @name LICENSE
  */
 
 'use strict';
@@ -56,7 +58,6 @@ class ClientRequest extends ClientMessage {
    * @return {!ClientRequest|boolean} Returns the {@link ClientMessage} object
    *   itself when used as setter, otherwise returns the current value of with
    *   credentials option.
-   * @chainable Chainable when used as setter.
    */
   withCredentials(opt_withCredentials) {
     if (core.isDef(opt_withCredentials)) {
@@ -73,7 +74,6 @@ class ClientRequest extends ClientMessage {
    * @return {!ClientRequest|boolean} Returns the {@link ClientMessage} object
    *   itself when used as setter, otherwise returns the current value of follow
    *   redirect option.
-   * @chainable Chainable when used as setter.
    */
   followRedirect(opt_followRedirect) {
     if (core.isDef(opt_followRedirect)) {
@@ -90,7 +90,6 @@ class ClientRequest extends ClientMessage {
    * @return {!ClientMessage|string} Returns request method if no new value was
    *   given. Otherwise returns the {@link ClientMessage} object itself, so
    *   calls can be chained
-   * @chainable Chainable when used as setter.
    */
   method(opt_method) {
     if (core.isDef(opt_method)) {
@@ -108,7 +107,6 @@ class ClientRequest extends ClientMessage {
    * @param {string} value The value of the param to be set
    * @return {!ClientMessage} Returns the {@link ClientMessage} object itself,
    *   so calls can be chained
-   * @chainable
    */
   param(name, value) {
     if (arguments.length !== 2) {
@@ -146,7 +144,6 @@ class ClientRequest extends ClientMessage {
    *  given.
    *  Otherwise returns the {@link ClientMessage} object itself, so calls can be
    *  chained.
-   * @chainable Chainable when used as setter.
    */
   url(opt_url) {
     if (core.isDef(opt_url)) {
