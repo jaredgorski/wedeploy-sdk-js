@@ -38,7 +38,9 @@ import Geo from '../api-query/Geo';
 import WeDeploy from '../api/WeDeploy';
 import Query from '../api-query/Query';
 import Range from '../api-query/Range';
+import Aggregation from '../api-query/Aggregation';
 
+globals.window.Aggregation = Aggregation;
 globals.window.Filter = Filter;
 globals.window.Geo = Geo;
 globals.window.Query = Query;

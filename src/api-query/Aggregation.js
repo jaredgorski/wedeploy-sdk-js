@@ -32,6 +32,7 @@
 
 'use strict';
 
+import {core} from 'metal';
 import Embodied from './Embodied';
 import Range from './Range';
 
@@ -49,8 +50,28 @@ class Aggregation {
    */
   constructor(field, operator, opt_value) {
     this.field_ = field;
+    this.nestedAggregations_ = null;
     this.operator_ = operator;
     this.value_ = opt_value;
+  }
+
+  /**
+   * Adds a new aggregation as nested to the current Aggregation instance.
+   * @param {string} name The name of the nested aggregation
+   * @param {Aggregation} aggregation The aggregation to be nested in current
+   *   aggregation
+   * @return {Aggregation} Returns the current {@link Aggregation} instance
+   */
+  addNestedAggregation(name, aggregation) {
+    if (!core.isDefAndNotNull(this.nestedAggregations_)) {
+      this.nestedAggregations_ = [];
+    }
+    this.nestedAggregations_.push({
+      name,
+      aggregation,
+    });
+
+    return this;
   }
 
   /**
@@ -103,6 +124,14 @@ class Aggregation {
    */
   getField() {
     return this.field_;
+  }
+
+  /**
+   * Gets nested aggregations in current Aggregation.
+   * @return {Array.<Aggregation>} The nested aggregations
+   */
+  getNestedAggregations() {
+    return this.nestedAggregations_;
   }
 
   /**

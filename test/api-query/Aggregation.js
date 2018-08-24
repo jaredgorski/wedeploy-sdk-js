@@ -43,6 +43,22 @@ describe('Aggregation', function() {
     assert.strictEqual('myValue', aggregation.getValue());
   });
 
+  it('should get field, operator and value', function() {
+    const aggregation = new Aggregation('myField', 'myOperator', 'myValue');
+    const nestedAggregation = new Aggregation(
+      'myField',
+      'myOperator',
+      'myValue'
+    );
+    aggregation.addNestedAggregation('test', nestedAggregation);
+
+    assert.strictEqual(
+      true,
+      Array.isArray(aggregation.getNestedAggregations())
+    );
+    assert.strictEqual(1, aggregation.getNestedAggregations().length);
+  });
+
   describe('Aggregation.avg', function() {
     it('should create an aggregation with the "avg" operator', function() {
       const aggregation = Aggregation.avg('myField');

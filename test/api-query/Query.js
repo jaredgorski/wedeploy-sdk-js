@@ -396,6 +396,23 @@ describe('Query', function() {
         ']}';
       assert.strictEqual(bodyStr, query.toString());
     });
+
+    it('should add nested aggregations', function() {
+      const aggregation = new Aggregation('touchpoint', 'terms');
+      const viewsAggregation = new Aggregation('views', 'sum');
+      const thirdAggregation = new Aggregation('user', 'age');
+
+      viewsAggregation.addNestedAggregation('ages', thirdAggregation);
+      aggregation.addNestedAggregation('views', viewsAggregation);
+
+      const query = Query.aggregate('pages', aggregation);
+      const bodyStr =
+        '{"aggregation":[{"touchpoint":{"name":"pages","operator":"terms",' +
+        '"aggregation":[{"views":{"name":"views","operator":"sum",' +
+        '"aggregation":[{"user":{"name":"ages","operator":"age"}}]}}]}}]}';
+
+      assert.strictEqual(bodyStr, query.toString());
+    });
   });
 
   describe('Query.highlight', function() {
