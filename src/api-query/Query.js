@@ -189,15 +189,7 @@ class Query extends Embodied {
       aggregation = Aggregation.field(aggregationOrField, opt_operator);
     }
 
-    let field = aggregation.getField();
-    let value = {};
-    value[field] = {
-      name: name,
-      operator: aggregation.getOperator(),
-    };
-    if (core.isDefAndNotNull(aggregation.getValue())) {
-      value[field].value = aggregation.getValue();
-    }
+    const value = this.getAggregationBody_(name, aggregation);
 
     if (!this.body_.aggregation) {
       this.body_.aggregation = [];
@@ -365,6 +357,41 @@ class Query extends Embodied {
   type(type) {
     this.body_.type = type;
     return this;
+  }
+
+  /**
+   * Retrieves Aggregation params (field, operator, value, nested aggregations)
+   * from an aggregation instance.
+   * @param {string} name The name of the aggregation
+   * @param {Aggregation} aggregation The {@link Aggregation} instance
+   * @return {Object} Aggregation params
+   */
+  getAggregationBody_(name, aggregation) {
+    let value = {};
+    let field = aggregation.getField();
+    value[field] = {
+      name: name,
+      operator: aggregation.getOperator(),
+    };
+    if (core.isDefAndNotNull(aggregation.getValue())) {
+      value[field].value = aggregation.getValue();
+    }
+
+    const nestedAggregations = aggregation.getNestedAggregations();
+
+    if (core.isDefAndNotNull(nestedAggregations)) {
+      value[field].aggregation = [];
+      nestedAggregations.forEach(nestedAggregation => {
+        value[field].aggregation.push(
+          this.getAggregationBody_(
+            nestedAggregation.name,
+            nestedAggregation.aggregation
+          )
+        );
+      });
+    }
+
+    return value;
   }
 }
 
