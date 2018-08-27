@@ -592,6 +592,38 @@ describe('Filter', function() {
     });
   });
 
+  describe('Filter.multiMatch', function() {
+    it('should create Filter with "multiMatch" operator from just the query', function() {
+      const filter = Filter.multiMatch('foo');
+      const body = {
+        '*': {
+          operator: 'multi_match',
+          value: 'foo',
+        },
+      };
+      assert.deepEqual(body, filter.body());
+      assert.strictEqual(
+        '{"*":{"operator":"multi_match","value":"foo"}}',
+        filter.toString()
+      );
+    });
+
+    it('should create Filter with "multiMatch" operator from field and query', function() {
+      const filter = Filter.multiMatch(['fist_name', 'last_name'], 'foo');
+      const body = {
+        'fist_name,last_name': {
+          operator: 'multi_match',
+          value: 'foo',
+        },
+      };
+      assert.deepEqual(body, filter.body());
+      assert.strictEqual(
+        '{"fist_name,last_name":{"operator":"multi_match","value":"foo"}}',
+        filter.toString()
+      );
+    });
+  });
+
   describe('Filter.missing', function() {
     it('should create Filter with "missing" operator', function() {
       const filter = Filter.missing('age');

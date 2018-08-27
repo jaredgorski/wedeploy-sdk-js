@@ -819,6 +819,52 @@ describe('DataApiHelper', function() {
     });
   });
 
+  describe('.multiMatch()', function() {
+    it('should send request with query multiMatch in the body', function(done) {
+      RequestMock.intercept(
+        'GET',
+        'http://localhost/food?filter=%5B%7B%22and%22%3A%5B%7B%22first_name%2Clast_name%22%3A%7B%22' +
+          'operator%22%3A%22multi_match%22%2C%22value%22%3A%22cuscuz%22%7D%7D%5D%7D%5D'
+      ).reply(200, '[{"id": 2, "name": "cuscuz"}]');
+
+      WeDeploy.data('http://localhost')
+        .multiMatch(['first_name', 'last_name'], 'cuscuz')
+        .get('food')
+        .then(function(response) {
+          assert.strictEqual('[{"id": 2, "name": "cuscuz"}]', response);
+          done();
+        });
+    });
+
+    it('should build the multiMatch query into the query body', function() {
+      const data = WeDeploy.data('http://localhost').multiMatch(
+        ['first_name', 'last_name'],
+        'cuscuz'
+      );
+
+      const query = data.processAndResetQueryState();
+
+      const queryBody = {
+        body_: {
+          filter: [
+            {
+              and: [
+                {
+                  'first_name,last_name': {
+                    operator: 'multi_match',
+                    value: 'cuscuz',
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      };
+
+      assert.deepEqual(queryBody, query);
+    });
+  });
+
   describe('.phrase()', function() {
     it('should send request with query phrase in the body', function(done) {
       RequestMock.intercept(

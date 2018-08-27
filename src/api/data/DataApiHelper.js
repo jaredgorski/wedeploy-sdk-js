@@ -137,6 +137,19 @@ class DataApiHelper extends ApiHelper {
   }
 
   /**
+   * Adds a filter to be composed with this filter using "multi_match" operator.
+   * @param {Array.<string>} fields If no second string argument is given, this
+   *   should be the query string, in which case all fields will be matched.
+   *   Otherwise, this should be the name of the field to match.
+   * @param {string=} opt_query The query string.
+   * @return {DataApiHelper} Returns the {@link DataApiHelper} object itself, so
+   *   calls can be chained
+   */
+  multiMatch(fields, opt_query) {
+    return this.where(Filter.multiMatch(fields, opt_query));
+  }
+
+  /**
    * Adds a filter to be composed with this filter using "phrase" operator.
    * @param {string} field The name of the field to filter by
    * @param {string=} opt_query The query string
