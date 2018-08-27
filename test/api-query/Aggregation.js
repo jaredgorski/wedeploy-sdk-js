@@ -68,6 +68,15 @@ describe('Aggregation', function() {
     });
   });
 
+  describe('Aggregation.cardinality', function() {
+    it('should create an aggregation with the "cardinality" operator', function() {
+      const aggregation = Aggregation.cardinality('myField');
+      assert.strictEqual('myField', aggregation.getField());
+      assert.strictEqual('cardinality', aggregation.getOperator());
+      assert.ok(!aggregation.getValue());
+    });
+  });
+
   describe('Aggregation.count', function() {
     it('should create an aggregation with the "count" operator', function() {
       const aggregation = Aggregation.count('myField');
