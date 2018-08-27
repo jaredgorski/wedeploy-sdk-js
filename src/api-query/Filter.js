@@ -301,6 +301,25 @@ class Filter extends Embodied {
   }
 
   /**
+   * Returns a {@link Filter} instance that uses the "multi_match" operator.
+   * @param {string} fieldsOrQuery If no second string argument is given, this
+   *   should be the query string, in which case all fields will be matched.
+   *   Otherwise, this should be an array of fields to be matched.
+   * @param {string=} opt_query The query string
+   * @return {!Filter} Returns a new instance of {@link Filter}
+   * @static
+   */
+  static multiMatch(fieldsOrQuery, opt_query) {
+    let fields = core.isString(opt_query) ? fieldsOrQuery : Filter.ALL;
+    let query = core.isString(opt_query) ? opt_query : fieldsOrQuery;
+
+    if (Array.isArray(fields)) {
+      fields = fields.join(',');
+    }
+    return Filter.field(fields, 'multi_match', query);
+  }
+
+  /**
    * Returns a {@link Filter} instance that uses the "missing" operator.
    * @param {string} field The field's name
    * @return {!Filter} Returns a new instance of {@link Filter}
