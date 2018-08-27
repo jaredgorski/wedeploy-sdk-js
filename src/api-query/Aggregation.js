@@ -85,6 +85,16 @@ class Aggregation {
   }
 
   /**
+   * Creates an {@link Aggregation} instance with the `cardinality` operator.
+   * @param {string} field The aggregation field
+   * @return {!Aggregation} Returns a new instance of {@link Aggregation}
+   * @static
+   */
+  static cardinality(field) {
+    return Aggregation.field(field, 'cardinality');
+  }
+
+  /**
    * Creates an {@link Aggregation} instance with the `count` operator.
    * @param {string} field The aggregation field
    * @return {!Aggregation} Returns a new instance of {@link Aggregation}
