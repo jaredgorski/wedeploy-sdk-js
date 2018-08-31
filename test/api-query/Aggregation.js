@@ -36,14 +36,17 @@ import Geo from '../../src/api-query/Geo';
 import Range from '../../src/api-query/Range';
 
 describe('Aggregation', function() {
-  it('should get field, operator and value', function() {
-    const aggregation = new Aggregation('myField', 'myOperator', 'myValue');
+  it('should get field, operator, value and params', function() {
+    const aggregation = new Aggregation('myField', 'myOperator', 'myValue', {
+      param1: 'param1',
+    });
     assert.strictEqual('myField', aggregation.getField());
     assert.strictEqual('myOperator', aggregation.getOperator());
     assert.strictEqual('myValue', aggregation.getValue());
+    assert.deepEqual({param1: 'param1'}, aggregation.getParams());
   });
 
-  it('should get field, operator and value', function() {
+  it('should add a nested aggregation', function() {
     const aggregation = new Aggregation('myField', 'myOperator', 'myValue');
     const nestedAggregation = new Aggregation(
       'myField',
@@ -294,6 +297,41 @@ describe('Aggregation', function() {
       assert.strictEqual('myField', aggregation.getField());
       assert.strictEqual('myOperator', aggregation.getOperator());
       assert.ok(!aggregation.getValue());
+    });
+  });
+
+  describe('TermsAggregation', function() {
+    it('should create an aggregation with field, size and buckerOrder', function() {
+      const bucketOrder = Aggregation.TermsAggregation.BucketOrder.count(
+        'desc'
+      );
+      const aggregation = new Aggregation.TermsAggregation(
+        'touchpoint',
+        3,
+        bucketOrder
+      );
+
+      assert.strictEqual('touchpoint', aggregation.getField());
+      assert.strictEqual('terms', aggregation.getOperator());
+      assert.deepEqual(
+        {size: 3, order: [{asc: false, key: '_count'}]},
+        aggregation.getParams()
+      );
+      assert.strictEqual(undefined, aggregation.getValue());
+    });
+
+    it('should add buckerOrder to an aggregation', function() {
+      const bucketOrder = Aggregation.TermsAggregation.BucketOrder.key('desc');
+      const aggregation = new Aggregation.TermsAggregation('touchpoint');
+      aggregation.addBucketOrder(bucketOrder);
+
+      assert.strictEqual('touchpoint', aggregation.getField());
+      assert.strictEqual('terms', aggregation.getOperator());
+      assert.deepEqual(
+        {order: [{asc: false, key: '_key'}]},
+        aggregation.getParams()
+      );
+      assert.strictEqual(undefined, aggregation.getValue());
     });
   });
 });

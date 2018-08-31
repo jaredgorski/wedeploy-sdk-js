@@ -360,11 +360,11 @@ class Query extends Embodied {
   }
 
   /**
-   * Retrieves Aggregation params (field, operator, value, nested aggregations)
-   * from an aggregation instance.
+   * Retrieves Aggregation body - field, operator, params, value and nested
+   * aggregations from an aggregation instance.
    * @param {string} name The name of the aggregation
    * @param {Aggregation} aggregation The {@link Aggregation} instance
-   * @return {Object} Aggregation params
+   * @return {Object} Aggregation body
    */
   getAggregationBody_(name, aggregation) {
     let value = {};
@@ -375,6 +375,12 @@ class Query extends Embodied {
     };
     if (core.isDefAndNotNull(aggregation.getValue())) {
       value[field].value = aggregation.getValue();
+    }
+    if (core.isDefAndNotNull(aggregation.getParams())) {
+      const params = aggregation.getParams();
+      Object.keys(params).forEach(param => {
+        value[field][param] = params[param];
+      });
     }
 
     const nestedAggregations = aggregation.getNestedAggregations();

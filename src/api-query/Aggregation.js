@@ -33,6 +33,7 @@
 'use strict';
 
 import {core} from 'metal';
+import BucketOrder from './BucketOrder';
 import Embodied from './Embodied';
 import Range from './Range';
 
@@ -44,14 +45,15 @@ class Aggregation {
    * Constructs an {@link Aggregation} instance.
    * @param {string} field The aggregation field
    * @param {string} operator The aggregation operator
-   * @param {*=} opt_value Optional parameter for specifying the aggregation
-   *   value
+   * @param {*=} opt_value Optional aggregation value
+   * @param {*=} opt_params Optional aggregation parameters
    * @constructor
    */
-  constructor(field, operator, opt_value) {
+  constructor(field, operator, opt_value, opt_params) {
     this.field_ = field;
     this.nestedAggregations_ = null;
     this.operator_ = operator;
+    this.params_ = opt_params;
     this.value_ = opt_value;
   }
 
@@ -153,6 +155,14 @@ class Aggregation {
   }
 
   /**
+   * Gets current aggregation's parameters.
+   * @return {string} Returns aggregation parameters
+   */
+  getParams() {
+    return this.params_;
+  }
+
+  /**
    * Gets current aggregation's value.
    * @return {*} Returns the value by which aggregation should be done
    */
@@ -247,11 +257,23 @@ class Aggregation {
   /**
    * Creates an {@link Aggregation} instance with the `terms` operator.
    * @param {string} field The aggregation field
-   * @return {!Aggregation} Returns a new instance of {@link Aggregation}
+   * @return {!TermsAggregation} Returns a new instance of
+   *   {@link TermsAggregation}
    * @static
    */
   static terms(field) {
-    return Aggregation.field(field, 'terms');
+    return new TermsAggregation(field);
+  }
+
+  /**
+   * Sets current aggregation's params.
+   * @param {object} params The aggregation params to be set
+   * @return {Aggregation} Returns the {@link Aggregation} object itself, so
+   *   calls can be chained
+   */
+  params(params) {
+    this.params_ = params;
+    return this;
   }
 }
 
@@ -338,6 +360,72 @@ class RangeAggregation extends Aggregation {
     return this;
   }
 }
+
 Aggregation.RangeAggregation = RangeAggregation;
+
+/**
+ * Class that represents a terms aggregation.
+ * @extends {Aggregation}
+ */
+class TermsAggregation extends Aggregation {
+  /**
+   * Constructs an {@link TermsAggregation} instance.
+   * @param {string} field The aggregation field
+   * @param {number} size The number of buckets which have to be returned
+   * @param {BucketOrder|Array.<BucketOrder>} buckerOrder The order in which
+   *   buckets should be returned
+   * @constructor
+   */
+  constructor(field, size, buckerOrder) {
+    super(field, 'terms');
+
+    if (core.isDefAndNotNull(size)) {
+      this.setSize(size);
+    }
+
+    if (core.isDefAndNotNull(buckerOrder)) {
+      this.addBucketOrder(buckerOrder);
+    }
+  }
+
+  /**
+   * Adds {@link BucketOrder} instance to the current Aggregation.
+   * @param {BucketOrder|Array.<BucketOrder>} bucketOrder The bucket order of
+   *   this aggregation
+   * @return {TermsAggregation} Returns the current {@link TermsAggregation}
+   *   instance
+   */
+  addBucketOrder(bucketOrder) {
+    if (!Array.isArray(bucketOrder)) {
+      bucketOrder = [bucketOrder];
+    }
+
+    this.params_ = this.params_ || {};
+    if (!core.isDefAndNotNull(this.params_.order)) {
+      this.params_.order = [];
+    }
+
+    bucketOrder.forEach(bucket => {
+      this.params_.order.push({
+        asc: !!(bucket.getSortOrder() === 'asc'),
+        key: bucket.getKey(),
+      });
+    });
+
+    return this;
+  }
+
+  /**
+   * Sets the number of buckets which have to be returned.
+   * @param {number} size The number of buckets which have to be returned
+   */
+  setSize(size) {
+    this.params_ = this.params_ || {};
+    this.params_.size = size;
+  }
+}
+
+TermsAggregation.BucketOrder = BucketOrder;
+Aggregation.TermsAggregation = TermsAggregation;
 
 export default Aggregation;

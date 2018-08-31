@@ -413,6 +413,18 @@ describe('Query', function() {
 
       assert.strictEqual(bodyStr, query.toString());
     });
+
+    it('should add aggregation params', function() {
+      const aggregation = new Aggregation('touchpoint', 'terms', null, {
+        param1: 'param1',
+      });
+
+      const query = Query.aggregate('pages', aggregation);
+      const bodyStr =
+        '{"aggregation":[{"touchpoint":{"name":"pages","operator":"terms",' +
+        '"param1":"param1"}}]}';
+      assert.strictEqual(bodyStr, query.toString());
+    });
   });
 
   describe('Query.highlight', function() {
