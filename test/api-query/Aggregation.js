@@ -187,6 +187,20 @@ describe('Aggregation', function() {
       assert.strictEqual('histogram', aggregation.getOperator());
       assert.strictEqual(10, aggregation.getValue());
     });
+
+    it('should create an aggregation with the "date_histogram" operator', function() {
+      const aggregation = Aggregation.histogram('myField', 'month');
+      assert.strictEqual('myField', aggregation.getField());
+      assert.strictEqual('date_histogram', aggregation.getOperator());
+      assert.strictEqual('month', aggregation.getValue());
+    });
+
+    it('should create an aggregation with the "date_histogram" operator and time unit', function() {
+      const aggregation = Aggregation.histogram('myField', 5, 'd');
+      assert.strictEqual('myField', aggregation.getField());
+      assert.strictEqual('date_histogram', aggregation.getOperator());
+      assert.strictEqual('5d', aggregation.getValue());
+    });
   });
 
   describe('Aggregation.max', function() {
