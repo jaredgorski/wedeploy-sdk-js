@@ -173,12 +173,51 @@ class Aggregation {
   /**
    * Creates an {@link Aggregation} instance with the `histogram` operator.
    * @param {string} field The aggregation field
-   * @param {number} interval The histogram's interval
+   * @param {number|string} interval The histogram's interval. If number is
+   *   passed, and `opt_unit` param is not provided, an aggregation of type
+   *   'histogram' will be performed. If string is passed, aggregation of type
+   *   'date_histogram' will be performed. The supported types of `interval`
+   *   param in this case are listed below and the value is assumed to be 1:
+   *   - year
+   *   - quarter
+   *   - month
+   *   - week
+   *   - day
+   *   - hour
+   *   - minute
+   *   - second
+   * @example
+   * // Performs `histogram` aggregation with interval of 100
+   * Aggregation.histogram('time', 100);
+   *
+   * // Performs `histogram`  aggregation for 1 year on the field 'time'
+   * Aggregation.histogram('time', 'year');
+   * @param {string} opt_unit Optional time unit of the histogram aggregation.
+   *   Supported values are:
+   *   - d
+   *   - h
+   *   - m
+   *   - s
+   *   - ms
+   *   - micros
+   *   - nanos
+   * @example
+   * // Performs`date_histogram` aggregation for 5 days on the field 'time'
+   * Aggregation.histogram('time', 5, 'd');
    * @return {!Aggregation} Returns a new instance of {@link Aggregation}
    * @static
    */
-  static histogram(field, interval) {
-    return new Aggregation(field, 'histogram', interval);
+  static histogram(field, interval, opt_unit) {
+    let aggregationType = 'histogram';
+    let value = interval;
+
+    if (core.isDefAndNotNull(opt_unit)) {
+      aggregationType = 'date_histogram';
+      value += opt_unit;
+    } else if (core.isString(interval)) {
+      aggregationType = 'date_histogram';
+    }
+    return new Aggregation(field, aggregationType, value);
   }
 
   /**
