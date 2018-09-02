@@ -274,6 +274,47 @@ class Aggregation {
   }
 
   /**
+   * Creates an {@link Aggregation} instance with the `script` operator.
+   * @param {string|Array<string>} field The aggregation field
+   * @param {string} script The aggregation script value
+   * @return {!Aggregation} Returns a new instance of {@link Aggregation}
+   * @example
+   * const cities = new Aggregation('city', 'terms')
+   *   .addNestedAggregation(
+   *   'avg_fahrenheit',
+   *   new Aggregation('temp', 'avg')
+   * )
+   * .addNestedAggregation(
+   *   'max_fahrenheit',
+   *   new Aggregation('temp', 'max')
+   * )
+   * .addNestedAggregation(
+   *   'diff_temp',
+   *   new Aggregation(
+   *     ['max_fahrenheit', 'avg_fahrenheit'],
+   *     'script',
+   *     '(params.max_fahrenheit - params.avg_fahrenheit)'
+   *   )
+   * );
+   * WeDeploy.data('<data-url>')
+   *   .aggregate('cities', cities)
+   *   .get('cities')
+   *   .then(function(data) {
+   *     console.log(data);
+   *   })
+   *   .catch(function(error) {
+   *     console.error(error);
+   *   });
+   * @static
+   */
+  static script(field, script) {
+    if (Array.isArray(field)) {
+      field = field.join(',');
+    }
+    return new Aggregation(field, 'script', script);
+  }
+
+  /**
    * Creates an {@link Aggregation} instance with the `stats` operator.
    * @param {string} field The aggregation field
    * @return {!Aggregation} Returns a new instance of {@link Aggregation}
