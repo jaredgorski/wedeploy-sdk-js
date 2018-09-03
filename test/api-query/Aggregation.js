@@ -278,6 +278,25 @@ describe('Aggregation', function() {
     });
   });
 
+  describe('Aggregation.script', function() {
+    it('should create an aggregation with the "script" operator', function() {
+      const aggregation = Aggregation.script('myField', '(params.avg_fa - 32)');
+      assert.strictEqual('myField', aggregation.getField());
+      assert.strictEqual('script', aggregation.getOperator());
+      assert.strictEqual('(params.avg_fa - 32)', aggregation.getValue());
+    });
+
+    it('should create an aggregation with the "script" operator applied to multiple fields', function() {
+      const aggregation = Aggregation.script(
+        ['myField1', 'myfield2'],
+        '(params.avg_fa - 32)'
+      );
+      assert.strictEqual('myField1,myfield2', aggregation.getField());
+      assert.strictEqual('script', aggregation.getOperator());
+      assert.strictEqual('(params.avg_fa - 32)', aggregation.getValue());
+    });
+  });
+
   describe('Aggregation.stats', function() {
     it('should create an aggregation with the "stats" operator', function() {
       const aggregation = Aggregation.stats('myField');
