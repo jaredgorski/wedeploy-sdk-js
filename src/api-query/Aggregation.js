@@ -201,15 +201,18 @@ class Aggregation {
    *   - ms
    *   - micros
    *   - nanos
+   * @param {BucketOrder|Array.<BucketOrder>} opt_bucketOrder The order in which
+   *   buckets should be returned
    * @example
    * // Performs`date_histogram` aggregation for 5 days on the field 'time'
    * Aggregation.histogram('time', 5, 'd');
    * @return {!Aggregation} Returns a new instance of {@link Aggregation}
    * @static
    */
-  static histogram(field, interval, opt_unit) {
+  static histogram(field, interval, opt_unit, opt_bucketOrder) {
     let aggregationType = 'histogram';
     let value = interval;
+    let params;
 
     if (core.isDefAndNotNull(opt_unit)) {
       aggregationType = 'date_histogram';
@@ -217,7 +220,24 @@ class Aggregation {
     } else if (core.isString(interval)) {
       aggregationType = 'date_histogram';
     }
-    return new Aggregation(field, aggregationType, value);
+
+    if (core.isDefAndNotNull(opt_bucketOrder)) {
+      params = {
+        order: [],
+      };
+      if (!Array.isArray(opt_bucketOrder)) {
+        opt_bucketOrder = [opt_bucketOrder];
+      }
+
+      opt_bucketOrder.forEach(bucketOrder => {
+        params.order.push({
+          asc: !!(bucketOrder.getSortOrder() === 'asc'),
+          key: bucketOrder.getKey(),
+        });
+      });
+    }
+
+    return new Aggregation(field, aggregationType, value, params);
   }
 
   /**
@@ -451,20 +471,20 @@ class TermsAggregation extends Aggregation {
   /**
    * Constructs an {@link TermsAggregation} instance.
    * @param {string} field The aggregation field
-   * @param {number} size The number of buckets which have to be returned
-   * @param {BucketOrder|Array.<BucketOrder>} buckerOrder The order in which
+   * @param {number} opt_size The number of buckets which have to be returned
+   * @param {BucketOrder|Array.<BucketOrder>} opt_buckerOrder The order in which
    *   buckets should be returned
    * @constructor
    */
-  constructor(field, size, buckerOrder) {
+  constructor(field, opt_size, opt_buckerOrder) {
     super(field, 'terms');
 
-    if (core.isDefAndNotNull(size)) {
-      this.setSize(size);
+    if (core.isDefAndNotNull(opt_size)) {
+      this.setSize(opt_size);
     }
 
-    if (core.isDefAndNotNull(buckerOrder)) {
-      this.addBucketOrder(buckerOrder);
+    if (core.isDefAndNotNull(opt_buckerOrder)) {
+      this.addBucketOrder(opt_buckerOrder);
     }
   }
 
@@ -505,7 +525,7 @@ class TermsAggregation extends Aggregation {
   }
 }
 
-TermsAggregation.BucketOrder = BucketOrder;
+Aggregation.BucketOrder = BucketOrder;
 Aggregation.TermsAggregation = TermsAggregation;
 
 export default Aggregation;

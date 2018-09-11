@@ -188,6 +188,22 @@ describe('Aggregation', function() {
       assert.strictEqual(10, aggregation.getValue());
     });
 
+    it('should create an aggregation with the "histogram" operator and bucket ordering', function() {
+      const aggregation = Aggregation.histogram(
+        'myField',
+        10,
+        null,
+        Aggregation.BucketOrder.count('desc')
+      );
+      assert.strictEqual('myField', aggregation.getField());
+      assert.strictEqual('histogram', aggregation.getOperator());
+      assert.deepEqual(
+        {order: [{asc: false, key: '_count'}]},
+        aggregation.getParams()
+      );
+      assert.strictEqual(10, aggregation.getValue());
+    });
+
     it('should create an aggregation with the "date_histogram" operator', function() {
       const aggregation = Aggregation.histogram('myField', 'month');
       assert.strictEqual('myField', aggregation.getField());
@@ -199,6 +215,22 @@ describe('Aggregation', function() {
       const aggregation = Aggregation.histogram('myField', 5, 'd');
       assert.strictEqual('myField', aggregation.getField());
       assert.strictEqual('date_histogram', aggregation.getOperator());
+      assert.strictEqual('5d', aggregation.getValue());
+    });
+
+    it('should create an aggregation with the "date_histogram" operator, time unit and bucket ordering', function() {
+      const aggregation = Aggregation.histogram(
+        'myField',
+        5,
+        'd',
+        Aggregation.BucketOrder.count('desc')
+      );
+      assert.strictEqual('myField', aggregation.getField());
+      assert.strictEqual('date_histogram', aggregation.getOperator());
+      assert.deepEqual(
+        {order: [{asc: false, key: '_count'}]},
+        aggregation.getParams()
+      );
       assert.strictEqual('5d', aggregation.getValue());
     });
   });
@@ -335,9 +367,7 @@ describe('Aggregation', function() {
 
   describe('TermsAggregation', function() {
     it('should create an aggregation with field, size and buckerOrder', function() {
-      const bucketOrder = Aggregation.TermsAggregation.BucketOrder.count(
-        'desc'
-      );
+      const bucketOrder = Aggregation.BucketOrder.count('desc');
       const aggregation = new Aggregation.TermsAggregation(
         'touchpoint',
         3,
@@ -354,7 +384,7 @@ describe('Aggregation', function() {
     });
 
     it('should add buckerOrder to an aggregation', function() {
-      const bucketOrder = Aggregation.TermsAggregation.BucketOrder.key('desc');
+      const bucketOrder = Aggregation.BucketOrder.key('desc');
       const aggregation = new Aggregation.TermsAggregation('touchpoint');
       aggregation.addBucketOrder(bucketOrder);
 
