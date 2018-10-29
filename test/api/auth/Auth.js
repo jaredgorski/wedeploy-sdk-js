@@ -104,14 +104,14 @@ describe('Auth', function() {
       const auth = Auth.create();
       auth.setSupportedScopes(['admin']);
       assert.ok(!auth.hasSupportedScopes(['admin', 'invalid']));
-      assert.throws(() => auth.updateUser(), Error);
+      assert.throws(() => auth.hasSupportedScopes(), Error);
     });
 
     it('should return true if user has any supported scope in a given array', function() {
       const auth = Auth.create();
       auth.setSupportedScopes(['admin']);
       assert.ok(auth.hasSupportedScopes(['admin', 'invalid'], { match: 'any' }));
-      assert.throws(() => auth.updateUser(), Error);
+      assert.throws(() => auth.hasSupportedScopes(), Error);
     });
   });
 
