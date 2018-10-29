@@ -99,6 +99,22 @@ describe('Auth', function() {
     });
   });
 
+  describe('Auth.hasSupportedScopes', function() {
+    it('should return true only if user has all supported scopes in a given array', function() {
+      const auth = Auth.create();
+      auth.setSupportedScopes(['admin']);
+      assert.ok(!auth.hasSupportedScopes(['admin', 'invalid']));
+      assert.throws(() => auth.updateUser(), Error);
+    });
+
+    it('should return true if user has any supported scope in a given array', function() {
+      const auth = Auth.create();
+      auth.setSupportedScopes(['admin']);
+      assert.ok(auth.hasSupportedScopes(['admin', 'invalid'], { match: 'any' }));
+      assert.throws(() => auth.updateUser(), Error);
+    });
+  });
+
   describe('Auth.updateUser', function() {
     it('should throws exception when calling updateUser without data', function() {
       const auth = Auth.create();
